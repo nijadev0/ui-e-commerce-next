@@ -8,7 +8,7 @@ interface Input {
   message?: string
   label?: string
   placeholder: string
-  type: 'text' | 'password'
+  type?: 'text' | 'password'
   value?: string
   variant?:
     | 'default'
