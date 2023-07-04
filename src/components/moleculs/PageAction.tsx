@@ -10,10 +10,42 @@ interface PageAction {
   actionDesc: string
   btnPrimaryFun: any
   btnPrimaryLabel: string
-  btnPrimaryVariant: string
+  btnPrimaryVariant:
+    | 'primary-bg'
+    | 'primary-outline'
+    | 'primary-nude'
+    | 'warning-bg'
+    | 'warning-outline'
+    | 'warning-nude'
+    | 'error-bg'
+    | 'error-outline'
+    | 'error-nude'
+    | 'default-bg'
+    | 'default-outline'
+    | 'default-nude'
+    | 'disabled-bg'
+    | 'disabled-outline'
+    | 'disabled-nude'
+
   btnSecondaryFun: any
   btnSecondaryLabel: string
-  btnsecondaryVariant: string
+  btnsecondaryVariant:
+    | 'primary-bg'
+    | 'primary-outline'
+    | 'primary-nude'
+    | 'warning-bg'
+    | 'warning-outline'
+    | 'warning-nude'
+    | 'error-bg'
+    | 'error-outline'
+    | 'error-nude'
+    | 'default-bg'
+    | 'default-outline'
+    | 'default-nude'
+    | 'disabled-bg'
+    | 'disabled-outline'
+    | 'disabled-nude'
+
   sandbox: boolean
 }
 

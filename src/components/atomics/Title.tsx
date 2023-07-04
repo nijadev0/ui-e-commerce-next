@@ -2,13 +2,14 @@ import React from 'react'
 
 interface Title {
   children: React.ReactNode
+  className?: string
   variant: 'default' | 'success' | 'info' | 'warning' | 'error'
   size: 'sm' | 'lg'
 }
 
-const Title: React.FC<Title> = ({ children, variant, size }) => {
+const Title: React.FC<Title> = ({ children, className, variant, size }) => {
   return (
-    <h3 className='TITLE flex w-fit flex-row items-center gap-3'>
+    <h3 className={`Title flex w-fit flex-row items-center gap-3 ${className}`}>
       <div
         className={`${
           (variant === 'default' && 'Default bg-netral-100') ||

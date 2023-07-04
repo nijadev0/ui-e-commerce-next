@@ -18,15 +18,15 @@ export default function RootLayout({
   return (
     <html lang='en'>
       <body className={`UI-Ecommerce`}>
-        <div className='fixed left-0 top-0 z-50 w-[280px]'>
+        <div className='fixed left-0 top-0 z-10 w-[280px]'>
           <Sidebar />
         </div>
 
-        <div className='fixed inset-0 z-50 ml-[280px]'>
+        <div className='fixed inset-0 z-10 ml-[280px] h-20 w-[calc(100vw_-_280px)]'>
           <Topbar />
         </div>
 
-        <main className='relative min-h-screen bg-netral-20/50 pt-20'>
+        <main className='relative z-0 min-h-screen bg-netral-20/50 pl-72 pt-20'>
           {children}
         </main>
       </body>
