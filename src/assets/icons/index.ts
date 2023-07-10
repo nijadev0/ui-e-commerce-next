@@ -8,6 +8,7 @@ import ArrowRight2Icon from './ArrowRight2Icon'
 import BagIcon from './BagIcon'
 import BellSimpleIcon from './BellSimpleIcon'
 import CaretDownIcon from './CaretDownIcon'
+import CaretUpIcon from './CaretUpIcon'
 import CheckIcon from './CheckIcon'
 import CheckCircleIcon from './CheckCircleIcon'
 import CheckIconBold from './CheckIconBold'
@@ -17,6 +18,7 @@ import FunnelIcon from './FunnelIcon'
 import GearSixIcon from './GearSixIcon'
 import HomeIcon from './HomeIcon'
 import HouseSimpleIcon from './HouseSimpleIcon'
+import LightningIcon from './LightningIcon'
 import MagnifyingGlassIcon from './MagnifyingGlassIcon'
 import PackageIcon from './PackageIcon'
 import PencilSimpleIcon from './PencilSimpleIcon'
@@ -27,6 +29,7 @@ import StoreFrontIcon from './StoreFrontIcon'
 import TagIcon from './TagIcon'
 import TrashIcon from './TrashIcon'
 import UserCircleIcon from './UserCircleIcon'
+import UserPlusIcon from './UserPlusIcon'
 import UsersIcon from './UsersIcon'
 import XIcon from './XIcon'
 
@@ -39,6 +42,7 @@ export {
   BagIcon,
   BellSimpleIcon,
   CaretDownIcon,
+  CaretUpIcon,
   CheckIcon,
   CheckCircleIcon,
   CheckIconBold,
@@ -48,6 +52,7 @@ export {
   GearSixIcon,
   HomeIcon,
   HouseSimpleIcon,
+  LightningIcon,
   MagnifyingGlassIcon,
   PackageIcon,
   PencilSimpleIcon,
@@ -58,6 +63,7 @@ export {
   TagIcon,
   TrashIcon,
   UserCircleIcon,
+  UserPlusIcon,
   UsersIcon,
   XIcon
 }
