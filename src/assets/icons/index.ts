@@ -28,6 +28,7 @@ import SortAscendingIcon from './SortAscendingIcon'
 import StoreFrontIcon from './StoreFrontIcon'
 import TagIcon from './TagIcon'
 import TrashIcon from './TrashIcon'
+import UploadSimpleIcon from './UploadSimpleIcon'
 import UserCircleIcon from './UserCircleIcon'
 import UserPlusIcon from './UserPlusIcon'
 import UsersIcon from './UsersIcon'
@@ -62,6 +63,7 @@ export {
   StoreFrontIcon,
   TagIcon,
   TrashIcon,
+  UploadSimpleIcon,
   UserCircleIcon,
   UserPlusIcon,
   UsersIcon,

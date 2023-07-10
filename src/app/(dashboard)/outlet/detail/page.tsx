@@ -1,3 +1,4 @@
+'use client'
 import React from 'react'
 import Image from 'next/image'
 
@@ -27,6 +28,7 @@ const DBOutletDetail = () => {
       text: '$5392'
     }
   ]
+
   return (
     <div className='relative p-6'>
       <h1 className='text-heading-sm font-semibold'>User Role</h1>
@@ -61,6 +63,7 @@ const DBOutletDetail = () => {
                 <h5 className='text-body-sm uppercase text-netral-50'>
                   {detail.heading}
                 </h5>
+
                 <p className='text-body-base font-semibold'>{detail.text}</p>
               </span>
             ))}

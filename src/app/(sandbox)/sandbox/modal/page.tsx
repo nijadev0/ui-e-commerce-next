@@ -20,8 +20,9 @@ const SandboxModal = () => {
       </Button>
 
       <Modal
+        variant='default'
         title='Hapus Data'
-        width='max-w-[640px]'
+        className='max-w-[640px]'
         open={openSuccess}
         setOpen={setOpenSuccess}
       >

@@ -13,7 +13,49 @@ const PageActionPage = () => {
     router.back()
   }
 
-  const pageActions = [
+  interface PageActions {
+    id: number
+    actionLabel: string
+    actionDesc: string
+    primaryFun: any
+    primaryLabel: string
+    primaryVariant:
+      | 'primary-bg'
+      | 'primary-outline'
+      | 'primary-nude'
+      | 'warning-bg'
+      | 'warning-outline'
+      | 'warning-nude'
+      | 'error-bg'
+      | 'error-outline'
+      | 'error-nude'
+      | 'default-bg'
+      | 'default-outline'
+      | 'default-nude'
+      | 'disabled-bg'
+      | 'disabled-outline'
+      | 'disabled-nude'
+    secondaryFun: any
+    secondaryLabel: string
+    secondaryVariant:
+      | 'primary-bg'
+      | 'primary-outline'
+      | 'primary-nude'
+      | 'warning-bg'
+      | 'warning-outline'
+      | 'warning-nude'
+      | 'error-bg'
+      | 'error-outline'
+      | 'error-nude'
+      | 'default-bg'
+      | 'default-outline'
+      | 'default-nude'
+      | 'disabled-bg'
+      | 'disabled-outline'
+      | 'disabled-nude'
+  }
+
+  const pageActions: PageActions[] = [
     {
       id: 0,
       actionLabel: 'Last Saved',
@@ -48,12 +90,13 @@ const PageActionPage = () => {
       secondaryVariant: 'error-outline'
     }
   ]
+
   return (
     <Header title='Page Action'>
       <div className='space-y-8'>
         {pageActions.map((item) => (
           <PageAction
-            sandbox
+            variant='relative'
             key={item.id}
             actionLabel={item.actionLabel}
             actionDesc={item.actionDesc}

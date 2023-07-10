@@ -34,17 +34,6 @@ const DBFlashSale = () => {
     }, 3000)
   }
 
-  const resetModal = () => {
-    if (activeState === 4) {
-      openSuccessAlerts()
-    }
-  }
-
-  React.useEffect(() => {
-    resetModal()
-    setActiveState(1)
-  }, [])
-
   return (
     <div className='relative space-y-6 p-6'>
       <h1 className='text-heading-sm font-semibold'>Products List</h1>
@@ -144,7 +133,7 @@ const DBFlashSale = () => {
                       </div>
 
                       <span className='w-48 whitespace-pre-wrap text-body-base font-medium text-netral-80'>
-                        T-Men's UA Storm Armour Down 2.0 Jacket
+                        {"T-Men's UA Storm Armour Down 2.0 Jacket"}
                       </span>
                     </section>
                   </td>
