@@ -3,10 +3,12 @@
 import AppWindowIcon from './AppWindowIcon'
 import ArrowClockwiseIcon from './ArrowClockwiseIcon'
 import ArrowDown2Icon from './ArrowDown2Icon'
+import ArrowDownRightIcon from './ArrowDownRightIcon'
 import ArrowLeftIcon from './ArrowLeftIcon'
 import ArrowLeft2Icon from './ArrowLeft2Icon'
 import ArrowRight2Icon from './ArrowRight2Icon'
 import ArrowRightIcon from './ArrowRightIcon'
+import ArrowUpRightIcon from './ArrowUpRightIcon'
 import BagIcon from './BagIcon'
 import BellSimpleIcon from './BellSimpleIcon'
 import CaretDownIcon from './CaretDownIcon'
@@ -56,10 +58,12 @@ export {
   AppWindowIcon,
   ArrowClockwiseIcon,
   ArrowDown2Icon,
+  ArrowDownRightIcon,
   ArrowLeftIcon,
   ArrowLeft2Icon,
   ArrowRight2Icon,
   ArrowRightIcon,
+  ArrowUpRightIcon,
   BagIcon,
   BellSimpleIcon,
   CaretDownIcon,

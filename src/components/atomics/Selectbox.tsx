@@ -18,17 +18,19 @@ const datas = [
 ]
  */
 interface Selectbox {
+  className?: string
   datas: any
   label?: string
   selectedNow?: boolean
-  variant?: 'default' | 'status'
+  variant?: 'default' | 'status' | 'no-border'
 }
 
 const Selectbox: React.FC<Selectbox> = ({
   datas,
   label,
   selectedNow = false,
-  variant = 'default'
+  variant = 'default',
+  className
 }) => {
   const [selected, setSelected] = useState(datas[0])
   const [selectedNowState, setSelectedNowState] = useState(selectedNow)
@@ -42,9 +44,9 @@ const Selectbox: React.FC<Selectbox> = ({
         )}
 
         <Listbox.Button
-          className={`relative w-full cursor-pointer rounded-lg border border-netral-30 bg-white ${
+          className={`relative w-full cursor-pointer rounded-lg border bg-white ${
             variant === 'default' ? 'px-4 py-3' : 'p-2 pr-4'
-          } ring-2 ring-transparent placeholder:text-netral-50 focus:border-primary-main focus:outline-none focus:ring-primary-surface/50`}
+          } ring-2 ring-transparent placeholder:text-netral-50 focus:border-primary-main focus:outline-none focus:ring-primary-surface/50 ${className}`}
         >
           {selectedNowState && (
             <button
