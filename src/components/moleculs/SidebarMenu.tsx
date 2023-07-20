@@ -24,7 +24,6 @@ const SidebarMenu: React.FC<SidebarMenu> = ({
   variant
 }) => {
   const currentActive = usePathname()
-
   return (
     <>
       {variant === 'default' && (
@@ -73,7 +72,9 @@ const SidebarMenu: React.FC<SidebarMenu> = ({
       {variant === 'expand' && (
         <Link
           href={`${href}`}
-          className='relative flex w-full items-center justify-between gap-3 rounded-lg-10 p-3 text-netral-50 transition-all duration-300 ease-out hover:bg-netral-20'
+          className={`relative flex w-full items-center justify-between gap-3 rounded-lg-10 ${
+            currentActive === href ? 'bg-netral-20' : 'bg-white'
+          } p-3 text-netral-50 transition-all duration-300 ease-out hover:bg-netral-20`}
         >
           <span className='text-body-sm font-semibold'>{name}</span>
         </Link>

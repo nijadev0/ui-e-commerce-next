@@ -35,7 +35,7 @@ const Sidebar: React.FC = () => {
   const [showTransactionsMenu, setShowTransactionsMenu] = React.useState(false)
 
   return (
-    <aside className='SIDEBAR h-screen w-full max-w-[280px] overflow-hidden border border-netral-20 bg-white px-6 py-4 shadow-sm'>
+    <aside className='SIDEBAR h-screen w-72 overflow-hidden border border-netral-20 bg-white px-6 py-4 shadow-sm'>
       <Link href='/' className='mb-10'>
         <h5 className='text-heading-sm font-semibold italic'>Brand Here</h5>
       </Link>
@@ -52,18 +52,23 @@ const Sidebar: React.FC = () => {
           active={showUsersMenu}
           onClick={() => setShowUsersMenu(!showUsersMenu)}
           icon={<UsersIcon />}
-          name='Users'
+          name='Customer'
           variant='sub-menu'
         />
 
         {showUsersMenu && (
           <SidebarExpand>
             <SidebarMenu
-              name='Customers'
+              name='Users'
               variant='expand'
-              href='/users/customers'
+              href='/customers/users'
             />
-            <SidebarMenu name='Buyers' variant='expand' href='/users/buyers' />
+
+            <SidebarMenu
+              name='Buyers'
+              variant='expand'
+              href='/customers/buyers'
+            />
           </SidebarExpand>
         )}
 
@@ -101,14 +106,14 @@ const Sidebar: React.FC = () => {
         {showTransactionsMenu && (
           <SidebarExpand>
             <SidebarMenu
-              name='Manage Transactions'
+              name='Manage Transaction'
               variant='expand'
-              href='/transactions/manage-transactions'
+              href='/transactions/manage-transaction'
             />
             <SidebarMenu
-              name='Manage Refunds'
+              name='Manage Refund'
               variant='expand'
-              href='/transactions/manage-refunds'
+              href='/transactions/manage-refund'
             />
           </SidebarExpand>
         )}

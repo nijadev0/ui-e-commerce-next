@@ -1,4 +1,4 @@
-import { ArrowDown2Icon } from '@/assets/icons'
+import { ArrowDown2Icon, CurrencyDollarIcon, PercentIcon } from '@/assets/icons'
 import React from 'react'
 
 interface Input {
@@ -7,6 +7,7 @@ interface Input {
   id: string
   message?: string
   label?: string
+  logoSrc?: string
   placeholder: string
   type?: 'text' | 'password'
   value?: string
@@ -17,17 +18,20 @@ interface Input {
     | 'phone-error'
     | 'logo'
     | 'logo-error'
+    | 'discount'
+    | 'currency'
 }
 
 const Input: React.FC<Input> = ({
   disabled = false,
   id,
   label,
+  logoSrc,
   message,
   placeholder,
   type = 'text',
   value,
-  variant
+  variant = 'default'
 }) => {
   return (
     <div className='INPUT relative flex w-full flex-col items-start gap-1.5'>
@@ -55,12 +59,30 @@ const Input: React.FC<Input> = ({
           </div>
         )}
 
+        {variant?.includes('discount') && (
+          <div className='absolute left-3 top-1/2 flex w-fit -translate-y-1/2 items-center gap-1.5'>
+            <button className='flex items-center gap-1 rounded-md bg-netral-20 px-2 py-1 text-netral-80'>
+              <PercentIcon className='h-5 w-5 stroke-2' />
+            </button>
+            <span className='text-body-base font-normal text-netral-30'>|</span>
+          </div>
+        )}
+
+        {variant?.includes('currency') && (
+          <div className='absolute left-3 top-1/2 flex w-fit -translate-y-1/2 items-center gap-1.5'>
+            <button className='flex items-center gap-1 rounded-md bg-netral-20 px-2 py-1 text-netral-80'>
+              <CurrencyDollarIcon className='h-5 w-5 stroke-2' />
+            </button>
+            <span className='text-body-base font-normal text-netral-30'>|</span>
+          </div>
+        )}
+
         {variant?.includes('logo') && (
           <div className='absolute left-3 top-1/2 flex w-fit -translate-y-1/2 items-center gap-1.5'>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className='h-6 w-auto'
-              src='/input-bank-logo.png'
+              src={logoSrc ?? '/input-bank-logo.png'}
               alt='Maybank Logo'
             />
           </div>
@@ -78,6 +100,10 @@ const Input: React.FC<Input> = ({
               'border-netral-30 pl-[102px] focus:border-primary-border focus:ring-primary-surface disabled:bg-netral-20') ||
             (variant === 'phone-error' &&
               'border-error-border/50 pl-[102px] focus:border-error-border focus:ring-error-surface') ||
+            (variant === 'currency' &&
+              'border-netral-30 pl-16 focus:border-primary-border focus:ring-primary-surface disabled:bg-netral-20') ||
+            (variant === 'discount' &&
+              'border-netral-30 pl-16 focus:border-primary-border focus:ring-primary-surface disabled:bg-netral-20') ||
             (variant === 'logo' &&
               'border-netral-30 pl-28 focus:border-primary-border focus:ring-primary-surface disabled:bg-netral-20') ||
             (variant === 'logo-error' &&

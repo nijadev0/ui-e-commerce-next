@@ -12,7 +12,7 @@ interface Modal {
   open: any
   setOpen: any
   title: string
-  variant: 'default' | 'success' | 'info' | 'warning' | 'error'
+  variant: 'default' | 'success' | 'info' | 'warning' | 'error' | 'primary'
 }
 
 const Modal: React.FC<Modal> = ({

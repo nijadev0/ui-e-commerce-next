@@ -59,6 +59,16 @@ const page = () => {
       id: 10,
       name: 'Selectbox',
       link: '/sandbox/selectbox'
+    },
+    {
+      id: 11,
+      name: 'Toggle',
+      link: '/sandbox/toggle'
+    },
+    {
+      id: 12,
+      name: 'Popover',
+      link: '/sandbox/popover'
     }
   ]
 

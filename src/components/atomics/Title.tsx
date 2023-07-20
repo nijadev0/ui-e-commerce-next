@@ -3,16 +3,19 @@ import React from 'react'
 interface Title {
   children: React.ReactNode
   className?: string
-  variant: 'default' | 'success' | 'info' | 'warning' | 'error'
+  variant: 'default' | 'success' | 'info' | 'warning' | 'error' | 'primary'
   size: 'sm' | 'lg'
 }
 
 const Title: React.FC<Title> = ({ children, className, variant, size }) => {
   return (
-    <h3 className={`Title flex w-fit flex-row items-center gap-3 ${className}`}>
-      <div
+    <div
+      className={`Title flex w-fit flex-row items-center gap-3 ${className}`}
+    >
+      <span
         className={`${
           (variant === 'default' && 'Default bg-netral-100') ||
+          (variant === 'primary' && 'Primary bg-primary-main') ||
           (variant === 'success' && 'Success bg-success-main') ||
           (variant === 'info' && 'Info bg-info-main') ||
           (variant === 'warning' && 'Warning bg-warning-main') ||
@@ -27,7 +30,7 @@ const Title: React.FC<Title> = ({ children, className, variant, size }) => {
       >
         {children}
       </span>
-    </h3>
+    </div>
   )
 }
 

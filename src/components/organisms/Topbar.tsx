@@ -37,6 +37,7 @@ const Topbar: React.FC = () => {
               <Image
                 className='h-full w-full object-cover'
                 src='/avatar-1.png'
+                sizes='40'
                 alt='Avatar People 1'
                 fill
               />

@@ -1,7 +1,8 @@
+'use client'
 import React from 'react'
 
 import { Header } from '@/components/templates'
-import { Selectbox } from '@/components/atomics'
+import { Button, Selectbox } from '@/components/atomics'
 
 const SandboxSelectbox = () => {
   const listMenu = [
@@ -13,10 +14,24 @@ const SandboxSelectbox = () => {
     { name: 'Kopi Hitam' }
   ]
 
+  const [active, setActive] = React.useState(false)
+
   return (
     <Header title='Selectbox'>
-      <div className='relative w-96'>
-        <Selectbox datas={listMenu} />
+      <div className='space-y-10'>
+        <div className='relative w-96'>
+          <Selectbox datas={listMenu} selectedNow={active ? true : false} />
+        </div>
+
+        <Button
+          variant='primary-bg'
+          size='md'
+          onClick={() => {
+            setActive(!active)
+          }}
+        >
+          Active
+        </Button>
       </div>
     </Header>
   )
