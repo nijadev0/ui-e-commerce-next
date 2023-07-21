@@ -1,7 +1,7 @@
 "use client"
 
 import React from "react"
-// import ReactApexCharts from "react-apexcharts"
+import { ApexOptions } from "apexcharts"
 
 import { Button, Selectbox, Title } from "@/components/atomics"
 
@@ -19,159 +19,156 @@ const ReactApexCharts = dynamic(() => import("react-apexcharts"), {
 
 const DBHome = () => {
   // ---------------------------------------------------------------
-  const splineAreaData = {
-    series: [
-      {
-        name: "Quarter 1",
-        data: [31, 40, 28, 51, 42, 109, 100]
-      },
-      {
-        name: "Quarter 2",
-        data: [11, 32, 45, 32, 34, 52, 41]
-      }
-    ],
-    chartOptions: {
-      colors: ["#5E59FF", "rgba(94, 89, 255, 0.25)"],
-      chart: {
-        toolbar: { show: false },
-        height: 350,
-        type: "area"
-      },
-      dataLabels: {
-        enabled: false
-      },
-      xaxis: {
-        type: "datetime",
-        categories: [
-          "2018-09-19T00:00:00.000Z",
-          "2018-09-19T01:30:00.000Z",
-          "2018-09-19T02:30:00.000Z",
-          "2018-09-19T03:30:00.000Z",
-          "2018-09-19T04:30:00.000Z",
-          "2018-09-19T05:30:00.000Z",
-          "2018-09-19T06:30:00.000Z"
-        ]
-      },
-      tooltip: {
-        x: {
-          format: "dd/MM/yy HH:mm"
-        }
+  const splineSeries = [
+    {
+      name: "Quarter 1",
+      data: [31, 40, 28, 51, 42, 109, 100]
+    },
+    {
+      name: "Quarter 2",
+      data: [11, 32, 45, 32, 34, 52, 41]
+    }
+  ]
+  const splineOptions: ApexOptions = {
+    colors: ["#5E59FF", "rgba(94, 89, 255, 0.25)"],
+    chart: {
+      toolbar: { show: false },
+      height: 350
+      // type: "area"
+    },
+    dataLabels: {
+      enabled: false
+    },
+    xaxis: {
+      type: "datetime",
+      categories: [
+        "2018-09-19T00:00:00.000Z",
+        "2018-09-19T01:30:00.000Z",
+        "2018-09-19T02:30:00.000Z",
+        "2018-09-19T03:30:00.000Z",
+        "2018-09-19T04:30:00.000Z",
+        "2018-09-19T05:30:00.000Z",
+        "2018-09-19T06:30:00.000Z"
+      ]
+    },
+    tooltip: {
+      x: {
+        format: "dd/MM/yy HH:mm"
       }
     }
   }
   // ---------------------------------------------------------------
-  const radialBarData = {
-    dummy: [
-      {
-        color: "bg-[#5E59FF]",
-        label: "Product Sold",
-        number: 86
-      },
-      {
-        color: "bg-[#FFAB00]",
-        label: "Product Return",
-        number: 48
-      }
-    ],
-    series: [86, 48],
-    chartOptions: {
-      chart: {
-        toolbar: { show: false },
-        height: 350,
-        type: "radialBar"
-      },
-      colors: ["#5E59FF", "#FFAB00"],
-      plotOptions: {
-        radialBar: {
-          stroke: {
-            colors: ["#5E59FF", "#FFAB00"]
+  const radialSeries = [86, 48]
+
+  const radialDummy = [
+    {
+      color: "bg-[#5E59FF]",
+      label: "Product Sold",
+      number: 86
+    },
+    {
+      color: "bg-[#FFAB00]",
+      label: "Product Return",
+      number: 48
+    }
+  ]
+
+  const radialBarData: ApexOptions = {
+    chart: {
+      toolbar: { show: false },
+      height: 350
+      // type: "radialBar"
+    },
+    colors: ["#5E59FF", "#FFAB00"],
+    plotOptions: {
+      radialBar: {
+        // stroke: {
+        //   colors: ["#5E59FF", "#FFAB00"]
+        // },
+        dataLabels: {
+          name: {
+            fontSize: "22px"
           },
-          dataLabels: {
-            name: {
-              fontSize: "22px"
-            },
-            value: {
-              fontSize: "16px"
-            },
-            total: {
-              show: true,
-              label: "Total",
-              formatter: function () {
-                // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
-                return 100
-              }
+          value: {
+            fontSize: "16px"
+          },
+          total: {
+            show: true,
+            label: "Total"
+            // formatter: function () {
+            //   // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
+            //   return 100
+            // }
+          }
+        },
+        track: {
+          background: ["#5E59FF", "#FFAB00"]
+        }
+      }
+    },
+    labels: ["Product Sold", "Product Return"],
+    stroke: {
+      lineCap: "round",
+      colors: ["#5E59FF", "#FFAB00"]
+    }
+  }
+  // ---------------------------------------------------------------
+  const barSeries = [
+    {
+      name: "Total Outlet",
+      data: [44, 55, 41, 64, 22, 43, 21]
+    },
+    {
+      name: "Percentage of Sales",
+      data: [53, 32, 33, 52, 13, 44, 32]
+    }
+  ]
+
+  const barOptions: ApexOptions = {
+    colors: ["#5E59FF", "#E5E7EB"],
+    stroke: {
+      colors: ["transparent"],
+      width: 5
+    },
+    chart: {
+      height: 400,
+      toolbar: { show: false }
+    },
+    plotOptions: {
+      bar: {
+        horizontal: true,
+        dataLabels: {
+          position: "top"
+        },
+        barHeight: 24,
+        borderRadius: 3,
+        // fill: ["#5E59FF", "#E5E7EB"],
+        colors: {
+          ranges: [
+            {
+              from: 0,
+              to: 0
+              // color: ["#5E59FF", "#E5E7EB"]
             }
-          },
-          track: {
-            // background: ['#5E59FF', '#FFAB00'],
-          }
+          ]
         }
-      },
-      labels: ["Product Sold", "Product Return"],
-      stroke: {
-        lineCap: "round",
-        colors: ["#5E59FF", "#FFAB00"]
       }
-    }
-  }
-  // ---------------------------------------------------------------
-  const barData = {
-    series: [
-      {
-        name: "Total Outlet",
-        data: [44, 55, 41, 64, 22, 43, 21]
-      },
-      {
-        name: "Percentage of Sales",
-        data: [53, 32, 33, 52, 13, 44, 32]
+    },
+    labels: ["Clothing", "Food Products"],
+    dataLabels: {
+      enabled: false,
+      offsetX: -6,
+      style: {
+        fontSize: "12px",
+        colors: ["#fff"]
       }
-    ],
-    chartOptions: {
-      colors: ["#5E59FF", "#E5E7EB"],
-      stroke: {
-        colors: ["transparent"],
-        width: 5
-      },
-      chart: {
-        height: 400,
-        toolbar: { show: false }
-      },
-      plotOptions: {
-        bar: {
-          horizontal: true,
-          dataLabels: {
-            position: "top"
-          },
-          barHeight: 24,
-          borderRadius: 3,
-          fill: ["#5E59FF", "#E5E7EB"],
-          colors: {
-            ranges: [
-              {
-                from: 0,
-                to: 0,
-                color: ["#5E59FF", "#E5E7EB"]
-              }
-            ]
-          }
-        }
-      },
-      labels: ["Clothing", "Food Products"],
-      dataLabels: {
-        enabled: false,
-        offsetX: -6,
-        style: {
-          fontSize: "12px",
-          colors: ["#fff"]
-        }
-      },
-      tooltip: {
-        shared: true,
-        intersect: false
-      },
-      xaxis: {
-        categories: ["New York", "Los Angeles", "Chicago", "Phoenix"]
-      }
+    },
+    tooltip: {
+      shared: true,
+      intersect: false
+    },
+    xaxis: {
+      categories: ["New York", "Los Angeles", "Chicago", "Phoenix"]
     }
   }
   // ---------------------------------------------------------------
@@ -199,7 +196,7 @@ const DBHome = () => {
       {/* Summary */}
       <section className='grid grid-cols-3 gap-5'>
         <figure className='relative w-full overflow-hidden rounded-lg-10 bg-white'>
-          <img
+          <Image
             className='absolute right-0 top-0 -z-0 h-full w-fit'
             src='/pattern-home-1.png'
             alt='Pattern Home 1'
@@ -219,7 +216,7 @@ const DBHome = () => {
         </figure>
 
         <figure className='relative w-full overflow-hidden rounded-lg-10 bg-white'>
-          <img
+          <Image
             className='absolute -right-10 top-0 -z-0 h-full w-fit'
             src='/pattern-home-2.png'
             alt='Pattern Home 2'
@@ -241,7 +238,7 @@ const DBHome = () => {
         </figure>
 
         <figure className='relative w-full overflow-hidden rounded-lg-10 bg-white'>
-          <img
+          <Image
             className='absolute right-0 top-0 -z-0 h-full w-fit'
             src='/pattern-home-3.png'
             alt='Pattern Home 3'
@@ -279,8 +276,8 @@ const DBHome = () => {
             <div className='w-full !font-jakarta'>
               <ReactApexCharts
                 type='area'
-                options={splineAreaData.chartOptions}
-                series={splineAreaData.series}
+                options={splineOptions}
+                series={splineSeries}
               />
             </div>
           </section>
@@ -309,8 +306,8 @@ const DBHome = () => {
             <div className='w-full !font-jakarta'>
               <ReactApexCharts
                 type='bar'
-                options={barData.chartOptions}
-                series={barData.series}
+                options={barOptions}
+                series={barSeries}
               />
             </div>
           </section>
@@ -337,13 +334,13 @@ const DBHome = () => {
                 <ReactApexCharts
                   type='radialBar'
                   height={350}
-                  options={radialBarData.chartOptions}
-                  series={radialBarData.series}
+                  options={radialBarData}
+                  series={radialSeries}
                 />
               </div>
 
               <div className='flex flex-col items-start gap-4'>
-                {radialBarData.dummy.map((item, index) => (
+                {radialDummy.map((item, index) => (
                   <div
                     key={index}
                     className='flex flex-col-reverse items-center gap-1 2xl:flex-col 2xl:items-start'
@@ -379,8 +376,6 @@ const DBHome = () => {
                 />
               </div>
             </nav>
-
-            {/* Table */}
 
             {/* Table */}
             <div className='mb-6 overflow-x-auto'>

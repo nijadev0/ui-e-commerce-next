@@ -1,9 +1,9 @@
-'use client'
-import React from 'react'
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+"use client"
+import React from "react"
+import Image from "next/image"
+import { useRouter } from "next/navigation"
 
-import { Modal, PageAction } from '@/components/moleculs'
+import { Modal, PageAction } from "@/components/moleculs"
 import {
   Alerts,
   Badge,
@@ -11,7 +11,7 @@ import {
   Input,
   Selectbox,
   Title
-} from '@/components/atomics'
+} from "@/components/atomics"
 
 const DBTransactionManageTransactionDetail = () => {
   // --------------------------------------------------------------------------------
@@ -21,9 +21,9 @@ const DBTransactionManageTransactionDetail = () => {
   const [openAlertsSave, setOpenAlertsSave] = React.useState(false)
   // --------------------------------------------------------------------------------
   const status = [
-    { name: 'Process', color: 'bg-netral-80' },
-    { name: 'Waiting', color: 'bg-warning-main' },
-    { name: 'Success', color: 'bg-success-main' }
+    { name: "Process", color: "bg-netral-80" },
+    { name: "Waiting", color: "bg-warning-main" },
+    { name: "Success", color: "bg-success-main" }
   ]
   // --------------------------------------------------------------------------------
 
@@ -113,8 +113,8 @@ const DBTransactionManageTransactionDetail = () => {
             <div className='w-full max-w-sm space-y-2'>
               <h5 className='space-y-2 text-body-lg font-semibold'>Status</h5>
               <p className='text-body-base text-netral-50'>
-                This is the customer's order status. You can arrange your
-                customer's order status according to the order process.
+                {`This is the customer's order status. You can arrange your
+                customer's order status according to the order process.`}
               </p>
             </div>
 
@@ -236,7 +236,7 @@ const DBTransactionManageTransactionDetail = () => {
                     <div className='flex items-center gap-3'>
                       <div className='relative h-20 w-20 overflow-hidden rounded-lg-10'>
                         <Image
-                          src={'/products-1.png'}
+                          src={"/products-1.png"}
                           className='h-full w-full object-cover'
                           alt='Products'
                           fill

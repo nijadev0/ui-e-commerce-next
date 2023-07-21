@@ -1,11 +1,11 @@
-'use client'
-import React from 'react'
-import Link from 'next/link'
-import Image from 'next/image'
-import { Tab } from '@headlessui/react'
+"use client"
+import React from "react"
+import Link from "next/link"
+import Image from "next/image"
+import { Tab } from "@headlessui/react"
 
-import { Modal, PageAction } from '@/components/moleculs'
-import { Alerts, Badge, Button, Checkbox, Title } from '@/components/atomics'
+import { Modal, PageAction } from "@/components/moleculs"
+import { Alerts, Badge, Button, Checkbox, Title } from "@/components/atomics"
 
 import {
   ArrowRightIcon,
@@ -14,7 +14,7 @@ import {
   PlusIcon,
   SortAscendingIcon,
   SquaresFourIcon
-} from '@/assets/icons'
+} from "@/assets/icons"
 
 const DBCategories = () => {
   const [active, setActive] = React.useState(false)
@@ -59,7 +59,7 @@ const DBCategories = () => {
 
                   <Tab
                     className={
-                      'rounded-lg-10 border p-2 outline-0 transition-all duration-300 ease-out hover:bg-netral-20 ui-selected:border-primary-border ui-selected:bg-primary-surface ui-selected:text-primary-main ui-not-selected:border-netral-30 ui-not-selected:text-netral-100'
+                      "rounded-lg-10 border p-2 outline-0 transition-all duration-300 ease-out hover:bg-netral-20 ui-selected:border-primary-border ui-selected:bg-primary-surface ui-selected:text-primary-main ui-not-selected:border-netral-30 ui-not-selected:text-netral-100"
                     }
                   >
                     <SquaresFourIcon className='h-6 w-6' />
@@ -67,7 +67,7 @@ const DBCategories = () => {
 
                   <Tab
                     className={
-                      'rounded-lg-10 border p-2 outline-0 transition-all duration-300 ease-out hover:bg-netral-20 ui-selected:border-primary-border ui-selected:bg-primary-surface ui-selected:text-primary-main ui-not-selected:border-netral-30 ui-not-selected:text-netral-100'
+                      "rounded-lg-10 border p-2 outline-0 transition-all duration-300 ease-out hover:bg-netral-20 ui-selected:border-primary-border ui-selected:bg-primary-surface ui-selected:text-primary-main ui-not-selected:border-netral-30 ui-not-selected:text-netral-100"
                     }
                   >
                     <ListIcon className='h-6 w-6' />
@@ -82,14 +82,14 @@ const DBCategories = () => {
             <Tab.Panel>
               <div className='grid grid-cols-4 gap-5'>
                 {[1, 2, 3, 4, 5].map((item) => (
-                  <figure className='relative w-full space-y-3'>
+                  <figure key={item} className='relative w-full space-y-3'>
                     <div className='absolute left-3 top-6 z-20'>
                       <Checkbox active={active} setActive={setActive} />
                     </div>
 
                     <div className='relative flex h-40 w-full justify-center overflow-hidden rounded-lg-10 bg-netral-15'>
                       <Link
-                        href={'/products/categories/detail'}
+                        href={"/products/categories/detail"}
                         className='absolute z-10 flex h-full w-full items-center justify-center bg-black/25 opacity-0 transition-all duration-500 ease-out hover:opacity-100'
                       >
                         <button className='flex items-center gap-2 rounded-lg border-2 border-white p-2 px-4 font-semibold text-white transition-all duration-300 ease-out hover:bg-white/25'>
@@ -100,7 +100,7 @@ const DBCategories = () => {
 
                       <div className='relative aspect-square h-40'>
                         <Image
-                          src={'/categories-1.png'}
+                          src={"/categories-1.png"}
                           alt='Categories 1'
                           fill
                         />
@@ -166,7 +166,7 @@ const DBCategories = () => {
                           <div className='flex items-center gap-3'>
                             <div className='relative h-20 w-20 overflow-hidden rounded-lg-10'>
                               <Image
-                                src={'/products-1.png'}
+                                src={"/products-1.png"}
                                 className='h-full w-full object-cover'
                                 alt='Products'
                                 fill
@@ -194,7 +194,7 @@ const DBCategories = () => {
 
                         <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                           <Link
-                            href={'/products/list-products/detail'}
+                            href={"/products/list-products/detail"}
                             className='text-body-base font-medium text-primary-main'
                           >
                             Detail
@@ -276,7 +276,7 @@ const DBCategories = () => {
       >
         <main className='mb-10 mt-4'>
           <p className='text-body-base text-netral-80'>
-            Are you sure want to draft this category?{' '}
+            Are you sure want to draft this category?{" "}
           </p>
         </main>
 

@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react"
 
-import { Badge, Button, Pagination, Title } from '@/components/atomics'
-import { ExportIcon, FunnelIcon, SortAscendingIcon } from '@/assets/icons'
+import { Badge, Button, Pagination, Title } from "@/components/atomics"
+import { ExportIcon, FunnelIcon, SortAscendingIcon } from "@/assets/icons"
 
 const DBTransactionManageRefund = () => {
   return (
@@ -95,7 +95,7 @@ const DBTransactionManageRefund = () => {
 
                   <td className='w-56 whitespace-pre-wrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='w-56 whitespace-pre-wrap break-words text-body-base font-medium text-netral-80'>
-                      T-Men's UA Storm Armour Down 2.0 Jacket
+                      {`T-Men's UA Storm Armour Down 2.0 Jacket`}
                     </span>
                   </td>
 

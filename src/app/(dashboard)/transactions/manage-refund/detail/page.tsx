@@ -1,8 +1,8 @@
-'use client'
-import React from 'react'
-import Image from 'next/image'
+"use client"
+import React from "react"
+import Image from "next/image"
 
-import { Modal, PageAction } from '@/components/moleculs'
+import { Modal, PageAction } from "@/components/moleculs"
 import {
   Alerts,
   Badge,
@@ -10,9 +10,9 @@ import {
   Input,
   Selectbox,
   Title
-} from '@/components/atomics'
+} from "@/components/atomics"
 
-import { DownloadSimpleIcon, EyeIcon } from '@/assets/icons'
+import { DownloadSimpleIcon, EyeIcon } from "@/assets/icons"
 
 const DBTransactionManageRefundDetail = () => {
   // --------------------------------------------------------------------------------
@@ -24,9 +24,9 @@ const DBTransactionManageRefundDetail = () => {
   const [openAlertsReject, setOpenAlertsReject] = React.useState(false)
   // --------------------------------------------------------------------------------
   const status = [
-    { name: 'Process', color: 'bg-netral-80' },
-    { name: 'Waiting', color: 'bg-warning-main' },
-    { name: 'Success', color: 'bg-success-main' }
+    { name: "Process", color: "bg-netral-80" },
+    { name: "Waiting", color: "bg-warning-main" },
+    { name: "Success", color: "bg-success-main" }
   ]
   // --------------------------------------------------------------------------------
 
@@ -116,8 +116,8 @@ const DBTransactionManageRefundDetail = () => {
             <div className='w-full max-w-sm space-y-2'>
               <h5 className='space-y-2 text-body-lg font-semibold'>Status</h5>
               <p className='text-body-base text-netral-50'>
-                This is the customer's order status. You can arrange your
-                customer's order status according to the order process.
+                {`This is the customer's order status. You can arrange your
+                customer's order status according to the order process.`}
               </p>
             </div>
 
@@ -157,9 +157,12 @@ const DBTransactionManageRefundDetail = () => {
 
             <div className='grid grid-cols-4 gap-6'>
               {[1, 2, 3, 4].map((item) => (
-                <figure className='group relative h-40 w-40 overflow-hidden rounded-lg-10'>
+                <figure
+                  key={item}
+                  className='group relative h-40 w-40 overflow-hidden rounded-lg-10'
+                >
                   <Image
-                    src={'/return-detail-1.png'}
+                    src={"/return-detail-1.png"}
                     alt='Return Detail 1'
                     fill
                   />
@@ -228,7 +231,7 @@ const DBTransactionManageRefundDetail = () => {
                     <div className='flex items-center gap-3'>
                       <div className='relative h-20 w-20 overflow-hidden rounded-lg-10'>
                         <Image
-                          src={'/products-1.png'}
+                          src={"/products-1.png"}
                           className='h-full w-full object-cover'
                           alt='Products'
                           fill
@@ -457,7 +460,7 @@ const DBTransactionManageRefundDetail = () => {
             className='h-40 w-full rounded-lg-10 border border-netral-30 bg-netral-15 p-3.5 text-body-base shadow-1 outline-none ring-[2.5px] ring-transparent transition-all duration-300 ease-out focus:border-primary-border focus:ring-primary-surface disabled:bg-netral-20'
             placeholder='Description'
             value={
-              'This product cannot be returned because there is no photo evidence of product damage.'
+              "This product cannot be returned because there is no photo evidence of product damage."
             }
           />
         </main>

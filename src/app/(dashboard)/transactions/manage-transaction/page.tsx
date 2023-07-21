@@ -1,6 +1,6 @@
-'use client'
-import React from 'react'
-import { Popover, Transition } from '@headlessui/react'
+"use client"
+import React from "react"
+import { Popover, Transition } from "@headlessui/react"
 
 import {
   Badge,
@@ -8,7 +8,7 @@ import {
   Pagination,
   Selectbox,
   Title
-} from '@/components/atomics'
+} from "@/components/atomics"
 import {
   ExportIcon,
   FilePDFIcon,
@@ -16,8 +16,8 @@ import {
   FileXIcon,
   FunnelIcon,
   SortAscendingIcon
-} from '@/assets/icons'
-import { Modal } from '@/components/moleculs'
+} from "@/assets/icons"
+import { Modal } from "@/components/moleculs"
 
 const DBTransactionManageTransaction = () => {
   // --------------------------------------------------------------------
@@ -34,7 +34,7 @@ const DBTransactionManageTransaction = () => {
           </Title>
 
           <div className='relative flex flex-row gap-3'>
-            <Popover as='div' className={'relative'}>
+            <Popover as='div' className={"relative"}>
               <Button
                 size='md'
                 variant='primary-outline'
@@ -44,7 +44,7 @@ const DBTransactionManageTransaction = () => {
               >
                 <Popover.Button
                   as='div'
-                  className={'group absolute inset-0 h-full w-full outline-0'}
+                  className={"group absolute inset-0 h-full w-full outline-0"}
                 />
                 Export
                 <ExportIcon className='h-4 w-4 stroke-[4px]' />
@@ -80,7 +80,7 @@ const DBTransactionManageTransaction = () => {
               </Transition>
             </Popover>
 
-            <Popover as='div' className={'relative'}>
+            <Popover as='div' className={"relative"}>
               <Button
                 size='md'
                 variant='default-bg'
@@ -90,7 +90,7 @@ const DBTransactionManageTransaction = () => {
               >
                 <Popover.Button
                   as='div'
-                  className={'group absolute inset-0 h-full w-full outline-0'}
+                  className={"group absolute inset-0 h-full w-full outline-0"}
                 />
                 Sort
                 <SortAscendingIcon className='h-4 w-4 stroke-netral-100 stroke-[4px]' />
@@ -205,7 +205,7 @@ const DBTransactionManageTransaction = () => {
 
                   <td className='w-56 whitespace-pre-wrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='w-56 whitespace-pre-wrap break-words text-body-base font-medium text-netral-80'>
-                      T-Men's UA Storm Armour Down 2.0 Jacket
+                      {`T-Men's UA Storm Armour Down 2.0 Jacket`}
                     </span>
                   </td>
 
@@ -254,8 +254,8 @@ const DBTransactionManageTransaction = () => {
         <main className='my-6 space-y-6 border-y border-netral-30 py-6'>
           <Selectbox
             datas={[
-              { name: 'Select Status', disabled: true },
-              { name: 'Select Status', disabled: true }
+              { name: "Select Status", disabled: true },
+              { name: "Select Status", disabled: true }
             ]}
           />
         </main>
