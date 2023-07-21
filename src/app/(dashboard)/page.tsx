@@ -1,57 +1,60 @@
-'use client'
+"use client"
 
-import React from 'react'
-import ReactApexCharts from 'react-apexcharts'
-import { Button, Selectbox, Title } from '@/components/atomics'
+import React from "react"
+// import ReactApexCharts from "react-apexcharts"
+
+import { Button, Selectbox, Title } from "@/components/atomics"
 
 import {
   ArrowDownRightIcon,
   ArrowUpRightIcon,
   DownloadSimpleIcon
-} from '@/assets/icons'
+} from "@/assets/icons"
+import Image from "next/image"
+import dynamic from "next/dynamic"
 
-const Home = () => {
+const ReactApexCharts = dynamic(() => import("react-apexcharts"), {
+  ssr: false
+})
+
+const DBHome = () => {
   // ---------------------------------------------------------------
   const splineAreaData = {
     series: [
       {
-        name: 'Quarter 1',
+        name: "Quarter 1",
         data: [31, 40, 28, 51, 42, 109, 100]
       },
       {
-        name: 'Quarter 2',
+        name: "Quarter 2",
         data: [11, 32, 45, 32, 34, 52, 41]
       }
     ],
     chartOptions: {
-      colors: ['#5E59FF', 'rgba(94, 89, 255, 0.25)'],
-
+      colors: ["#5E59FF", "rgba(94, 89, 255, 0.25)"],
       chart: {
         toolbar: { show: false },
         height: 350,
-        type: 'area'
+        type: "area"
       },
       dataLabels: {
         enabled: false
       },
-      stroke: {
-        curve: 'smooth'
-      },
       xaxis: {
-        type: 'datetime',
+        type: "datetime",
         categories: [
-          '2018-09-19T00:00:00.000Z',
-          '2018-09-19T01:30:00.000Z',
-          '2018-09-19T02:30:00.000Z',
-          '2018-09-19T03:30:00.000Z',
-          '2018-09-19T04:30:00.000Z',
-          '2018-09-19T05:30:00.000Z',
-          '2018-09-19T06:30:00.000Z'
+          "2018-09-19T00:00:00.000Z",
+          "2018-09-19T01:30:00.000Z",
+          "2018-09-19T02:30:00.000Z",
+          "2018-09-19T03:30:00.000Z",
+          "2018-09-19T04:30:00.000Z",
+          "2018-09-19T05:30:00.000Z",
+          "2018-09-19T06:30:00.000Z"
         ]
       },
       tooltip: {
         x: {
-          format: 'dd/MM/yy HH:mm'
+          format: "dd/MM/yy HH:mm"
         }
       }
     }
@@ -60,13 +63,13 @@ const Home = () => {
   const radialBarData = {
     dummy: [
       {
-        color: 'bg-[#5E59FF]',
-        label: 'Product Sold',
+        color: "bg-[#5E59FF]",
+        label: "Product Sold",
         number: 86
       },
       {
-        color: 'bg-[#FFAB00]',
-        label: 'Product Return',
+        color: "bg-[#FFAB00]",
+        label: "Product Return",
         number: 48
       }
     ],
@@ -75,24 +78,24 @@ const Home = () => {
       chart: {
         toolbar: { show: false },
         height: 350,
-        type: 'radialBar'
+        type: "radialBar"
       },
-      colors: ['#5E59FF', '#FFAB00'],
+      colors: ["#5E59FF", "#FFAB00"],
       plotOptions: {
         radialBar: {
           stroke: {
-            colors: ['#5E59FF', '#FFAB00']
+            colors: ["#5E59FF", "#FFAB00"]
           },
           dataLabels: {
             name: {
-              fontSize: '22px'
+              fontSize: "22px"
             },
             value: {
-              fontSize: '16px'
+              fontSize: "16px"
             },
             total: {
               show: true,
-              label: 'Total',
+              label: "Total",
               formatter: function () {
                 // By default this function returns the average of all series. The below is just an example to show the use of custom formatter function
                 return 100
@@ -104,10 +107,10 @@ const Home = () => {
           }
         }
       },
-      labels: ['Product Sold', 'Product Return'],
+      labels: ["Product Sold", "Product Return"],
       stroke: {
-        lineCap: 'round',
-        colors: ['#5E59FF', '#FFAB00']
+        lineCap: "round",
+        colors: ["#5E59FF", "#FFAB00"]
       }
     }
   }
@@ -115,23 +118,21 @@ const Home = () => {
   const barData = {
     series: [
       {
-        name: 'Total Outlet',
+        name: "Total Outlet",
         data: [44, 55, 41, 64, 22, 43, 21]
       },
       {
-        name: 'Percentage of Sales',
+        name: "Percentage of Sales",
         data: [53, 32, 33, 52, 13, 44, 32]
       }
     ],
     chartOptions: {
-      colors: ['#5E59FF', '#E5E7EB'],
-
+      colors: ["#5E59FF", "#E5E7EB"],
       stroke: {
-        colors: ['transparent'],
+        colors: ["transparent"],
         width: 5
       },
       chart: {
-        type: 'bar',
         height: 400,
         toolbar: { show: false }
       },
@@ -139,29 +140,29 @@ const Home = () => {
         bar: {
           horizontal: true,
           dataLabels: {
-            position: 'top'
+            position: "top"
           },
           barHeight: 24,
           borderRadius: 3,
-          fill: ['#5E59FF', '#E5E7EB'],
+          fill: ["#5E59FF", "#E5E7EB"],
           colors: {
             ranges: [
               {
                 from: 0,
                 to: 0,
-                color: ['#5E59FF', '#E5E7EB']
+                color: ["#5E59FF", "#E5E7EB"]
               }
             ]
           }
         }
       },
-      labels: ['Clothing', 'Food Products'],
+      labels: ["Clothing", "Food Products"],
       dataLabels: {
         enabled: false,
         offsetX: -6,
         style: {
-          fontSize: '12px',
-          colors: ['#fff']
+          fontSize: "12px",
+          colors: ["#fff"]
         }
       },
       tooltip: {
@@ -169,10 +170,28 @@ const Home = () => {
         intersect: false
       },
       xaxis: {
-        categories: ['New York', 'Los Angeles', 'Chicago', 'Phoenix']
+        categories: ["New York", "Los Angeles", "Chicago", "Phoenix"]
       }
     }
   }
+  // ---------------------------------------------------------------
+  const topProductsData = [
+    {
+      image: "/images/list-products/ListProducts-1.png",
+      name: "T-Men's UA Storm Armour Down 2.0 Jacket",
+      sold: 213
+    },
+    {
+      image: "/images/list-products/ListProducts-2.png",
+      name: "Windproof Handbell Oversized Long Coat",
+      sold: 143
+    },
+    {
+      image: "/images/list-products/ListProducts-3.png",
+      name: "Women's Stripe Sweater",
+      sold: 137
+    }
+  ]
   // ---------------------------------------------------------------
 
   return (
@@ -257,9 +276,8 @@ const Home = () => {
               </Button>
             </nav>
 
-            <div className='!font-jakarta'>
+            <div className='w-full !font-jakarta'>
               <ReactApexCharts
-                width='100%'
                 type='area'
                 options={splineAreaData.chartOptions}
                 series={splineAreaData.series}
@@ -278,7 +296,7 @@ const Home = () => {
                 <div className='w-40'>
                   <Selectbox
                     className='!border-transparent'
-                    datas={[{ name: 'This Week' }, { name: 'This Month' }]}
+                    datas={[{ name: "This Week" }, { name: "This Month" }]}
                   />
                 </div>
                 <Button size='md' variant='primary-outline'>
@@ -288,7 +306,7 @@ const Home = () => {
               </div>
             </nav>
 
-            <div className='!font-jakarta'>
+            <div className='w-full !font-jakarta'>
               <ReactApexCharts
                 type='bar'
                 options={barData.chartOptions}
@@ -309,7 +327,7 @@ const Home = () => {
               <div className='w-40'>
                 <Selectbox
                   className='!border-transparent'
-                  datas={[{ name: 'This Month' }, { name: 'This Year' }]}
+                  datas={[{ name: "This Month" }, { name: "This Year" }]}
                 />
               </div>
             </nav>
@@ -325,8 +343,11 @@ const Home = () => {
               </div>
 
               <div className='flex flex-col items-start gap-4'>
-                {radialBarData.dummy.map((item) => (
-                  <div className='flex flex-col-reverse items-center gap-1 2xl:flex-col 2xl:items-start'>
+                {radialBarData.dummy.map((item, index) => (
+                  <div
+                    key={index}
+                    className='flex flex-col-reverse items-center gap-1 2xl:flex-col 2xl:items-start'
+                  >
                     <div className='flex items-center gap-2'>
                       <div
                         className={`h-2 w-2 ${item.color} flex-shrink-0 rounded-full`}
@@ -354,10 +375,59 @@ const Home = () => {
               <div className='w-40'>
                 <Selectbox
                   className='!border-transparent'
-                  datas={[{ name: 'Year' }, { name: 'Decade' }]}
+                  datas={[{ name: "Year" }, { name: "Decade" }]}
                 />
               </div>
             </nav>
+
+            {/* Table */}
+
+            {/* Table */}
+            <div className='mb-6 overflow-x-auto'>
+              <table className='w-full table-auto'>
+                <thead className='bg-netral-15 text-body-sm font-semibold uppercase'>
+                  <tr>
+                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                      <span className='text-body-sm font-semibold'>
+                        Product
+                      </span>
+                    </th>
+
+                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                      <span className='text-body-sm font-semibold'>Sold</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
+                  {[1, 2, 3].map((item) => (
+                    <tr key={item}>
+                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                        <div className='flex items-center gap-3'>
+                          <div className='relative h-20 w-20 overflow-hidden rounded-lg-10'>
+                            <Image
+                              src={"/products-1.png"}
+                              className='h-full w-full object-cover'
+                              alt='Products'
+                              fill
+                            />
+                          </div>
+
+                          <span className='w-48 whitespace-pre-wrap break-words text-body-base font-medium text-netral-80'>
+                            {"T-Men's UA Storm Armour Down 2.0 Jacket"}
+                          </span>
+                        </div>
+                      </td>
+
+                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                        <span className='text-body-base font-medium text-netral-80'>
+                          401
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
           </section>
         </div>
       </div>
@@ -365,4 +435,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default DBHome
