@@ -102,7 +102,7 @@ const DBHome = () => {
           }
         },
         track: {
-          background: ["#5E59FF", "#FFAB00"]
+          // background: ["#5E59FF", "#FFAB00"]
         }
       }
     },
@@ -197,9 +197,10 @@ const DBHome = () => {
       <section className='grid grid-cols-3 gap-5'>
         <figure className='relative w-full overflow-hidden rounded-lg-10 bg-white'>
           <Image
-            className='absolute right-0 top-0 -z-0 h-full w-fit'
+            className='absolute right-0 top-0 -z-0 h-full w-fit object-contain object-right-top'
             src='/pattern-home-1.png'
             alt='Pattern Home 1'
+            fill
           />
 
           <figcaption className='relative z-10 px-8 py-6'>
@@ -217,9 +218,10 @@ const DBHome = () => {
 
         <figure className='relative w-full overflow-hidden rounded-lg-10 bg-white'>
           <Image
-            className='absolute -right-10 top-0 -z-0 h-full w-fit'
+            className='absolute -right-10 top-0 -z-0 h-full w-fit object-contain object-right-top'
             src='/pattern-home-2.png'
             alt='Pattern Home 2'
+            fill
           />
 
           <figcaption className='relative z-10 px-8 py-6'>
@@ -239,9 +241,10 @@ const DBHome = () => {
 
         <figure className='relative w-full overflow-hidden rounded-lg-10 bg-white'>
           <Image
-            className='absolute right-0 top-0 -z-0 h-full w-fit'
+            className='absolute right-0 top-0 -z-0 h-full w-fit object-contain object-right-top'
             src='/pattern-home-3.png'
             alt='Pattern Home 3'
+            fill
           />
 
           <figcaption className='relative z-10 px-8 py-6'>
