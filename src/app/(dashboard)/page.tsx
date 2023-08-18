@@ -204,10 +204,12 @@ const DBHome = () => {
           />
 
           <figcaption className='relative z-10 px-8 py-6'>
-            <span className='text-body-base font-medium uppercase text-netral-60'>
+            <span className='text-body-sm font-medium uppercase text-netral-60 2xl:text-body-base'>
               Total Sales
             </span>
-            <h3 className='mb-1 mt-3.5 text-heading-md font-bold'>643,823</h3>
+            <h3 className='mb-1 mt-2.5 text-[30px] text-heading-md font-bold 2xl:mt-3.5'>
+              643,823
+            </h3>
             <p className='inline-flex items-center text-body-sm'>
               <ArrowUpRightIcon className='h-4 w-4 text-success-main' />
               <span className='ml-0.5 mr-1 text-success-main'>0.4%</span>
@@ -225,11 +227,13 @@ const DBHome = () => {
           />
 
           <figcaption className='relative z-10 px-8 py-6'>
-            <span className='text-body-base font-medium uppercase text-netral-60'>
+            <span className='text-body-sm font-medium uppercase text-netral-60 2xl:text-body-base'>
               Total Users
             </span>
 
-            <h3 className='mb-1 mt-3.5 text-heading-md font-bold'>142,937</h3>
+            <h3 className='mb-1 mt-2.5 text-[30px] text-heading-md font-bold 2xl:mt-3.5'>
+              142,937
+            </h3>
 
             <p className='inline-flex items-center text-body-sm'>
               <ArrowDownRightIcon className='h-4 w-4 text-red-500' />
@@ -248,10 +252,12 @@ const DBHome = () => {
           />
 
           <figcaption className='relative z-10 px-8 py-6'>
-            <span className='text-body-base font-medium uppercase text-netral-60'>
+            <span className='text-body-sm font-medium uppercase text-netral-60 2xl:text-body-base'>
               Total Buyers
             </span>
-            <h3 className='mb-1 mt-3.5 text-heading-md font-bold'>120,981</h3>
+            <h3 className='mb-1 mt-2.5 text-[30px] text-heading-md font-bold 2xl:mt-3.5'>
+              120,981
+            </h3>
             <p className='inline-flex items-center text-body-sm'>
               <ArrowUpRightIcon className='h-4 w-4 text-success-main' />
               <span className='ml-0.5 mr-1 text-success-main'>0.4%</span>
@@ -264,7 +270,7 @@ const DBHome = () => {
       <div className='grid grid-cols-12 gap-5'>
         <div className='col-span-7 space-y-5'>
           {/* Sales */}
-          <section className='min-h-[576px] space-y-6 rounded-lg-10 bg-white px-8 py-6'>
+          <section className='space-y-6 rounded-lg-10 bg-white px-8 py-6 2xl:min-h-[576px]'>
             <nav className='flex items-center justify-between'>
               <Title size='lg' variant='default'>
                 Sales
@@ -286,7 +292,7 @@ const DBHome = () => {
           </section>
 
           {/* Outlet */}
-          <section className='min-h-[600px] space-y-6 rounded-lg-10 bg-white px-8 py-6'>
+          <section className='space-y-6 rounded-lg-10 bg-white px-8 py-6 2xl:min-h-[600px]'>
             <nav className='flex items-center justify-between'>
               <Title size='lg' variant='default'>
                 Outlet
@@ -309,6 +315,7 @@ const DBHome = () => {
             <div className='w-full !font-jakarta'>
               <ReactApexCharts
                 type='bar'
+                height={480}
                 options={barOptions}
                 series={barSeries}
               />
@@ -332,7 +339,7 @@ const DBHome = () => {
               </div>
             </nav>
 
-            <div className='flex flex-row items-center gap-8'>
+            <div className='flex flex-col items-center gap-8 2xl:flex-row'>
               <div className='!font-jakarta'>
                 <ReactApexCharts
                   type='radialBar'
@@ -342,7 +349,7 @@ const DBHome = () => {
                 />
               </div>
 
-              <div className='flex flex-col items-start gap-4'>
+              <div className='flex flex-row items-start gap-4 2xl:flex-col'>
                 {radialDummy.map((item, index) => (
                   <div
                     key={index}
@@ -401,7 +408,7 @@ const DBHome = () => {
                     <tr key={item}>
                       <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                         <div className='flex items-center gap-3'>
-                          <div className='relative h-20 w-20 overflow-hidden rounded-lg-10'>
+                          <div className='relative h-16 w-16 overflow-hidden rounded-lg-10 2xl:h-20 2xl:w-20'>
                             <Image
                               src={"/products-1.png"}
                               className='h-full w-full object-cover'
@@ -410,14 +417,14 @@ const DBHome = () => {
                             />
                           </div>
 
-                          <span className='w-48 whitespace-pre-wrap break-words text-body-base font-medium text-netral-80'>
+                          <span className='w-48 whitespace-pre-wrap break-words text-body-sm font-medium text-netral-80 2xl:text-body-base'>
                             {"T-Men's UA Storm Armour Down 2.0 Jacket"}
                           </span>
                         </div>
                       </td>
 
                       <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <span className='text-body-base font-medium text-netral-80'>
+                        <span className='text-body-sm font-medium text-netral-80 2xl:text-body-base'>
                           401
                         </span>
                       </td>

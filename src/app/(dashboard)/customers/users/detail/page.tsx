@@ -1,12 +1,17 @@
-'use client'
-import React from 'react'
-import { useRouter } from 'next/navigation'
+"use client"
+import React from "react"
+import { useRouter } from "next/navigation"
 
-import { PageAction } from '@/components/moleculs'
-import { Input, Title } from '@/components/atomics'
+import { PageAction } from "@/components/moleculs"
+import { Alerts, Input, Title } from "@/components/atomics"
 
 const DBCustomersUsersDetail = () => {
+  // -------------------------------------------------------------------------- //
   const router = useRouter()
+  // -------------------------------------------------------------------------- //
+  const [openSuccess, setOpenSuccess] = React.useState(false)
+
+  // -------------------------------------------------------------------------- //
 
   return (
     <div className='relative h-[calc(100vh_-_80px)] p-6'>
@@ -50,13 +55,21 @@ const DBCustomersUsersDetail = () => {
         </section>
       </div>
 
+      <Alerts
+        variant='success'
+        open={openSuccess}
+        setOpen={setOpenSuccess}
+        title='Users has been updated'
+        desc='User updated successfully.'
+      />
+
       <PageAction
         variant='absolute'
         actionLabel='Last saved'
         actionDesc='Nov 9, 2022-17.09'
         btnPrimaryLabel='Save'
         btnPrimaryVariant='primary-bg'
-        btnPrimaryFun={() => console.log('ok')}
+        btnPrimaryFun={() => setOpenSuccess(true)}
         btnSecondaryLabel='Discard'
         btnsecondaryVariant='primary-nude'
         btnSecondaryFun={() => router.back()}

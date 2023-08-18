@@ -1,20 +1,21 @@
-'use client'
+"use client"
 
-import React from 'react'
-import Link from 'next/link'
+import React from "react"
+import Link from "next/link"
 
 import {
   AppWindowIcon,
   HouseSimpleIcon,
+  LockSimpleIcon,
   PackageIcon,
   ReceiptIcon,
   StoreFrontIcon,
   TagIcon,
   UserCircleIcon,
   UsersIcon
-} from '@/assets/icons'
+} from "@/assets/icons"
 
-import { SidebarMenu } from '@/components/moleculs'
+import { SidebarMenu } from "@/components/moleculs"
 
 const SidebarExpand: React.FC<{ children?: React.ReactNode }> = ({
   children
@@ -33,9 +34,13 @@ const Sidebar: React.FC = () => {
   const [showUsersMenu, setShowUsersMenu] = React.useState(false)
   const [showProductsMenu, setShowProductsMenu] = React.useState(false)
   const [showTransactionsMenu, setShowTransactionsMenu] = React.useState(false)
+  const [showAuthMenu, setShowAuthMenu] = React.useState(false)
 
   return (
-    <aside className='SIDEBAR h-screen w-72 overflow-hidden border border-netral-20 bg-white px-6 py-4 shadow-sm'>
+    <aside
+      id='sidebar'
+      className='Sidebar h-screen w-64 overflow-y-auto overflow-x-hidden border border-netral-20 bg-white px-6 py-4 shadow-sm 2xl:w-72'
+    >
       <Link href='/' className='mb-10'>
         <h5 className='text-heading-sm font-semibold italic'>Brand Here</h5>
       </Link>
@@ -145,6 +150,46 @@ const Sidebar: React.FC = () => {
           variant='default'
           href='/user-role'
         />
+
+        <SidebarMenu
+          active={showAuthMenu}
+          onClick={() => setShowAuthMenu(!showAuthMenu)}
+          icon={<LockSimpleIcon />}
+          name='Authentication'
+          variant='sub-menu'
+        />
+
+        {showAuthMenu && (
+          <SidebarExpand>
+            <SidebarMenu name='Login' variant='expand' href='/auth/login' />
+            <SidebarMenu
+              name='Register'
+              variant='expand'
+              href='/auth/register'
+            />
+
+            <SidebarMenu
+              name='Forgot Password'
+              variant='expand'
+              href='/auth/forgot-password'
+            />
+            <SidebarMenu
+              name='Verify Email'
+              variant='expand'
+              href='/auth/verify-email'
+            />
+            <SidebarMenu
+              name='New Password'
+              variant='expand'
+              href='/auth/new-password'
+            />
+            <SidebarMenu
+              name='Reset Success'
+              variant='expand'
+              href='/auth/success-reset'
+            />
+          </SidebarExpand>
+        )}
       </nav>
     </aside>
   )

@@ -1,13 +1,13 @@
-'use client'
+"use client"
 
-import React from 'react'
-import Link from 'next/link'
-import { useRouter } from 'next/navigation'
-import { Switch } from '@headlessui/react'
+import React from "react"
+import Link from "next/link"
+import { useRouter } from "next/navigation"
+import { Switch } from "@headlessui/react"
 
-import { Button, Input } from '@/components/atomics'
-import { Layout } from '@/components/templates'
-import { CheckIcon } from '@/assets/icons'
+import { Button, Input } from "@/components/atomics"
+import { Layout } from "@/components/templates"
+import { CheckIcon } from "@/assets/icons"
 
 const AuthLogin = () => {
   // ---------------------------------------------------
@@ -16,7 +16,7 @@ const AuthLogin = () => {
   const [isRemember, setIsRemember] = React.useState(false)
   // ---------------------------------------------------
 
-  const [email, setEmail] = React.useState('')
+  const [email, setEmail] = React.useState("")
   // ---------------------------------------------------
 
   return (
@@ -36,7 +36,6 @@ const AuthLogin = () => {
           placeholder='Enter your email'
           label='Email'
           variant='default'
-          value={email}
         />
 
         <Input
@@ -53,8 +52,8 @@ const AuthLogin = () => {
               onChange={setIsRemember}
               className={`Checkbox ${
                 isRemember
-                  ? 'border-primary-border bg-primary-main text-white ring-primary-surface'
-                  : 'border-netral-60 bg-white ring-netral-15'
+                  ? "border-primary-border bg-primary-main text-white ring-primary-surface"
+                  : "border-netral-60 bg-white ring-netral-15"
               } relative inline-flex h-5 w-5 items-center rounded-md border ring-2`}
             >
               {isRemember && <CheckIcon className='h-5 w-5' />}
@@ -64,14 +63,19 @@ const AuthLogin = () => {
           </div>
 
           <Link
-            href={'/auth/forgot-password'}
+            href={"/auth/forgot-password"}
             className='text-body-base font-semibold underline'
           >
             Forgot password?
           </Link>
         </div>
 
-        <Button size='lg' variant='primary-bg' onClick={() => router.push('/')}>
+        <Button
+          size='lg'
+          variant='primary-bg'
+          className='w-full'
+          onClick={() => router.push("/")}
+        >
           Login
         </Button>
       </form>

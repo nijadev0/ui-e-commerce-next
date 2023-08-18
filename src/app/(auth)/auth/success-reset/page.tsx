@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react"
 
-import { Button } from '@/components/atomics'
-import { Layout } from '@/components/templates'
+import { Button } from "@/components/atomics"
+import { Layout } from "@/components/templates"
 
-import { CheckIconBold } from '@/assets/icons'
+import { CheckIconBold } from "@/assets/icons"
 
 const AuthSuccessReset = () => {
   return (
@@ -29,7 +29,12 @@ const AuthSuccessReset = () => {
             magically.
           </p>
 
-          <Button size='lg' variant='primary-bg' href='/auth/login'>
+          <Button
+            size='lg'
+            variant='primary-bg'
+            className='w-full'
+            href='/auth/login'
+          >
             Log in
           </Button>
         </section>

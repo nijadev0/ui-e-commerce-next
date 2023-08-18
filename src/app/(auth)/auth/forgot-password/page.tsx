@@ -1,14 +1,11 @@
-'use client'
+"use client"
 
-import React from 'react'
-import { useRouter } from 'next/navigation'
+import React from "react"
 
-import { Layout } from '@/components/templates'
-import { Button, Input } from '@/components/atomics'
+import { Layout } from "@/components/templates"
+import { Button, Input } from "@/components/atomics"
 
 const AuthForgotPassword = () => {
-  const router = useRouter()
-
   return (
     <Layout
       src='/auth-photo-1.png'
@@ -33,7 +30,8 @@ const AuthForgotPassword = () => {
         <Button
           size='lg'
           variant='primary-bg'
-          onClick={() => router.push('/auth/verify-email')}
+          className='w-full'
+          href='/auth/verify-email'
         >
           Reset Password
         </Button>

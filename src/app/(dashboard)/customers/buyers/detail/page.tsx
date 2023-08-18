@@ -1,10 +1,9 @@
-import React from 'react'
+import React from "react"
 
-import { Badge, Button, Title } from '@/components/atomics'
+import { Badge, Button, Title } from "@/components/atomics"
 
-import { FunnelIcon, PencilSimpleIcon, SortAscendingIcon } from '@/assets/icons'
-import Image from 'next/image'
-import Link from 'next/link'
+import { FunnelIcon, PencilSimpleIcon, SortAscendingIcon } from "@/assets/icons"
+import Image from "next/image"
 
 const DBCustomersBuyersDetail = () => {
   return (
@@ -30,7 +29,7 @@ const DBCustomersBuyersDetail = () => {
         <section className='flex flex-row items-center gap-5'>
           <div className='relative h-[8.25rem] w-[8.25rem] overflow-hidden rounded-full'>
             <Image
-              src={'/avatar-default.png'}
+              src={"/avatar-default.png"}
               className='h-full w-full object-cover'
               alt='Avatar'
               fill
@@ -63,7 +62,7 @@ const DBCustomersBuyersDetail = () => {
                 </h5>
 
                 <p className='text-body-base font-medium'>
-                  2972 Westheimer Rd. Santa Ana, Illinois 85486{' '}
+                  2972 Westheimer Rd. Santa Ana, Illinois 85486{" "}
                 </p>
               </div>
             </section>
@@ -138,7 +137,7 @@ const DBCustomersBuyersDetail = () => {
 
                   <td className='w-56 whitespace-pre-wrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='whitespace-pre-wrap break-words text-body-base font-medium text-netral-80'>
-                      {'Heimer Miller Sofa (Mint Condition)'}
+                      {"Heimer Miller Sofa (Mint Condition)"}
                     </span>
                   </td>
 

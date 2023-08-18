@@ -1,7 +1,7 @@
-import React from 'react'
+import React from "react"
 
-import { Layout } from '@/components/templates'
-import { Button, Input } from '@/components/atomics'
+import { Layout } from "@/components/templates"
+import { Button, Input } from "@/components/atomics"
 
 const AuthNewPassword = () => {
   return (
@@ -34,7 +34,12 @@ const AuthNewPassword = () => {
           />
         </div>
 
-        <Button size='lg' variant='primary-bg' href='/auth/success-reset'>
+        <Button
+          size='lg'
+          variant='primary-bg'
+          className='w-full'
+          href='/auth/success-reset'
+        >
           Reset Password
         </Button>
       </form>
