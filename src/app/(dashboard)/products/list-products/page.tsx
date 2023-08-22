@@ -1,18 +1,18 @@
-'use client'
+"use client"
 
-import React from 'react'
-import Image from 'next/image'
-import { Switch } from '@headlessui/react'
+import React from "react"
+import Image from "next/image"
+import { Switch } from "@headlessui/react"
 
-import { Modal, PageAction } from '@/components/moleculs'
-import { Alerts, Badge, Button, Title } from '@/components/atomics'
+import { Modal, PageAction } from "@/components/moleculs"
+import { Alerts, Badge, Button, Title } from "@/components/atomics"
 
 import {
   CheckIcon,
   FunnelIcon,
   PlusIcon,
   SortAscendingIcon
-} from '@/assets/icons'
+} from "@/assets/icons"
 
 const DBProductsListProducts = () => {
   const [active, setActive] = React.useState(false)
@@ -65,8 +65,8 @@ const DBProductsListProducts = () => {
                       onChange={setActive}
                       className={`Checkbox ${
                         active
-                          ? 'border-primary-border bg-primary-main text-white ring-primary-surface'
-                          : 'border-netral-60 bg-netral-20 ring-netral-15'
+                          ? "border-primary-border bg-primary-main text-white ring-primary-surface"
+                          : "border-netral-60 bg-netral-20 ring-netral-15"
                       } relative inline-flex h-5 w-5 items-center rounded-md border ring-2`}
                     >
                       {active && <CheckIcon className='h-5 w-5' />}
@@ -110,8 +110,8 @@ const DBProductsListProducts = () => {
                         onChange={setActive}
                         className={`Checkbox ${
                           active
-                            ? 'border-primary-border bg-primary-main text-white ring-primary-surface'
-                            : 'border-netral-60 bg-white ring-netral-15'
+                            ? "border-primary-border bg-primary-main text-white ring-primary-surface"
+                            : "border-netral-60 bg-white ring-netral-15"
                         } relative inline-flex h-5 w-5 items-center rounded-md border ring-2`}
                       >
                         {active && <CheckIcon className='h-5 w-5' />}
@@ -123,7 +123,7 @@ const DBProductsListProducts = () => {
                     <div className='flex items-center gap-3'>
                       <div className='relative h-20 w-20 overflow-hidden rounded-lg-10'>
                         <Image
-                          src={'/products-1.png'}
+                          src={"/products-1.png"}
                           className='h-full w-full object-cover'
                           alt='Products'
                           fill
@@ -164,7 +164,7 @@ const DBProductsListProducts = () => {
                     <Button
                       size='md'
                       variant='primary-nude'
-                      href={'/products/list-products/detail'}
+                      href={"/products/list-products/detail"}
                     >
                       Detail
                     </Button>

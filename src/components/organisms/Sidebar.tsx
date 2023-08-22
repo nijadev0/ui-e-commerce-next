@@ -2,6 +2,7 @@
 
 import React from "react"
 import Link from "next/link"
+import { Transition } from "@headlessui/react"
 
 import {
   AppWindowIcon,
@@ -17,16 +18,28 @@ import {
 
 import { SidebarMenu } from "@/components/moleculs"
 
-const SidebarExpand: React.FC<{ children?: React.ReactNode }> = ({
-  children
-}) => {
+const SidebarExpand: React.FC<{
+  children?: React.ReactNode
+  show?: boolean
+}> = ({ children, show }) => {
   return (
-    <section className='relative flex w-full items-start gap-4'>
-      <div className='absolute left-6 h-full w-px bg-netral-30' />
-      <div className='flex w-full flex-col items-start justify-end gap-2 pl-9'>
-        {children}
-      </div>
-    </section>
+    <Transition
+      show={show}
+      enter='transition-opacity duration-500'
+      enterFrom='opacity-0'
+      enterTo='opacity-100'
+      leave='transition-opacity duration-500'
+      leaveFrom='opacity-100'
+      leaveTo='opacity-0'
+      className={"w-full"}
+    >
+      <section className='relative flex w-full items-start gap-4'>
+        <div className='absolute left-6 h-full w-px bg-netral-30' />
+        <div className='flex w-full flex-col items-start justify-end gap-2 pl-9'>
+          {children}
+        </div>
+      </section>
+    </Transition>
   )
 }
 
@@ -45,7 +58,7 @@ const Sidebar: React.FC = () => {
         <h5 className='text-heading-sm font-semibold italic'>Brand Here</h5>
       </Link>
 
-      <nav className='mt-10 flex flex-col items-start gap-3'>
+      <nav className='mt-10 flex w-full flex-col items-start gap-3'>
         <SidebarMenu
           icon={<HouseSimpleIcon />}
           name='Dashboard'
@@ -61,21 +74,15 @@ const Sidebar: React.FC = () => {
           variant='sub-menu'
         />
 
-        {showUsersMenu && (
-          <SidebarExpand>
-            <SidebarMenu
-              name='Users'
-              variant='expand'
-              href='/customers/users'
-            />
+        <SidebarExpand show={showUsersMenu}>
+          <SidebarMenu name='Users' variant='expand' href='/customers/users' />
 
-            <SidebarMenu
-              name='Buyers'
-              variant='expand'
-              href='/customers/buyers'
-            />
-          </SidebarExpand>
-        )}
+          <SidebarMenu
+            name='Buyers'
+            variant='expand'
+            href='/customers/buyers'
+          />
+        </SidebarExpand>
 
         <SidebarMenu
           active={showProductsMenu}
@@ -85,20 +92,18 @@ const Sidebar: React.FC = () => {
           variant='sub-menu'
         />
 
-        {showProductsMenu && (
-          <SidebarExpand>
-            <SidebarMenu
-              name='List Products'
-              variant='expand'
-              href='/products/list-products'
-            />
-            <SidebarMenu
-              name='Categories'
-              variant='expand'
-              href='/products/categories'
-            />
-          </SidebarExpand>
-        )}
+        <SidebarExpand show={showProductsMenu}>
+          <SidebarMenu
+            name='List Products'
+            variant='expand'
+            href='/products/list-products'
+          />
+          <SidebarMenu
+            name='Categories'
+            variant='expand'
+            href='/products/categories'
+          />
+        </SidebarExpand>
 
         <SidebarMenu
           active={showTransactionsMenu}
@@ -108,20 +113,18 @@ const Sidebar: React.FC = () => {
           variant='sub-menu'
         />
 
-        {showTransactionsMenu && (
-          <SidebarExpand>
-            <SidebarMenu
-              name='Manage Transaction'
-              variant='expand'
-              href='/transactions/manage-transaction'
-            />
-            <SidebarMenu
-              name='Manage Refund'
-              variant='expand'
-              href='/transactions/manage-refund'
-            />
-          </SidebarExpand>
-        )}
+        <SidebarExpand show={showTransactionsMenu}>
+          <SidebarMenu
+            name='Manage Transaction'
+            variant='expand'
+            href='/transactions/manage-transaction'
+          />
+          <SidebarMenu
+            name='Manage Refund'
+            variant='expand'
+            href='/transactions/manage-refund'
+          />
+        </SidebarExpand>
 
         <SidebarMenu
           icon={<TagIcon />}
@@ -159,37 +162,31 @@ const Sidebar: React.FC = () => {
           variant='sub-menu'
         />
 
-        {showAuthMenu && (
-          <SidebarExpand>
-            <SidebarMenu name='Login' variant='expand' href='/auth/login' />
-            <SidebarMenu
-              name='Register'
-              variant='expand'
-              href='/auth/register'
-            />
+        <SidebarExpand show={showAuthMenu}>
+          <SidebarMenu name='Login' variant='expand' href='/auth/login' />
+          <SidebarMenu name='Register' variant='expand' href='/auth/register' />
 
-            <SidebarMenu
-              name='Forgot Password'
-              variant='expand'
-              href='/auth/forgot-password'
-            />
-            <SidebarMenu
-              name='Verify Email'
-              variant='expand'
-              href='/auth/verify-email'
-            />
-            <SidebarMenu
-              name='New Password'
-              variant='expand'
-              href='/auth/new-password'
-            />
-            <SidebarMenu
-              name='Reset Success'
-              variant='expand'
-              href='/auth/success-reset'
-            />
-          </SidebarExpand>
-        )}
+          <SidebarMenu
+            name='Forgot Password'
+            variant='expand'
+            href='/auth/forgot-password'
+          />
+          <SidebarMenu
+            name='Verify Email'
+            variant='expand'
+            href='/auth/verify-email'
+          />
+          <SidebarMenu
+            name='New Password'
+            variant='expand'
+            href='/auth/new-password'
+          />
+          <SidebarMenu
+            name='Reset Success'
+            variant='expand'
+            href='/auth/success-reset'
+          />
+        </SidebarExpand>
       </nav>
     </aside>
   )

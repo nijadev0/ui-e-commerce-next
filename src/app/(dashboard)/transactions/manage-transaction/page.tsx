@@ -250,60 +250,118 @@ const DBTransactionManageTransaction = () => {
         setOpen={setOpenModalFilter}
         title='Filter'
         variant='default'
-        className='h-[480px] max-w-lg'
+        className='max-w-lg'
       >
         <main className='my-6 space-y-6 border-y border-netral-30 py-6'>
           <Selectbox
             label='Status'
             datas={[
               { name: "Select Status", disabled: true },
-              { name: "Select Status", disabled: true }
+              { name: "Waiting" },
+              { name: "Resolved" }
             ]}
           />
 
-          <section>
-            <RadioGroup>
-              <RadioGroup.Label className={"text-body-sm font-semibold"}>
-                Total Product
-              </RadioGroup.Label>
+          <RadioGroup>
+            <RadioGroup.Label className={"mb-2.5 text-body-sm font-semibold"}>
+              Total Product
+            </RadioGroup.Label>
 
-              <section className='flex flex-row gap-3'>
-                <RadioGroup.Option
-                  value='startup'
-                  className={
-                    "cursor-pointer rounded-lg bg-netral-15 px-6 py-3 ui-active:bg-primary-main ui-active:text-white"
-                  }
-                >
-                  <span className='pointer-events-none text-body-lg font-bold'>
-                    {"< 10"}
-                  </span>
-                </RadioGroup.Option>
+            <section className='flex flex-row gap-3'>
+              <RadioGroup.Option
+                value='startup'
+                className={
+                  "cursor-pointer rounded-lg bg-netral-15 px-6 py-3 ui-active:bg-primary-main ui-active:text-white"
+                }
+              >
+                <span className='pointer-events-none text-body-base font-bold'>
+                  {"< 10"}
+                </span>
+              </RadioGroup.Option>
 
-                <RadioGroup.Option
-                  value='startup'
-                  className={
-                    "cursor-pointer rounded-lg bg-netral-15 px-6 py-3 ui-active:bg-primary-main ui-active:text-white"
-                  }
-                >
-                  <span className='pointer-events-none text-body-lg font-bold'>
-                    {"11-20"}
-                  </span>
-                </RadioGroup.Option>
+              <RadioGroup.Option
+                value='startup'
+                className={
+                  "cursor-pointer rounded-lg bg-netral-15 px-6 py-3 ui-active:bg-primary-main ui-active:text-white"
+                }
+              >
+                <span className='pointer-events-none text-body-base font-bold'>
+                  {"11-20"}
+                </span>
+              </RadioGroup.Option>
 
-                <RadioGroup.Option
-                  value='startup'
-                  className={
-                    "cursor-pointer rounded-lg bg-netral-15 px-6 py-3 ui-active:bg-primary-main ui-active:text-white"
-                  }
-                >
-                  <span className='text-pointer-events-none cursor-pointer font-bold'>
-                    {"> 21"}
-                  </span>
-                </RadioGroup.Option>
-              </section>
-            </RadioGroup>
-          </section>
+              <RadioGroup.Option
+                value='startup'
+                className={
+                  "cursor-pointer rounded-lg bg-netral-15 px-6 py-3 ui-active:bg-primary-main ui-active:text-white"
+                }
+              >
+                <span className='pointer-events-none cursor-pointer font-bold'>
+                  {"> 21"}
+                </span>
+              </RadioGroup.Option>
+            </section>
+          </RadioGroup>
+
+          <RadioGroup>
+            <RadioGroup.Label className={"mb-2.5 text-body-sm  font-semibold"}>
+              Transaction Amount
+            </RadioGroup.Label>
+
+            <section className='flex flex-row gap-3'>
+              <RadioGroup.Option
+                value='startup'
+                className={
+                  "cursor-pointer rounded-lg bg-netral-15 px-6 py-3 ui-active:bg-primary-main ui-active:text-white"
+                }
+              >
+                <span className='pointer-events-none text-body-base font-bold'>
+                  {"≤ $500"}
+                </span>
+              </RadioGroup.Option>
+
+              <RadioGroup.Option
+                value='startup'
+                className={
+                  "cursor-pointer rounded-lg bg-netral-15 px-6 py-3 ui-active:bg-primary-main ui-active:text-white"
+                }
+              >
+                <span className='pointer-events-none text-body-base font-bold'>
+                  {"$501 - $999"}
+                </span>
+              </RadioGroup.Option>
+
+              <RadioGroup.Option
+                value='startup'
+                className={
+                  "cursor-pointer rounded-lg bg-netral-15 px-6 py-3 ui-active:bg-primary-main ui-active:text-white"
+                }
+              >
+                <span className='pointer-events-none cursor-pointer font-bold'>
+                  {"≥ $1,000"}
+                </span>
+              </RadioGroup.Option>
+            </section>
+          </RadioGroup>
         </main>
+
+        <footer className='flex items-center justify-end gap-3'>
+          <Button
+            size='lg'
+            variant='primary-nude'
+            onClick={() => setOpenModalFilter(false)}
+          >
+            Cancel
+          </Button>
+
+          <Button
+            size='lg'
+            variant='primary-bg'
+            onClick={() => setOpenModalFilter(false)}
+          >
+            Add Outlet
+          </Button>
+        </footer>
       </Modal>
     </div>
   )

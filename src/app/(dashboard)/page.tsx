@@ -207,7 +207,7 @@ const DBHome = () => {
             <span className='text-body-sm font-medium uppercase text-netral-60 2xl:text-body-base'>
               Total Sales
             </span>
-            <h3 className='mb-1 mt-2.5 text-[30px] text-heading-md font-bold 2xl:mt-3.5'>
+            <h3 className='mb-1 mt-2.5 text-heading-md font-bold 2xl:mt-3.5'>
               643,823
             </h3>
             <p className='inline-flex items-center text-body-sm'>
@@ -268,9 +268,9 @@ const DBHome = () => {
       </section>
 
       <div className='grid grid-cols-12 gap-5'>
-        <div className='col-span-7 space-y-5'>
+        <div className='col-span-8 space-y-5'>
           {/* Sales */}
-          <section className='space-y-6 rounded-lg-10 bg-white px-8 py-6 2xl:min-h-[576px]'>
+          <section className='space-y-6 rounded-lg-10 bg-white p-6 2xl:min-h-[576px]'>
             <nav className='flex items-center justify-between'>
               <Title size='lg' variant='default'>
                 Sales
@@ -292,19 +292,20 @@ const DBHome = () => {
           </section>
 
           {/* Outlet */}
-          <section className='space-y-6 rounded-lg-10 bg-white px-8 py-6 2xl:min-h-[600px]'>
+          <section className='space-y-6 rounded-lg-10 bg-white p-6 2xl:min-h-[600px]'>
             <nav className='flex items-center justify-between'>
               <Title size='lg' variant='default'>
                 Outlet
               </Title>
 
-              <div className='flex flex-row gap-2'>
-                <div className='w-40'>
+              <div className='flex flex-row items-center gap-2'>
+                <div className='w-32 2xl:w-40'>
                   <Selectbox
                     className='!border-transparent'
                     datas={[{ name: "This Week" }, { name: "This Month" }]}
                   />
                 </div>
+
                 <Button size='md' variant='primary-outline'>
                   <DownloadSimpleIcon className='h-5 w-5' />
                   Download
@@ -323,15 +324,15 @@ const DBHome = () => {
           </section>
         </div>
 
-        <div className='col-span-5 space-y-5'>
+        <div className='col-span-4 space-y-5'>
           {/* Outlet */}
-          <section className='min-h-[350px] space-y-6 rounded-lg-10 bg-white px-8 py-6'>
+          <section className='space-y-6 rounded-lg-10 bg-white p-6'>
             <nav className='flex items-center justify-between'>
               <Title size='lg' variant='default'>
                 Product
               </Title>
 
-              <div className='w-40'>
+              <div className='w-32 2xl:w-40'>
                 <Selectbox
                   className='!border-transparent'
                   datas={[{ name: "This Month" }, { name: "This Year" }]}
@@ -339,11 +340,11 @@ const DBHome = () => {
               </div>
             </nav>
 
-            <div className='flex flex-col items-center gap-8 2xl:flex-row'>
-              <div className='!font-jakarta'>
+            <div className='flex flex-col items-center gap-0 2xl:flex-row 2xl:gap-2'>
+              <div className='h-72 !font-jakarta 2xl:h-80'>
                 <ReactApexCharts
                   type='radialBar'
-                  height={350}
+                  height={"100%"}
                   options={radialBarData}
                   series={radialSeries}
                 />
@@ -360,7 +361,7 @@ const DBHome = () => {
                         className={`h-2 w-2 ${item.color} flex-shrink-0 rounded-full`}
                       />
 
-                      <h5 className='text-body-base font-medium text-netral-60'>
+                      <h5 className='whitespace-nowrap text-body-base font-medium text-netral-60'>
                         {item.label}
                       </h5>
                     </div>
@@ -373,13 +374,13 @@ const DBHome = () => {
           </section>
 
           {/* Top Product */}
-          <section className='relative space-y-6 rounded-lg-10 bg-white px-8 py-6'>
+          <section className='relative space-y-6 rounded-lg-10 bg-white p-6'>
             <nav className='flex items-center justify-between'>
               <Title size='lg' variant='default'>
                 Top Product
               </Title>
 
-              <div className='w-40'>
+              <div className='w-32 2xl:w-40'>
                 <Selectbox
                   className='!border-transparent'
                   datas={[{ name: "Year" }, { name: "Decade" }]}
@@ -388,17 +389,17 @@ const DBHome = () => {
             </nav>
 
             {/* Table */}
-            <div className='mb-6 overflow-x-auto'>
+            <div className='mb-6 overflow-x-hidden'>
               <table className='w-full table-auto'>
-                <thead className='bg-netral-15 text-body-sm font-semibold uppercase'>
+                <thead className='text-body-sm font-semibold uppercase'>
                   <tr>
-                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                    <th className='whitespace-nowrap rounded-l-lg-10 bg-netral-15 px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
                       <span className='text-body-sm font-semibold'>
                         Product
                       </span>
                     </th>
 
-                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                    <th className='whitespace-nowrap rounded-r-lg-10 bg-netral-15 px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
                       <span className='text-body-sm font-semibold'>Sold</span>
                     </th>
                   </tr>
@@ -417,7 +418,7 @@ const DBHome = () => {
                             />
                           </div>
 
-                          <span className='w-48 whitespace-pre-wrap break-words text-body-sm font-medium text-netral-80 2xl:text-body-base'>
+                          <span className='w-24 whitespace-pre-wrap break-words text-body-sm font-medium text-netral-80 2xl:w-48 2xl:text-body-base'>
                             {"T-Men's UA Storm Armour Down 2.0 Jacket"}
                           </span>
                         </div>

@@ -48,6 +48,7 @@ import SquaresFourIcon from "./SquaresFourIcon"
 import StoreFrontIcon from "./StoreFrontIcon"
 import TagIcon from "./TagIcon"
 import TrashIcon from "./TrashIcon"
+import TshirtIcon from "./TshirtIcon"
 import UploadSimpleIcon from "./UploadSimpleIcon"
 import UserCircleIcon from "./UserCircleIcon"
 import UserPlusIcon from "./UserPlusIcon"
@@ -104,6 +105,7 @@ export {
   StoreFrontIcon,
   TagIcon,
   TrashIcon,
+  TshirtIcon,
   UploadSimpleIcon,
   UserCircleIcon,
   UserPlusIcon,

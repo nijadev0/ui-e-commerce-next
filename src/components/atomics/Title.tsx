@@ -20,7 +20,7 @@ const Title: React.FC<Title> = ({ children, className, variant, size }) => {
           (variant === "info" && "Info bg-info-main") ||
           (variant === "warning" && "Warning bg-warning-main") ||
           (variant === "error" && "Error bg-error-main")
-        } h-5 w-1.5 flex-1 rounded-xl 2xl:h-6 2xl:w-2`}
+        } h-5 w-1.5 flex-shrink-0 rounded-xl 2xl:h-6 2xl:w-2`}
       />
 
       <span
