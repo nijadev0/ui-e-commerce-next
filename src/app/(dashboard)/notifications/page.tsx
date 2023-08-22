@@ -199,8 +199,9 @@ const DashboardNotifications = () => {
                 <h3 className='text-body-xl font-medium'>Update Stock</h3>
 
                 <p className='text-body-sm text-netral-60'>
-                  Update the number of T-Men's UA Storm Armor Down 2.0 Jacket
-                  products in the Outer category with an additional 44 products.
+                  Update the number of {"T-Men's"} UA Storm Armor Down 2.0
+                  Jacket products in the Outer category with an additional 44
+                  products.
                 </p>
               </div>
               {/* Table */}
