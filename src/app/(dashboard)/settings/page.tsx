@@ -1,11 +1,12 @@
-'use client'
+"use client"
 
-import React from 'react'
-import Image from 'next/image'
+import React from "react"
+import Image from "next/image"
 
-import { Alerts, Button, Input, Title } from '@/components/atomics'
-import { PencilSimpleIcon } from '@/assets/icons'
-import { Modal } from '@/components/moleculs'
+import { Modal } from "@/components/moleculs"
+import { Alerts, Button, Input, Title } from "@/components/atomics"
+
+import { PencilSimpleIcon } from "@/assets/icons"
 
 const DashboardSettings = () => {
   // -------------------------------------------------------------------------
@@ -35,14 +36,14 @@ const DashboardSettings = () => {
 
         <form>
           <div className='flex w-full items-start gap-32 border-b border-netral-20 py-7 first:border-y'>
-            <div className='w-full max-w-sm space-y-2'>
+            <div className='w-full max-w-xs space-y-2 2xl:max-w-sm'>
               <h5 className='space-y-2 text-body-lg font-semibold'>Avatar</h5>
               <p className='text-body-base text-netral-50'>
                 Only *.png, *.jpg and *.jpeg image files are accepted
               </p>
             </div>
 
-            <figure className='relative h-32 w-32 overflow-hidden rounded-lg'>
+            <figure className='relative h-28 w-28 overflow-hidden rounded-lg 2xl:h-32 2xl:w-32'>
               <Image
                 className='h-full w-full object-cover'
                 src='/avatar-settings-1.png'
@@ -60,7 +61,7 @@ const DashboardSettings = () => {
           </div>
 
           <div className='flex w-full items-start gap-32 border-b border-netral-20 py-7 first:border-y'>
-            <div className='w-full max-w-sm space-y-2'>
+            <div className='w-full max-w-xs space-y-2 2xl:max-w-sm'>
               <h5 className='space-y-2 text-body-lg font-semibold'>Name</h5>
             </div>
 
@@ -73,7 +74,7 @@ const DashboardSettings = () => {
           </div>
 
           <div className='flex w-full items-start gap-32 border-b border-netral-20 py-7 first:border-y'>
-            <div className='w-full max-w-sm space-y-2'>
+            <div className='w-full max-w-xs space-y-2 2xl:max-w-sm'>
               <h5 className='space-y-2 text-body-lg font-semibold'>Role</h5>
             </div>
 
@@ -86,7 +87,7 @@ const DashboardSettings = () => {
           </div>
 
           <div className='flex w-full items-start gap-32 border-b border-netral-20 py-7 first:border-y'>
-            <div className='w-full max-w-sm space-y-2'>
+            <div className='w-full max-w-xs space-y-2 2xl:max-w-sm'>
               <h5 className='space-y-2 text-body-lg font-semibold'>
                 Phone Number
               </h5>
@@ -102,7 +103,7 @@ const DashboardSettings = () => {
           </div>
 
           <div className='flex w-full items-start gap-32 border-b border-netral-20 py-7 first:border-y'>
-            <div className='w-full max-w-sm space-y-2'>
+            <div className='w-full max-w-xs space-y-2 2xl:max-w-sm'>
               <h5 className='space-y-2 text-body-lg font-semibold'>Address</h5>
             </div>
 
@@ -181,8 +182,8 @@ const DashboardSettings = () => {
         </Title>
 
         <form>
-          <div className='flex w-full items-center justify-between border-b border-netral-20 py-7 first:border-y'>
-            <div className='flex w-full max-w-5xl items-center gap-32 space-y-2'>
+          <div className='flex w-full max-w-5xl items-center justify-between gap-4 border-b border-netral-20 py-7 first:border-y'>
+            <div className='flex w-full items-center gap-32 space-y-2'>
               <h5 className='w-full max-w-sm text-body-lg font-semibold'>
                 Email
               </h5>
@@ -195,13 +196,13 @@ const DashboardSettings = () => {
               />
             </div>
 
-            <Button variant='primary-outline' size='md'>
+            <Button className='!h-full' variant='primary-outline' size='md'>
               Change Email
             </Button>
           </div>
 
-          <div className='flex w-full items-center justify-between border-b border-netral-20 py-7 first:border-y'>
-            <div className='flex w-full max-w-5xl items-center gap-32 space-y-2'>
+          <div className='flex w-full max-w-5xl items-center justify-between gap-4 border-b border-netral-20 py-7 first:border-y'>
+            <div className='flex w-full items-center gap-32 space-y-2'>
               <h5 className='w-full max-w-sm text-body-lg font-semibold'>
                 Password
               </h5>
@@ -216,6 +217,7 @@ const DashboardSettings = () => {
             </div>
 
             <Button
+              className='!h-full'
               variant='primary-outline'
               size='md'
               onClick={() => setOpenModalPassword(true)}
@@ -224,12 +226,11 @@ const DashboardSettings = () => {
             </Button>
           </div>
 
-          <div className='flex w-full items-center justify-between border-b border-netral-20 py-7 first:border-y'>
-            <div className='flex w-full max-w-5xl items-center gap-32 space-y-2'>
-              <h5 className='w-full max-w-sm text-body-lg font-semibold'>
-                Password
-              </h5>
-            </div>
+          <div className='flex w-full items-center justify-between gap-4 border-b border-netral-20 py-7 first:border-y'>
+            <h5 className='w-full max-w-sm text-body-lg font-semibold'>
+              Password
+            </h5>
+
             <Button variant='error-bg' size='md'>
               Log out
             </Button>

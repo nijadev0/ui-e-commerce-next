@@ -204,7 +204,7 @@ const Topbar: React.FC = () => {
                     }
                   >
                     <GearSixIcon className='h-6 w-6 text-netral-60' />
-                    <h5 className='text-netral-90'>Settings</h5>
+                    <h5 className='text-body-base text-netral-90'>Settings</h5>
                   </Link>
                 </Menu.Item>
 
@@ -216,7 +216,7 @@ const Topbar: React.FC = () => {
                     }
                   >
                     <SignOutIcon className='h-6 w-6 text-netral-60' />
-                    <h5 className='text-netral-90'>Logout</h5>
+                    <h5 className='text-body-base text-netral-90'>Logout</h5>
                   </Link>
                 </Menu.Item>
               </div>

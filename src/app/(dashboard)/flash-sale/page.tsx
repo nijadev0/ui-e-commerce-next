@@ -1,7 +1,7 @@
-'use client'
-import React from 'react'
-import Image from 'next/image'
-import { Switch } from '@headlessui/react'
+"use client"
+import React from "react"
+import Image from "next/image"
+import { Switch } from "@headlessui/react"
 
 import {
   Alerts,
@@ -10,20 +10,26 @@ import {
   Input,
   Pagination,
   Title
-} from '@/components/atomics'
+} from "@/components/atomics"
 
 import {
   CheckIcon,
   LightningIcon,
   MagnifyingGlassIcon,
   TrashIcon
-} from '@/assets/icons'
-import { Modal, PageAction } from '@/components/moleculs'
+} from "@/assets/icons"
+import { Modal, PageAction } from "@/components/moleculs"
+import { EmptyState } from "@/components/templates"
+import { NoFlashsaleIll } from "@/assets/illustration"
 
 const DBFlashSale = () => {
+  // -------------------------------------------------------------------------------------//
   const [active, setActive] = React.useState(false)
-  const [openModalFlashSale, setOpenModalFlashSale] = React.useState(false)
   const [activeState, setActiveState] = React.useState(1)
+  const [emptyState, setEmptyState] = React.useState(true)
+  const [openModalFlashSale, setOpenModalFlashSale] = React.useState(false)
+
+  // -------------------------------------------------------------------------------------//
   const [openSuccess, setOpenSuccess] = React.useState(false)
 
   const openSuccessAlerts = () => {
@@ -33,6 +39,7 @@ const DBFlashSale = () => {
       setOpenSuccess(false)
     }, 3000)
   }
+  // -------------------------------------------------------------------------------------//
 
   return (
     <div className='relative space-y-6 p-6'>
@@ -56,123 +63,138 @@ const DBFlashSale = () => {
           </div>
         </nav>
 
-        {/* Table */}
-        <div className='mb-6 overflow-x-auto'>
-          <table className='w-full table-auto'>
-            <thead className='bg-netral-15 text-body-sm font-semibold uppercase'>
-              <tr>
-                <th className='w-px whitespace-nowrap px-3 py-4 first:pl-5 last:pr-5'>
-                  <div className='h-6 w-6'>
-                    <Switch
-                      checked={active}
-                      onChange={setActive}
-                      className={`Checkbox ${
-                        active
-                          ? 'border-primary-border bg-primary-main text-white ring-primary-surface'
-                          : 'border-netral-60 bg-netral-20 ring-netral-15'
-                      } relative inline-flex h-5 w-5 items-center rounded-md border ring-2`}
-                    >
-                      {active && <CheckIcon className='h-5 w-5' />}
-                    </Switch>
-                    <span className='sr-only'>Select All</span>
-                  </div>
-                </th>
-
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Product</span>
-                </th>
-
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Category</span>
-                </th>
-
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Status</span>
-                </th>
-
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Stock</span>
-                </th>
-
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Price</span>
-                </th>
-
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Action</span>
-                </th>
-              </tr>
-            </thead>
-            <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-                <tr key={item}>
-                  <td className='w-px whitespace-nowrap px-3 py-5 first:pl-5 last:pr-5'>
-                    <div className='h-6 w-6'>
-                      <Switch
-                        checked={active}
-                        onChange={setActive}
-                        className={`Checkbox ${
-                          active
-                            ? 'border-primary-border bg-primary-main text-white ring-primary-surface'
-                            : 'border-netral-60 bg-white ring-netral-15'
-                        } relative inline-flex h-5 w-5 items-center rounded-md border ring-2`}
-                      >
-                        {active && <CheckIcon className='h-5 w-5' />}
-                      </Switch>
-                    </div>
-                  </td>
-                  <td className='whitespace-pre-wrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <section className='flex items-center gap-3'>
-                      <div className='relative h-20 w-20 overflow-hidden rounded-lg-10'>
-                        <Image
-                          className='h-full w-full object-cover'
-                          src={'/products-1.png'}
-                          alt='Products 1'
-                          fill
-                        />
+        {emptyState ? (
+          <EmptyState
+            ill={<NoFlashsaleIll />}
+            toggler={setEmptyState}
+            title='No flash sale list'
+            description='The flash sale you are looking for is not available.'
+          />
+        ) : (
+          <>
+            {/* Table */}
+            <div className='mb-6 overflow-x-auto'>
+              <table className='w-full table-auto'>
+                <thead className='bg-netral-15 text-body-sm font-semibold uppercase'>
+                  <tr>
+                    <th className='w-px whitespace-nowrap px-3 py-4 first:pl-5 last:pr-5'>
+                      <div className='h-6 w-6'>
+                        <Switch
+                          checked={active}
+                          onChange={setActive}
+                          className={`Checkbox ${
+                            active
+                              ? "border-primary-border bg-primary-main text-white ring-primary-surface"
+                              : "border-netral-60 bg-netral-20 ring-netral-15"
+                          } relative inline-flex h-5 w-5 items-center rounded-md border ring-2`}
+                        >
+                          {active && <CheckIcon className='h-5 w-5' />}
+                        </Switch>
+                        <span className='sr-only'>Select All</span>
                       </div>
+                    </th>
 
-                      <span className='w-48 whitespace-pre-wrap text-body-base font-medium text-netral-80'>
-                        {"T-Men's UA Storm Armour Down 2.0 Jacket"}
+                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                      <span className='text-body-sm font-semibold'>
+                        Product
                       </span>
-                    </section>
-                  </td>
+                    </th>
 
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <span className='text-body-base font-medium text-netral-80'>
-                      Outer
-                    </span>
-                  </td>
+                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                      <span className='text-body-sm font-semibold'>
+                        Category
+                      </span>
+                    </th>
 
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <Badge variant='success'>Success</Badge>
-                  </td>
+                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                      <span className='text-body-sm font-semibold'>Status</span>
+                    </th>
 
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <span className='text-body-base font-medium text-netral-80'>
-                      401
-                    </span>
-                  </td>
+                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                      <span className='text-body-sm font-semibold'>Stock</span>
+                    </th>
 
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <span className='text-body-base font-medium text-netral-80'>
-                      $178
-                    </span>
-                  </td>
+                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                      <span className='text-body-sm font-semibold'>Price</span>
+                    </th>
 
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <span className='text-body-base font-medium text-primary-main'>
-                      Detail
-                    </span>
-                  </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
+                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                      <span className='text-body-sm font-semibold'>Action</span>
+                    </th>
+                  </tr>
+                </thead>
+                <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
+                  {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
+                    <tr key={item}>
+                      <td className='w-px whitespace-nowrap px-3 py-5 first:pl-5 last:pr-5'>
+                        <div className='h-6 w-6'>
+                          <Switch
+                            checked={active}
+                            onChange={setActive}
+                            className={`Checkbox ${
+                              active
+                                ? "border-primary-border bg-primary-main text-white ring-primary-surface"
+                                : "border-netral-60 bg-white ring-netral-15"
+                            } relative inline-flex h-5 w-5 items-center rounded-md border ring-2`}
+                          >
+                            {active && <CheckIcon className='h-5 w-5' />}
+                          </Switch>
+                        </div>
+                      </td>
+                      <td className='whitespace-pre-wrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                        <section className='flex items-center gap-3'>
+                          <div className='relative h-20 w-20 overflow-hidden rounded-lg-10'>
+                            <Image
+                              className='h-full w-full object-cover'
+                              src={"/products-1.png"}
+                              alt='Products 1'
+                              fill
+                            />
+                          </div>
 
-        {/* Pagination */}
-        <Pagination />
+                          <span className='w-48 whitespace-pre-wrap text-body-base font-medium text-netral-80'>
+                            {"T-Men's UA Storm Armour Down 2.0 Jacket"}
+                          </span>
+                        </section>
+                      </td>
+
+                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                        <span className='text-body-base font-medium text-netral-80'>
+                          Outer
+                        </span>
+                      </td>
+
+                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                        <Badge variant='success'>Success</Badge>
+                      </td>
+
+                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                        <span className='text-body-base font-medium text-netral-80'>
+                          401
+                        </span>
+                      </td>
+
+                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                        <span className='text-body-base font-medium text-netral-80'>
+                          $178
+                        </span>
+                      </td>
+
+                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                        <span className='text-body-base font-medium text-primary-main'>
+                          Detail
+                        </span>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+
+            {/* Pagination */}
+            <Pagination />
+          </>
+        )}
 
         {/* Page Action */}
         {active && (
@@ -204,7 +226,7 @@ const DBFlashSale = () => {
               <div className='relative z-10 flex flex-col items-center gap-2'>
                 <span className='flex h-10 w-10 items-center justify-center rounded-full border border-primary-border bg-primary-main text-body-xl font-semibold text-white'>
                   {activeState === 1 ? (
-                    '1'
+                    "1"
                   ) : (
                     <CheckIcon className='h-6 w-6 text-white' />
                   )}
@@ -219,11 +241,11 @@ const DBFlashSale = () => {
                 <span
                   className={`flex h-10 w-10 items-center justify-center rounded-full border ${
                     activeState > 2
-                      ? 'border-primary-border bg-primary-main'
-                      : 'border-netral-50 bg-netral-50'
+                      ? "border-primary-border bg-primary-main"
+                      : "border-netral-50 bg-netral-50"
                   } text-body-xl font-semibold text-white`}
                 >
-                  {activeState > 0 && activeState <= 2 && '2'}
+                  {activeState > 0 && activeState <= 2 && "2"}
 
                   {activeState > 2 && (
                     <CheckIcon className='h-6 w-6 text-white' />
@@ -239,8 +261,8 @@ const DBFlashSale = () => {
                 <span
                   className={`flex h-10 w-10 items-center justify-center rounded-full border ${
                     activeState < 3
-                      ? 'border-netral-50 bg-netral-50'
-                      : 'border-primary-border bg-primary-main'
+                      ? "border-netral-50 bg-netral-50"
+                      : "border-primary-border bg-primary-main"
                   } text-body-xl font-semibold text-white`}
                 >
                   3
@@ -254,17 +276,17 @@ const DBFlashSale = () => {
 
           <header className='space-y-2 text-center'>
             <h3 className='text-heading-sm font-semibold'>
-              {activeState === 1 && 'Set Date & Time'}
-              {activeState === 2 && 'Set Discount'}
-              {activeState === 3 && 'Set Confirmation'}
+              {activeState === 1 && "Set Date & Time"}
+              {activeState === 2 && "Set Discount"}
+              {activeState === 3 && "Set Confirmation"}
             </h3>
             <p className='text-body-base text-netral-50'>
               {activeState === 1 &&
-                'Set the date and time for the upcoming flash sale'}
+                "Set the date and time for the upcoming flash sale"}
               {activeState === 2 &&
-                'Set a discount for each product in the flash sale'}
+                "Set a discount for each product in the flash sale"}
               {activeState === 3 &&
-                'Double check each product for the upcoming flash sale'}
+                "Double check each product for the upcoming flash sale"}
             </p>
           </header>
 
@@ -493,7 +515,7 @@ const DBFlashSale = () => {
               }
             }}
           >
-            {activeState === 1 ? 'Cancel' : 'Previous'}
+            {activeState === 1 ? "Cancel" : "Previous"}
           </Button>
 
           <Button
@@ -513,7 +535,7 @@ const DBFlashSale = () => {
               }
             }}
           >
-            {activeState === 3 ? 'Submit' : 'Next'}
+            {activeState === 3 ? "Submit" : "Next"}
           </Button>
         </footer>
       </Modal>

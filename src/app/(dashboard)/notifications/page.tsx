@@ -8,6 +8,7 @@ import { BagIcon, CheckIcon, PackageIcon, TshirtIcon } from "@/assets/icons"
 
 const DashboardNotifications = () => {
   const [active, setActive] = React.useState(false)
+
   return (
     <div className='relative space-y-6 p-6'>
       <h1 className='text-heading-sm font-semibold'>Notification</h1>

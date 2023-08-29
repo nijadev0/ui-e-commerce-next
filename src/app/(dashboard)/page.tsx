@@ -340,7 +340,7 @@ const DBHome = () => {
               </div>
             </nav>
 
-            <div className='flex flex-col items-center gap-0 2xl:flex-row 2xl:gap-2'>
+            <div className='flex flex-col flex-wrap items-center gap-0 2xl:flex-row 2xl:gap-2'>
               <div className='h-72 !font-jakarta 2xl:h-80'>
                 <ReactApexCharts
                   type='radialBar'

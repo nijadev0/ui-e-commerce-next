@@ -1,6 +1,7 @@
-'use client'
+"use client"
 
-import Header from './Header'
-import Layout from './Layout'
+import EmptyState from "./EmptyState"
+import Header from "./Header"
+import Layout from "./Layout"
 
-export { Header, Layout }
+export { EmptyState, Header, Layout }

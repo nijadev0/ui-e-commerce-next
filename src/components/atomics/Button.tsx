@@ -79,12 +79,11 @@ const Button: React.FC<Button> = ({
           "Disabled-Nude cursor-auto border-transparent bg-transparent text-netral-40")
       } ${
         (size === "lg" &&
-          "Size-Large gap-3 rounded-lg-10 p-3.5 text-body-base 2xl:p-4") ||
+          "Size-Large gap-3 rounded-lg-10 p-4 text-body-base") ||
         (size === "md" &&
-          "Size-Medium gap-2.5 rounded-lg-10 p-2.5 text-body-base 2xl:p-3") ||
-        (size === "sm" &&
-          "Size-Small gap-2 rounded-lg p-1.5 text-body-sm 2xl:p-2")
-      } relative flex h-fit items-center justify-center border font-semibold leading-none outline-none ring-2 ring-transparent transition-all duration-300 ease-out [&>svg]:flex-shrink-0 ${className}`}
+          "Size-Medium gap-2.5 rounded-lg-10 p-3 text-body-base") ||
+        (size === "sm" && "Size-Small gap-2 rounded-lg p-2 text-body-sm")
+      } relative flex h-fit items-center justify-center whitespace-nowrap border font-semibold leading-none outline-none ring-2 ring-transparent transition-all duration-300 ease-out [&>svg]:flex-shrink-0 ${className}`}
       disabled={disabled ? true : false}
     >
       {children}
