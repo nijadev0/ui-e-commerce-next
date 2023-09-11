@@ -7,8 +7,8 @@ import { Layout } from "@/components/templates"
 const AuthVerifyEmail = () => {
   return (
     <Layout
-      src='/auth-photo-1.png'
-      alt='Baby Photo Cute'
+      src='/auth-photo-2.png'
+      alt='Women Photo Clothes'
       desc='Fashion is like eating, you shouldnt stick to the same menu'
     >
       <header className='mb-40 space-y-3'>

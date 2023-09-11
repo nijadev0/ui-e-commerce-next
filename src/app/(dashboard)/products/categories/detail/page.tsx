@@ -1,38 +1,38 @@
-'use client'
-import React from 'react'
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+"use client"
+import React from "react"
+import Image from "next/image"
+import { useRouter } from "next/navigation"
 
-import { Modal, PageAction } from '@/components/moleculs'
-import { Button, Input, Title, Toggle } from '@/components/atomics'
+import { Modal, PageAction } from "@/components/moleculs"
+import { Button, Input, Title, Toggle } from "@/components/atomics"
 import {
   PencilSimpleIcon,
   RepeatIcon,
   SelectionPlusIcon,
   UploadSimpleIcon
-} from '@/assets/icons'
-import { DropzoneIll } from '@/assets/illustration'
+} from "@/assets/icons"
+import { DropzoneIll } from "@/assets/illustration"
 
 const DBProductCategoriesAdd = () => {
   const router = useRouter()
   // -------------------------------------------------------------------------
   const categories = [
-    { name: 'Select Category', disabled: true },
-    { name: 'Jacket' },
-    { name: 'Outer' },
-    { name: 'T-shirt' }
+    { name: "Select Category", disabled: true },
+    { name: "Jacket" },
+    { name: "Outer" },
+    { name: "T-shirt" }
   ]
   // -------------------------------------------------------------------------
   const genders = [
-    { name: 'Select Gender', disabled: true },
-    { name: 'Male' },
-    { name: 'Female' }
+    { name: "Select Gender", disabled: true },
+    { name: "Male" },
+    { name: "Female" }
   ]
   // -------------------------------------------------------------------------
   const discountType = [
-    { name: 'Select Discount Type', disabled: true },
-    { name: 'Fixed' },
-    { name: 'Price' }
+    { name: "Select Discount Type", disabled: true },
+    { name: "Fixed" },
+    { name: "Price" }
   ]
   // -------------------------------------------------------------------------
   const [toggle, setToggle] = React.useState(true)
@@ -74,7 +74,7 @@ const DBProductCategoriesAdd = () => {
               id='name'
               variant='default'
               placeholder='Enter category name'
-              value='Outer'
+              defaultValue='Outer'
             />
           </div>
 
@@ -95,7 +95,7 @@ const DBProductCategoriesAdd = () => {
               className='h-40 w-full rounded-lg-10 border border-netral-30 p-3.5 text-body-base shadow-1 outline-none ring-[2.5px] ring-transparent transition-all duration-300 ease-out focus:border-primary-border focus:ring-primary-surface disabled:bg-netral-20'
               placeholder='Description'
               value={
-                'Discovery a variety of outers to keep yourself warm with stylish and comfortable ways.'
+                "Discovery a variety of outers to keep yourself warm with stylish and comfortable ways."
               }
             />
           </div>
@@ -154,7 +154,7 @@ const DBProductCategoriesAdd = () => {
 
                   <div className='relative aspect-square w-60'>
                     <Image
-                      src={'/category-upload.png'}
+                      src={"/category-upload.png"}
                       alt='Category Upload'
                       fill
                     />
@@ -171,7 +171,7 @@ const DBProductCategoriesAdd = () => {
         actionDesc='Nov 9, 2022-17.09'
         btnPrimaryLabel='Save'
         btnPrimaryVariant='primary-bg'
-        btnPrimaryFun={() => router.push('/products/variants')}
+        btnPrimaryFun={() => router.push("/products/variants")}
         btnSecondaryLabel='Cancel'
         btnsecondaryVariant='primary-nude'
         btnSecondaryFun={() => router.back()}
@@ -193,7 +193,7 @@ const DBProductCategoriesAdd = () => {
             </h5>
 
             <p className='text-body-sm text-netral-50'>
-              {'SVG, PNG, JPEG (MAX 800X400px)'}
+              {"SVG, PNG, JPEG (MAX 800X400px)"}
             </p>
           </main>
         )}
@@ -203,7 +203,7 @@ const DBProductCategoriesAdd = () => {
             <div className='relative aspect-square w-96'>
               <Image
                 className='h-full w-full object-cover'
-                src={'/category-upload.png'}
+                src={"/category-upload.png"}
                 alt='Category Upload'
                 fill
               />

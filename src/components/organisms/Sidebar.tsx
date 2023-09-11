@@ -17,6 +17,7 @@ import {
 } from "@/assets/icons"
 
 import { SidebarMenu } from "@/components/moleculs"
+import { NijaLogo } from "@/assets/brands"
 
 const SidebarExpand: React.FC<{
   children?: React.ReactNode
@@ -52,10 +53,11 @@ const Sidebar: React.FC = () => {
   return (
     <aside
       id='sidebar'
-      className='Sidebar h-screen w-64 overflow-y-auto overflow-x-hidden border border-netral-20 bg-white px-6 py-4 shadow-sm 2xl:w-72'
+      className='Sidebar h-screen w-64 overflow-y-auto overflow-x-hidden border border-netral-20 bg-white px-6 py-4 pt-8 shadow-sm 2xl:w-72 2xl:pt-10'
     >
-      <Link href='/' className='mb-10'>
-        <h5 className='text-heading-sm font-semibold italic'>Brand Here</h5>
+      <Link href='/' className='mb-8 flex items-center gap-3 2xl:mb-10'>
+        <NijaLogo className='h-7 w-7 2xl:h-8 2xl:w-8' />
+        <h5 className='text-body-xl font-semibold uppercase'>Nija Kit</h5>
       </Link>
 
       <nav className='mt-10 flex w-full flex-col items-start gap-3'>
@@ -120,9 +122,9 @@ const Sidebar: React.FC = () => {
             href='/transactions/manage-transaction'
           />
           <SidebarMenu
-            name='Manage Refund'
+            name='Manage Return'
             variant='expand'
-            href='/transactions/manage-refund'
+            href='/transactions/manage-return'
           />
         </SidebarExpand>
 

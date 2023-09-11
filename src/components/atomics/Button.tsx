@@ -42,10 +42,20 @@ const Button: React.FC<Button> = ({
     router.push(`${href}`)
   }
 
+  const btnAction = () => {
+    if (href) {
+      gotoLink()
+    } else if (onClick) {
+      onClick
+    } else {
+      return
+    }
+  }
+
   return (
     <button
       type='button'
-      onClick={onClick || gotoLink}
+      onClick={btnAction}
       className={`Button ${
         (variant === "primary-bg" &&
           "Primary-Bg border-transparent bg-primary-main text-white hover:bg-primary-hover focus:ring-primary-border") ||

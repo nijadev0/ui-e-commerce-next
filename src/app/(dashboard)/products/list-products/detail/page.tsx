@@ -1,30 +1,30 @@
-'use client'
-import React from 'react'
-import { useRouter } from 'next/navigation'
+"use client"
+import React from "react"
+import { useRouter } from "next/navigation"
 
-import { PageAction } from '@/components/moleculs'
-import { Input, Selectbox, Title, Toggle } from '@/components/atomics'
+import { PageAction } from "@/components/moleculs"
+import { Input, Selectbox, Title, Toggle } from "@/components/atomics"
 
 const DBProductsListProductsDetail = () => {
   const router = useRouter()
   // -------------------------------------------------------------------------
   const categories = [
-    { name: 'Select Category', disabled: true },
-    { name: 'Jacket' },
-    { name: 'Outer' },
-    { name: 'T-shirt' }
+    { name: "Select Category", disabled: true },
+    { name: "Jacket" },
+    { name: "Outer" },
+    { name: "T-shirt" }
   ]
   // -------------------------------------------------------------------------
   const genders = [
-    { name: 'Select Gender', disabled: true },
-    { name: 'Male' },
-    { name: 'Female' }
+    { name: "Select Gender", disabled: true },
+    { name: "Male" },
+    { name: "Female" }
   ]
   // -------------------------------------------------------------------------
   const discountType = [
-    { name: 'Select Discount Type', disabled: true },
-    { name: 'Fixed' },
-    { name: 'Price' }
+    { name: "Select Discount Type", disabled: true },
+    { name: "Fixed" },
+    { name: "Price" }
   ]
   // -------------------------------------------------------------------------
   const [toggle, setToggle] = React.useState(true)
@@ -74,7 +74,7 @@ const DBProductsListProductsDetail = () => {
               className='h-40 w-full rounded-lg-10 border border-netral-30 p-3.5 text-body-base shadow-1 outline-none ring-[2.5px] ring-transparent transition-all duration-300 ease-out focus:border-primary-border focus:ring-primary-surface disabled:bg-netral-20'
               placeholder='Description'
               value={
-                'A comfortable dress made of yarn that has a cotton surface and an airy polyester core. Cotton provides a durable yet lightweight feel and is machine washable. A turtle neck design with a soft and pleasant texture. Relaxed fit for comfort.'
+                "A comfortable dress made of yarn that has a cotton surface and an airy polyester core. Cotton provides a durable yet lightweight feel and is machine washable. A turtle neck design with a soft and pleasant texture. Relaxed fit for comfort."
               }
             />
           </div>
@@ -110,7 +110,7 @@ const DBProductsListProductsDetail = () => {
               <h5 className='space-y-2 text-body-base font-semibold'>Weight</h5>
             </div>
 
-            <Input id='weight' placeholder='000' value='500' />
+            <Input id='weight' placeholder='000' defaultValue='500' />
           </div>
 
           {/* Status */}
@@ -157,7 +157,7 @@ const DBProductsListProductsDetail = () => {
               id='set-discount'
               variant='discount'
               placeholder='Enter nominal discount'
-              value='30'
+              defaultValue='30'
             />
           </div>
         </form>
@@ -183,7 +183,7 @@ const DBProductsListProductsDetail = () => {
             id='set-discount'
             variant='currency'
             placeholder='Enter nominal discount'
-            value='30'
+            defaultValue='30'
           />
         </div>
       </section>
@@ -193,7 +193,7 @@ const DBProductsListProductsDetail = () => {
         actionDesc='Nov 9, 2022-17.09'
         btnPrimaryLabel='Save'
         btnPrimaryVariant='primary-bg'
-        btnPrimaryFun={() => router.push('/products/list-products/variants')}
+        btnPrimaryFun={() => router.push("/products/list-products/variants")}
         btnSecondaryLabel='Discard'
         btnsecondaryVariant='primary-nude'
         btnSecondaryFun={() => router.back()}

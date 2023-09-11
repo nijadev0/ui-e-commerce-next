@@ -1,10 +1,10 @@
-'use client'
+"use client"
 
-import React from 'react'
+import React from "react"
 
-import { Modal } from '@/components/moleculs'
-import { Header } from '@/components/templates'
-import { Button, Input } from '@/components/atomics'
+import { Modal } from "@/components/moleculs"
+import { Header } from "@/components/templates"
+import { Button, Input } from "@/components/atomics"
 
 const SandboxModal = () => {
   const [openSuccess, setOpenSuccess] = React.useState(false)
@@ -33,7 +33,7 @@ const SandboxModal = () => {
             label='Current Password'
             placeholder='Current password'
             variant='default'
-            value='Halo1234567890'
+            defaultValue='Halo1234567890'
           />
           <Input
             type='password'
@@ -41,7 +41,7 @@ const SandboxModal = () => {
             label='New Password'
             placeholder='New password'
             variant='default'
-            value='Halo1234567890'
+            defaultValue='Halo1234567890'
           />
           <Input
             type='password'
@@ -49,7 +49,7 @@ const SandboxModal = () => {
             label='Confirm Password'
             placeholder='New password'
             variant='default'
-            value='Halo1234567890'
+            defaultValue='Halo1234567890'
           />
         </section>
 
@@ -57,6 +57,7 @@ const SandboxModal = () => {
           <Button size='lg' variant='primary-nude'>
             Discard
           </Button>
+
           <Button size='lg' variant='primary-bg'>
             Save
           </Button>

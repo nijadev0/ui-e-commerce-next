@@ -3,11 +3,12 @@
 import React from "react"
 import { Switch } from "@headlessui/react"
 
+import { EmptyState } from "@/components/templates"
 import { Modal, PageAction } from "@/components/moleculs"
 import { Alerts, Button, Pagination, Title } from "@/components/atomics"
-import { CheckIcon, MagnifyingGlassIcon, UserPlusIcon } from "@/assets/icons"
-import { EmptyState } from "@/components/templates"
+
 import { NoUserRoleIll } from "@/assets/illustration"
+import { CheckIcon, MagnifyingGlassIcon, UserPlusIcon } from "@/assets/icons"
 
 const DBUserRole = () => {
   const [active, setActive] = React.useState(false)
@@ -22,23 +23,23 @@ const DBUserRole = () => {
       <section className='relative space-y-6 rounded-lg-10 bg-white p-6'>
         {/* Navigation */}
         <nav className='space-y-6'>
+          <Title size='lg' variant='default'>
+            List User Role
+          </Title>
+
           <div className='flex items-center justify-between'>
-            <Title size='lg' variant='default'>
-              List User Role
-            </Title>
+            <div className='relative w-96'>
+              <MagnifyingGlassIcon className='absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-netral-50' />
+              <input
+                className='w-full rounded-lg border border-transparent bg-netral-20 px-3.5 py-2.5 pl-11  outline-0 ring-2 ring-transparent transition-all duration-300 ease-out focus-within:ring-primary-surface focus:border-primary-main'
+                placeholder='Search'
+              />
+            </div>
 
             <Button size='md' variant='primary-bg' href='/user-role/add'>
               <UserPlusIcon className='h-5 w-5 fill-white stroke-white stroke-[4px]' />
               Add User Role
             </Button>
-          </div>
-
-          <div className='relative w-96'>
-            <MagnifyingGlassIcon className='absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-netral-50' />
-            <input
-              className='w-full rounded-lg border border-transparent bg-netral-20 px-3.5 py-2.5 pl-11  outline-0 ring-2 ring-transparent transition-all duration-300 ease-out focus-within:ring-primary-surface focus:border-primary-main'
-              placeholder='Search'
-            />
           </div>
         </nav>
 

@@ -154,12 +154,13 @@ const DBCustomersUsers = () => {
                       </td>
 
                       <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <Link
-                          href={"/customers/users/detail"}
-                          className='text-body-base font-medium text-primary-main'
+                        <Button
+                          size='md'
+                          variant='primary-nude'
+                          href='/customers/users/detail'
                         >
                           Detail
-                        </Link>
+                        </Button>
                       </td>
                     </tr>
                   ))}

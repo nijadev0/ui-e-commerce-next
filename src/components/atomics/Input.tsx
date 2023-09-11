@@ -4,7 +4,7 @@ import { ArrowDown2Icon, CurrencyDollarIcon, PercentIcon } from "@/assets/icons"
 
 interface Input {
   disabled?: boolean
-
+  defaultValue?: any
   id: string
   message?: string
   label?: string
@@ -25,6 +25,7 @@ interface Input {
 
 const Input: React.FC<Input> = ({
   disabled = false,
+  defaultValue,
   id,
   label,
   logoSrc,
@@ -50,7 +51,7 @@ const Input: React.FC<Input> = ({
 
       <div className='relative w-full'>
         {variant?.includes("phone") && (
-          <div className='absolute left-3 top-1/2 flex w-fit -translate-y-1/2 items-center gap-1.5'>
+          <div className='absolute left-3 top-1/2 z-10 flex w-fit -translate-y-1/2 items-center gap-1.5'>
             <button className='flex items-center gap-1 rounded-md bg-netral-20 px-2 py-1 text-netral-80'>
               <span className='text-body-base font-bold'>+62</span>
 
@@ -61,7 +62,7 @@ const Input: React.FC<Input> = ({
         )}
 
         {variant?.includes("discount") && (
-          <div className='absolute left-3 top-1/2 flex w-fit -translate-y-1/2 items-center gap-1.5'>
+          <div className='absolute left-3 top-1/2 z-10 flex w-fit -translate-y-1/2 items-center gap-1.5'>
             <button className='flex items-center gap-1 rounded-md bg-netral-20 px-2 py-1 text-netral-80'>
               <PercentIcon className='h-5 w-5 stroke-2' />
             </button>
@@ -70,7 +71,7 @@ const Input: React.FC<Input> = ({
         )}
 
         {variant?.includes("currency") && (
-          <div className='absolute left-3 top-1/2 flex w-fit -translate-y-1/2 items-center gap-1.5'>
+          <div className='absolute left-3 top-1/2 z-10 flex w-fit -translate-y-1/2 items-center gap-1.5'>
             <button className='flex items-center gap-1 rounded-md bg-netral-20 px-2 py-1 text-netral-80'>
               <CurrencyDollarIcon className='h-5 w-5 stroke-2' />
             </button>
@@ -79,7 +80,7 @@ const Input: React.FC<Input> = ({
         )}
 
         {variant?.includes("logo") && (
-          <div className='absolute left-3 top-1/2 flex w-fit -translate-y-1/2 items-center gap-1.5'>
+          <div className='absolute left-3 top-1/2 z-10 flex w-fit -translate-y-1/2 items-center gap-1.5'>
             {/* eslint-disable-next-line @next/next/no-img-element */}
             <img
               className='h-6 w-auto'
@@ -92,15 +93,15 @@ const Input: React.FC<Input> = ({
           id={id}
           name={id}
           type={type}
-          className={`w-full rounded-lg border p-3 text-body-base font-normal text-netral-80 shadow-1 outline-none ring-[2.5px] ring-transparent transition-all duration-300 ease-out placeholder:text-netral-50 2xl:p-3.5 ${
+          className={`relative z-0 w-full rounded-lg border p-3 text-body-base font-normal text-netral-80 shadow-1 outline-none ring-[2.5px] ring-transparent transition-all duration-300 ease-out placeholder:text-netral-50 2xl:p-3.5 ${
             (variant === "default" &&
               "border-netral-30 focus:border-primary-border focus:ring-primary-surface disabled:bg-netral-20") ||
             (variant === "default-error" &&
               "border-error-border/50 focus:border-error-main focus:ring-error-surface") ||
             (variant === "phone" &&
-              "border-netral-30 pl-[102px] focus:border-primary-border focus:ring-primary-surface disabled:bg-netral-20") ||
+              "border-netral-30 pl-24 focus:border-primary-border focus:ring-primary-surface disabled:bg-netral-20 2xl:pl-[102px]") ||
             (variant === "phone-error" &&
-              "border-error-border/50 pl-[102px] focus:border-error-border focus:ring-error-surface") ||
+              "border-error-border/50 pl-24 focus:border-error-border focus:ring-error-surface 2xl:pl-[102px]") ||
             (variant === "currency" &&
               "border-netral-30 pl-16 focus:border-primary-border focus:ring-primary-surface disabled:bg-netral-20") ||
             (variant === "discount" &&
@@ -112,6 +113,7 @@ const Input: React.FC<Input> = ({
           }`}
           placeholder={placeholder ?? "Please add your placeholder"}
           value={value}
+          defaultValue={defaultValue}
           disabled={disabled}
         />
       </div>

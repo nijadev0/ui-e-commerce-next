@@ -1,39 +1,39 @@
-'use client'
-import React from 'react'
-import { useRouter } from 'next/navigation'
+"use client"
+import React from "react"
+import { useRouter } from "next/navigation"
 
-import { Modal, PageAction } from '@/components/moleculs'
-import { Button, Input, Selectbox, Title, Toggle } from '@/components/atomics'
+import { Modal, PageAction } from "@/components/moleculs"
+import { Button, Input, Selectbox, Title, Toggle } from "@/components/atomics"
 import {
   PencilSimpleIcon,
   RepeatIcon,
   SelectionPlusIcon,
   TrashIcon,
   UploadSimpleIcon
-} from '@/assets/icons'
-import Image from 'next/image'
-import { DropzoneIll } from '@/assets/illustration'
+} from "@/assets/icons"
+import Image from "next/image"
+import { DropzoneIll } from "@/assets/illustration"
 
 const DBProductsListProductsAdd = () => {
   const router = useRouter()
   // -------------------------------------------------------------------------
   const categories = [
-    { name: 'Select Category', disabled: true },
-    { name: 'Jacket' },
-    { name: 'Outer' },
-    { name: 'T-shirt' }
+    { name: "Select Category", disabled: true },
+    { name: "Jacket" },
+    { name: "Outer" },
+    { name: "T-shirt" }
   ]
   // -------------------------------------------------------------------------
   const genders = [
-    { name: 'Select Gender', disabled: true },
-    { name: 'Male' },
-    { name: 'Female' }
+    { name: "Select Gender", disabled: true },
+    { name: "Male" },
+    { name: "Female" }
   ]
   // -------------------------------------------------------------------------
   const discountType = [
-    { name: 'Select Discount Type', disabled: true },
-    { name: 'Fixed' },
-    { name: 'Price' }
+    { name: "Select Discount Type", disabled: true },
+    { name: "Fixed" },
+    { name: "Price" }
   ]
   // -------------------------------------------------------------------------
   const [toggle, setToggle] = React.useState(false)
@@ -136,7 +136,7 @@ const DBProductsListProductsAdd = () => {
               <h5 className='space-y-2 text-body-base font-semibold'>Status</h5>
               <p className='w-64 text-body-sm text-netral-50'>
                 Set a status for your product to determine whether your product
-                is displayed or not{' '}
+                is displayed or not{" "}
               </p>
             </div>
 
@@ -159,8 +159,8 @@ const DBProductsListProductsAdd = () => {
               <div
                 className={`group relative flex h-40 w-40 flex-col items-center justify-center overflow-hidden rounded-xl ${
                   dropzone
-                    ? 'border-2 border-dashed border-netral-30 bg-netral-15'
-                    : ''
+                    ? "border-2 border-dashed border-netral-30 bg-netral-15"
+                    : ""
                 }`}
               >
                 {dropzone ? (
@@ -176,7 +176,7 @@ const DBProductsListProductsAdd = () => {
                       Add Image
                     </Button>
 
-                    <p className='text-center text-body-sm font-medium text-netral-50'>
+                    <p className='w-10/12 text-center text-body-sm font-medium text-netral-50'>
                       or drop image to upload
                     </p>
                   </>
@@ -195,7 +195,7 @@ const DBProductsListProductsAdd = () => {
 
                     <div className='relative aspect-square h-40 w-40'>
                       <Image
-                        src={'/category-upload.png'}
+                        src={"/category-upload.png"}
                         alt='Category Upload'
                         fill
                       />
@@ -266,7 +266,7 @@ const DBProductsListProductsAdd = () => {
         actionDesc='Nov 9, 2022-17.09'
         btnPrimaryLabel='Next'
         btnPrimaryVariant='primary-bg'
-        btnPrimaryFun={() => router.push('/products/variants')}
+        btnPrimaryFun={() => router.push("/products/variants")}
         btnSecondaryLabel='Discard'
         btnsecondaryVariant='primary-nude'
         btnSecondaryFun={() => router.back()}
@@ -288,7 +288,7 @@ const DBProductsListProductsAdd = () => {
             </h5>
 
             <p className='text-body-sm text-netral-50'>
-              {'SVG, PNG, JPEG (MAX 800X400px)'}
+              {"SVG, PNG, JPEG (MAX 800X400px)"}
             </p>
           </main>
         )}
@@ -298,7 +298,7 @@ const DBProductsListProductsAdd = () => {
             <div className='relative aspect-square w-96'>
               <Image
                 className='h-full w-full object-cover'
-                src={'/category-upload.png'}
+                src={"/category-upload.png"}
                 alt='Category Upload'
                 fill
               />

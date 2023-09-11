@@ -200,6 +200,7 @@ const DBHome = () => {
             className='absolute right-0 top-0 -z-0 h-full w-fit object-contain object-right-top'
             src='/pattern-home-1.png'
             alt='Pattern Home 1'
+            sizes='responsive'
             fill
           />
 
@@ -223,6 +224,7 @@ const DBHome = () => {
             className='absolute -right-10 top-0 -z-0 h-full w-fit object-contain object-right-top'
             src='/pattern-home-2.png'
             alt='Pattern Home 2'
+            sizes='responsive'
             fill
           />
 
@@ -248,6 +250,7 @@ const DBHome = () => {
             className='absolute right-0 top-0 -z-0 h-full w-fit object-contain object-right-top'
             src='/pattern-home-3.png'
             alt='Pattern Home 3'
+            sizes='responsive'
             fill
           />
 
@@ -413,7 +416,8 @@ const DBHome = () => {
                             <Image
                               src={"/products-1.png"}
                               className='h-full w-full object-cover'
-                              alt='Products'
+                              sizes='responsive'
+                              alt='Products 1'
                               fill
                             />
                           </div>

@@ -71,9 +71,9 @@ module.exports = {
         "body-xl": ["18px", "26px"],
         "body-lg": ["16px", "22px"],
         "body-base": ["14px", "22px"],
-        "body-sm": ["13px", "20px"],
-        "body-xs": ["11px", "16px"],
-        "body-2xs": ["9px", "14px"]
+        "body-sm": ["12px", "20px"],
+        "body-xs": ["10px", "16px"],
+        "body-2xs": ["8px", "14px"]
       },
       strokeWidth: {
         1.5: "1.5px"

@@ -50,14 +50,6 @@ const AuthRegister = () => {
           variant='default'
         />
 
-        <Input
-          id='retype-password'
-          type='password'
-          placeholder='Enter your password again'
-          label='Retype Password'
-          variant='default'
-        />
-
         <div className='flex items-center justify-between'>
           <div className='flex items-center gap-1.5'>
             <Switch

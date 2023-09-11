@@ -1,25 +1,25 @@
-'use client'
-import React from 'react'
-import { useRouter } from 'next/navigation'
+"use client"
+import React from "react"
+import { useRouter } from "next/navigation"
 
-import { PageAction } from '@/components/moleculs'
-import { Alerts, Input, Selectbox, Title } from '@/components/atomics'
+import { PageAction } from "@/components/moleculs"
+import { Alerts, Input, Selectbox, Title } from "@/components/atomics"
 
 const DBUserRoleAdd = () => {
   const router = useRouter()
 
   const listMenu = [
-    { name: 'Select Role', disabled: true },
-    { name: 'Super Admin' },
-    { name: 'Admin' },
-    { name: 'User' },
-    { name: 'Customer' }
+    { name: "Select Role", disabled: true },
+    { name: "Super Admin" },
+    { name: "Admin" },
+    { name: "User" },
+    { name: "Customer" }
   ]
 
   const [openSuccess, setOpenSuccess] = React.useState(false)
 
   return (
-    <div className='relative space-y-6 p-6'>
+    <div className='relative min-h-[calc(100vh_-_80px)] space-y-6 p-6'>
       <h1 className='text-heading-sm font-semibold'>User Role</h1>
 
       <section className='relative space-y-8 rounded-lg-10 bg-white p-6'>
@@ -61,6 +61,7 @@ const DBUserRoleAdd = () => {
       </section>
 
       <PageAction
+        variant='absolute'
         actionLabel='Last saved'
         actionDesc='Nov 9, 2022-17.09'
         btnPrimaryLabel='Save'

@@ -1,9 +1,9 @@
-'use client'
+"use client"
 
-import React from 'react'
+import React from "react"
 
-import { Button } from '@/components/atomics'
-import { ChecksIcon } from '@/assets/icons'
+import { Button } from "@/components/atomics"
+import { ChecksIcon } from "@/assets/icons"
 
 interface PageAction {
   actionLabel: string
@@ -11,42 +11,42 @@ interface PageAction {
   btnPrimaryFun: any
   btnPrimaryLabel: React.ReactNode
   btnPrimaryVariant:
-    | 'primary-bg'
-    | 'primary-outline'
-    | 'primary-nude'
-    | 'warning-bg'
-    | 'warning-outline'
-    | 'warning-nude'
-    | 'error-bg'
-    | 'error-outline'
-    | 'error-nude'
-    | 'default-bg'
-    | 'default-outline'
-    | 'default-nude'
-    | 'disabled-bg'
-    | 'disabled-outline'
-    | 'disabled-nude'
+    | "primary-bg"
+    | "primary-outline"
+    | "primary-nude"
+    | "warning-bg"
+    | "warning-outline"
+    | "warning-nude"
+    | "error-bg"
+    | "error-outline"
+    | "error-nude"
+    | "default-bg"
+    | "default-outline"
+    | "default-nude"
+    | "disabled-bg"
+    | "disabled-outline"
+    | "disabled-nude"
 
   btnSecondaryFun?: any
   btnSecondaryLabel?: string
   btnsecondaryVariant?:
-    | 'primary-bg'
-    | 'primary-outline'
-    | 'primary-nude'
-    | 'warning-bg'
-    | 'warning-outline'
-    | 'warning-nude'
-    | 'error-bg'
-    | 'error-outline'
-    | 'error-nude'
-    | 'default-bg'
-    | 'default-outline'
-    | 'default-nude'
-    | 'disabled-bg'
-    | 'disabled-outline'
-    | 'disabled-nude'
+    | "primary-bg"
+    | "primary-outline"
+    | "primary-nude"
+    | "warning-bg"
+    | "warning-outline"
+    | "warning-nude"
+    | "error-bg"
+    | "error-outline"
+    | "error-nude"
+    | "default-bg"
+    | "default-outline"
+    | "default-nude"
+    | "disabled-bg"
+    | "disabled-outline"
+    | "disabled-nude"
 
-  variant?: 'relative' | 'sticky' | 'absolute'
+  variant?: "relative" | "sticky" | "absolute"
 }
 
 const PageAction: React.FC<PageAction> = ({
@@ -58,15 +58,15 @@ const PageAction: React.FC<PageAction> = ({
   btnSecondaryFun,
   btnSecondaryLabel,
   btnsecondaryVariant,
-  variant = 'sticky'
+  variant = "sticky"
 }) => {
   return (
     <div
       className={`${
-        (variant === 'relative' && 'relative ') ||
-        (variant === 'sticky' && 'sticky bottom-6 left-0 z-50') ||
-        (variant === 'absolute' && 'absolute bottom-6 left-0 z-50')
-      } w-full px-6`}
+        (variant === "relative" && "relative") ||
+        (variant === "sticky" && "sticky bottom-6 left-0 z-50") ||
+        (variant === "absolute" && "absolute bottom-6 left-0 z-50")
+      } w-full ${variant === "absolute" ? "px-6" : "px-0"}`}
     >
       <section
         className={`flex w-full items-center justify-between rounded-lg-10 border border-netral-30/75 bg-white px-6 py-4 shadow-2`}
@@ -75,12 +75,12 @@ const PageAction: React.FC<PageAction> = ({
           <ChecksIcon className='h-5 w-5 fill-netral-60' />
 
           <h5 className='text-body-sm font-semibold text-netral-60'>
-            {actionLabel ?? 'Last saved'}
+            {actionLabel ?? "Last saved"}
           </h5>
 
           {actionDesc && (
             <p className='text-body-sm font-semibold text-netral-80'>
-              {actionDesc ?? 'Nov 9, 2022-17.09'}
+              {actionDesc ?? "Nov 9, 2022-17.09"}
             </p>
           )}
         </div>

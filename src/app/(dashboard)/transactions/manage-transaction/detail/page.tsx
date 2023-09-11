@@ -48,7 +48,7 @@ const DBTransactionManageTransactionDetail = () => {
               type='text'
               id='name'
               placeholder='Please add your name'
-              value='20129380132'
+              defaultValue='20129380132'
             />
           </div>
 
@@ -61,7 +61,7 @@ const DBTransactionManageTransactionDetail = () => {
               type='text'
               id='name'
               placeholder='Please add your name'
-              value='21/08/2022'
+              defaultValue='21/08/2022'
             />
           </div>
 
@@ -74,7 +74,7 @@ const DBTransactionManageTransactionDetail = () => {
               type='text'
               id='name'
               placeholder='Please add your name'
-              value='INV/20221114/MPL/28203158839'
+              defaultValue='INV/20221114/MPL/28203158839'
             />
           </div>
 
@@ -89,7 +89,7 @@ const DBTransactionManageTransactionDetail = () => {
               type='text'
               id='name'
               placeholder='Please add your name'
-              value='Samanta Legend'
+              defaultValue='Samanta Legend'
             />
           </div>
 
@@ -105,7 +105,7 @@ const DBTransactionManageTransactionDetail = () => {
               id='name'
               variant='phone'
               placeholder='Please add your name'
-              value='8723781236'
+              defaultValue='8723781236'
             />
           </div>
 
@@ -141,7 +141,7 @@ const DBTransactionManageTransactionDetail = () => {
               id='name'
               variant='default'
               placeholder='Please add your name'
-              value='BSDJA2130923UK'
+              defaultValue='BSDJA2130923UK'
             />
           </div>
 
@@ -156,7 +156,7 @@ const DBTransactionManageTransactionDetail = () => {
               variant='logo'
               logoSrc='/shipping-logo.png'
               placeholder='Please add your name'
-              value='FedEx (2-3 Days)'
+              defaultValue='FedEx (2-3 Days)'
             />
           </div>
 
@@ -170,7 +170,7 @@ const DBTransactionManageTransactionDetail = () => {
               id='name'
               variant='default'
               placeholder='Please add your name'
-              value='2972 Westheimer Rd. Santa Ana, Illinois 85486 '
+              defaultValue='2972 Westheimer Rd. Santa Ana, Illinois 85486 '
             />
           </div>
 
@@ -184,7 +184,7 @@ const DBTransactionManageTransactionDetail = () => {
               id='name'
               variant='logo'
               placeholder='Please add your name'
-              value='Maybank Virtual Account'
+              defaultValue='Maybank Virtual Account'
             />
           </div>
         </form>

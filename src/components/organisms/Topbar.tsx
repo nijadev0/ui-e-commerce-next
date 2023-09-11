@@ -66,9 +66,10 @@ const Topbar: React.FC = () => {
                   <Link
                     href={"/settings"}
                     className={
-                      "flex w-full items-start gap-4 border-b border-netral-30 p-4 hover:bg-primary-surface/25"
+                      "relative flex w-full items-start gap-4 border-b border-netral-30 p-4 hover:bg-primary-surface/25"
                     }
                   >
+                    <div className='TickNotif absolute right-5 z-20 h-1.5 w-1.5 rounded-full bg-error-main 2xl:h-2 2xl:w-2'></div>
                     <div className='flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-netral-30/50'>
                       <BagIcon className='h-6 w-6 text-netral-100' />
                     </div>
@@ -93,16 +94,18 @@ const Topbar: React.FC = () => {
                   <Link
                     href={"/settings"}
                     className={
-                      "flex w-full items-start gap-4 border-b border-netral-30 p-4 hover:bg-primary-surface/25"
+                      "relative flex w-full items-start gap-4 border-b border-netral-30 p-4 hover:bg-primary-surface/25"
                     }
                   >
+                    <div className='absolute right-5 z-20 h-1.5 w-1.5 rounded-full bg-error-main 2xl:h-2 2xl:w-2'></div>
+
                     <div className='flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-netral-30/50'>
                       <PackageIcon className='h-6 w-6 text-netral-100' />
                     </div>
 
                     <div className='flex flex-col items-start'>
                       <h5 className='mb-0.5 text-body-base font-semibold text-netral-100'>
-                        Order Refund
+                        Order Return
                       </h5>
 
                       <p className='mb-1 w-56 truncate text-body-sm text-netral-50'>
@@ -120,9 +123,10 @@ const Topbar: React.FC = () => {
                   <Link
                     href={"/settings"}
                     className={
-                      "flex w-full items-start gap-4 border-b border-netral-30 p-4 hover:bg-primary-surface/25"
+                      "relative flex w-full items-start gap-4 border-b border-netral-30 p-4 hover:bg-primary-surface/25"
                     }
                   >
+                    <div className='TickNotif absolute right-5 z-20 h-1.5 w-1.5 rounded-full bg-error-main 2xl:h-2 2xl:w-2'></div>
                     <div className='flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full bg-netral-30/50'>
                       <TshirtIcon className='h-6 w-6 text-netral-100' />
                     </div>

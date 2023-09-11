@@ -14,8 +14,10 @@ import {
 
 import {
   CheckIcon,
+  FunnelIcon,
   LightningIcon,
   MagnifyingGlassIcon,
+  SortAscendingIcon,
   TrashIcon
 } from "@/assets/icons"
 import { Modal, PageAction } from "@/components/moleculs"
@@ -43,24 +45,45 @@ const DBFlashSale = () => {
 
   return (
     <div className='relative space-y-6 p-6'>
-      <h1 className='text-heading-sm font-semibold'>Products List</h1>
+      <h1 className='text-heading-sm font-semibold'>Flash Sale</h1>
 
       <section className='relative space-y-6 rounded-lg-10 bg-white p-6'>
         {/* Navigation */}
         <nav className='space-y-6'>
-          <div className='flex items-center justify-between'>
-            <Title size='lg' variant='default'>
-              Products List
-            </Title>
+          <Title size='lg' variant='default'>
+            Products List
+          </Title>
 
-            <div className='relative w-96'>
+          <section className='flex items-center justify-between'>
+            <div className='relative w-72 2xl:w-96'>
               <MagnifyingGlassIcon className='absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-netral-50' />
               <input
                 className='w-full rounded-lg border border-transparent bg-netral-20 px-3.5 py-2.5 pl-11  outline-0 ring-2 ring-transparent transition-all duration-300 ease-out focus-within:ring-primary-surface focus:border-primary-main'
                 placeholder='Search'
               />
             </div>
-          </div>
+
+            <div className='flex flex-row gap-3'>
+              <Button size='md' variant='default-bg'>
+                Sort
+                <SortAscendingIcon className='h-4 w-4 stroke-netral-100 stroke-[4px]' />
+              </Button>
+
+              <Button size='md' variant='default-bg'>
+                Filter
+                <FunnelIcon className='h-4 w-4 stroke-netral-100 stroke-[4px]' />
+              </Button>
+
+              <Button
+                size='md'
+                variant='primary-bg'
+                onClick={() => setOpenModalFlashSale(true)}
+              >
+                <LightningIcon className='h-4 w-4 stroke-[4px] text-white' />
+                Add flash sale
+              </Button>
+            </div>
+          </section>
         </nav>
 
         {emptyState ? (
@@ -123,6 +146,7 @@ const DBFlashSale = () => {
                     </th>
                   </tr>
                 </thead>
+
                 <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
                   {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
                     <tr key={item}>
@@ -181,9 +205,13 @@ const DBFlashSale = () => {
                       </td>
 
                       <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <span className='text-body-base font-medium text-primary-main'>
+                        <Button
+                          href='/flash-sale/detail'
+                          size='md'
+                          variant='primary-nude'
+                        >
                           Detail
-                        </span>
+                        </Button>
                       </td>
                     </tr>
                   ))}
@@ -195,22 +223,23 @@ const DBFlashSale = () => {
             <Pagination />
           </>
         )}
-
-        {/* Page Action */}
-        {active && (
-          <PageAction
-            actionLabel='2 Product Selected'
-            btnPrimaryLabel={
-              <>
-                <LightningIcon className='h-4 w-4 stroke-[4px] text-white' />
-                Add flash sale
-              </>
-            }
-            btnPrimaryVariant='primary-bg'
-            btnPrimaryFun={() => setOpenModalFlashSale(true)}
-          />
-        )}
       </section>
+
+      {/* Page Action */}
+      {active && (
+        <PageAction
+          variant='sticky'
+          actionLabel='2 Product Selected'
+          btnPrimaryLabel={
+            <>
+              <LightningIcon className='h-4 w-4 stroke-[4px] text-white' />
+              Add flash sale
+            </>
+          }
+          btnPrimaryVariant='primary-bg'
+          btnPrimaryFun={() => setOpenModalFlashSale(true)}
+        />
+      )}
 
       <Modal
         variant='default'
@@ -384,7 +413,7 @@ const DBFlashSale = () => {
                           id='start-date'
                           variant='default'
                           placeholder='Quota'
-                          value='65'
+                          defaultValue='65'
                         />
                       </td>
 
@@ -393,7 +422,7 @@ const DBFlashSale = () => {
                           id='start-date'
                           variant='default'
                           placeholder='Discount'
-                          value='30'
+                          defaultValue='30'
                         />
                       </td>
 
@@ -532,6 +561,7 @@ const DBFlashSale = () => {
                 setActiveState(1)
                 setOpenModalFlashSale(false)
                 openSuccessAlerts()
+                setEmptyState(false)
               }
             }}
           >
@@ -544,8 +574,8 @@ const DBFlashSale = () => {
         variant='success'
         open={openSuccess}
         setOpen={setOpenSuccess}
-        title='Message Success'
-        desc='Your message sent successfuly'
+        title='Flash sale has been added'
+        desc='Flash sale has been added, you can check the status of the flash sale to make sure.'
       />
     </div>
   )

@@ -23,7 +23,20 @@ const SidebarMenu: React.FC<SidebarMenu> = ({
   onClick,
   variant
 }) => {
+  //------------------------------------------------------------------------------------------------------------//
   const currentActive = usePathname()
+  //------------------------------------------------------------------------------------------------------------//
+  const localStorageData = window.localStorage.getItem(name)
+  const previousMenu = JSON.parse(localStorageData || "false")
+
+  const [sideMenuRef, setSideMenuRef] = React.useState(previousMenu)
+  const toggleSideMenu = () => {
+    onClick
+    setSideMenuRef(!sideMenuRef)
+    window.localStorage.setItem(name, `${sideMenuRef}`)
+  }
+  //------------------------------------------------------------------------------------------------------------//
+
   return (
     <>
       {variant === "default" && (
@@ -79,8 +92,10 @@ const SidebarMenu: React.FC<SidebarMenu> = ({
         <Link
           href={`${href}`}
           className={`relative flex w-full items-center justify-between gap-3 rounded-lg-10 ${
-            currentActive === href ? "bg-netral-20" : "bg-white"
-          } p-3 text-netral-50 transition-all duration-300 ease-out hover:bg-netral-20`}
+            currentActive.includes(`${href}`)
+              ? "bg-netral-20 text-primary-main"
+              : "bg-white text-netral-50"
+          } p-3 transition-all duration-300 ease-out hover:bg-netral-20`}
         >
           <span className='text-body-sm font-medium 2xl:font-semibold'>
             {name}

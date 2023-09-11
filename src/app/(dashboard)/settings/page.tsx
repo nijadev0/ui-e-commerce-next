@@ -48,6 +48,7 @@ const DashboardSettings = () => {
                 className='h-full w-full object-cover'
                 src='/avatar-settings-1.png'
                 alt='Avatar Settings 1'
+                sizes='responsive'
                 fill
               />
 
@@ -66,10 +67,10 @@ const DashboardSettings = () => {
             </div>
 
             <Input
-              type='text'
               id='name'
+              type='text'
               placeholder='Please add your name'
-              value='Marvin McKinney'
+              defaultValue='Marvin McKinney'
             />
           </div>
 
@@ -79,10 +80,10 @@ const DashboardSettings = () => {
             </div>
 
             <Input
+              id='role'
               type='text'
-              id='name'
               placeholder='Please add your role'
-              value='Super Admin'
+              defaultValue='Super Admin'
             />
           </div>
 
@@ -94,11 +95,11 @@ const DashboardSettings = () => {
             </div>
 
             <Input
+              id='phone'
               type='text'
               variant='phone'
-              id='name'
               placeholder='Please add your phone number'
-              value='762394289312'
+              defaultValue='762394289312'
             />
           </div>
 
@@ -108,9 +109,9 @@ const DashboardSettings = () => {
             </div>
 
             <Input
-              id='name'
+              id='address'
               placeholder='Please add your address'
-              value='8502 Preston Rd. Inglewood, Maine 98380'
+              defaultValue='8502 Preston Rd. Inglewood, Maine 98380'
             />
           </div>
         </form>
@@ -124,28 +125,28 @@ const DashboardSettings = () => {
         >
           <section className='space-y-6'>
             <Input
+              id='current-password'
               type='password'
-              id='password'
               label='Current Password'
               placeholder='Current password'
               variant='default'
-              value='Halo1234567890'
+              defaultValue='Halo1234567890'
             />
             <Input
               type='password'
-              id='password'
+              id='new-password'
               label='New Password'
               placeholder='New password'
               variant='default'
-              value='Halo1234567890'
+              defaultValue='Halo1234567890'
             />
             <Input
               type='password'
-              id='password'
+              id='new-confirm-password'
               label='Confirm Password'
               placeholder='New password'
               variant='default'
-              value='Halo1234567890'
+              defaultValue='Halo1234567890'
             />
           </section>
 
@@ -181,18 +182,22 @@ const DashboardSettings = () => {
           Manage Account
         </Title>
 
-        <form>
-          <div className='flex w-full max-w-5xl items-center justify-between gap-4 border-b border-netral-20 py-7 first:border-y'>
+        <form
+          onChange={() => {
+            return
+          }}
+        >
+          <div className='flex w-full items-center justify-between gap-4 border-b border-netral-20 py-7 first:border-y'>
             <div className='flex w-full items-center gap-32 space-y-2'>
               <h5 className='w-full max-w-sm text-body-lg font-semibold'>
                 Email
               </h5>
 
               <Input
+                id='full-name'
                 type='text'
-                id='name'
                 placeholder='Please add your name'
-                value='samantalegend@mail.com'
+                defaultValue='samantalegend@mail.com'
               />
             </div>
 
@@ -201,7 +206,7 @@ const DashboardSettings = () => {
             </Button>
           </div>
 
-          <div className='flex w-full max-w-5xl items-center justify-between gap-4 border-b border-netral-20 py-7 first:border-y'>
+          <div className='flex w-full items-center justify-between gap-4 border-b border-netral-20 py-7 first:border-y'>
             <div className='flex w-full items-center gap-32 space-y-2'>
               <h5 className='w-full max-w-sm text-body-lg font-semibold'>
                 Password
@@ -209,9 +214,9 @@ const DashboardSettings = () => {
 
               <Input
                 type='password'
-                id='name'
+                id='password'
                 placeholder='Please add your password'
-                value='beittt123'
+                defaultValue='beittt123'
                 disabled
               />
             </div>

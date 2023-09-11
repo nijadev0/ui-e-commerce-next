@@ -45,16 +45,23 @@ const DBBanner = () => {
   // -----------------------------------------------------------------------------//
 
   return (
-    <div className='relative p-6'>
+    <div className='relative space-y-6 p-6'>
       <h1 className='text-heading-sm font-semibold'>Banner</h1>
 
       <section className='relative space-y-6 rounded-lg-10 bg-white p-6'>
         {/* Navigation */}
         <nav className='space-y-6'>
+          <Title size='lg' variant='default'>
+            Banner
+          </Title>
           <div className='flex items-center justify-between'>
-            <Title size='lg' variant='default'>
-              Banner
-            </Title>
+            <div className='relative w-72 2xl:w-96'>
+              <MagnifyingGlassIcon className='absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-netral-50' />
+              <input
+                className='w-full rounded-lg border border-transparent bg-netral-20 px-3.5 py-2 pl-11 outline-0 ring-2 ring-transparent transition-all duration-300 ease-out focus-within:ring-primary-surface focus:border-primary-main 2xl:py-2.5'
+                placeholder='Search'
+              />
+            </div>
 
             <Button
               size='md'
@@ -64,14 +71,6 @@ const DBBanner = () => {
               <FolderSimplePlusIcon className='h-5 w-5 fill-white stroke-white stroke-[4px]' />
               Add Banner
             </Button>
-          </div>
-
-          <div className='relative w-96'>
-            <MagnifyingGlassIcon className='absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-netral-50' />
-            <input
-              className='w-full rounded-lg border border-transparent bg-netral-20 px-3.5 py-2.5 pl-11  outline-0 ring-2 ring-transparent transition-all duration-300 ease-out focus-within:ring-primary-surface focus:border-primary-main'
-              placeholder='Search'
-            />
           </div>
         </nav>
 
