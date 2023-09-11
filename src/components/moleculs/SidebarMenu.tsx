@@ -26,6 +26,8 @@ const SidebarMenu: React.FC<SidebarMenu> = ({
   //------------------------------------------------------------------------------------------------------------//
   const currentActive = usePathname()
   //------------------------------------------------------------------------------------------------------------//
+  /**
+   *
   const localStorageData = window.localStorage.getItem(name)
   const previousMenu = JSON.parse(localStorageData || "false")
 
@@ -35,6 +37,7 @@ const SidebarMenu: React.FC<SidebarMenu> = ({
     setSideMenuRef(!sideMenuRef)
     window.localStorage.setItem(name, `${sideMenuRef}`)
   }
+   */
   //------------------------------------------------------------------------------------------------------------//
 
   return (
