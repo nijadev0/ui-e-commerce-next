@@ -82,7 +82,7 @@ const DBUserRole = () => {
 
                     <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
                       <span className='text-body-sm font-semibold'>
-                        Email Adress
+                        Email Address
                       </span>
                     </th>
 

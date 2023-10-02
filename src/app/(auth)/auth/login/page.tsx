@@ -8,6 +8,7 @@ import { useRouter } from "next/navigation"
 import { Button, Input } from "@/components/atomics"
 import { Layout } from "@/components/templates"
 import { CheckIcon } from "@/assets/icons"
+import { GoogleLogo } from "@/assets/brands"
 
 const AuthLogin = () => {
   // ---------------------------------------------------

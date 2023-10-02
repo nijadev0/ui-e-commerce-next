@@ -7,10 +7,13 @@ import {
   Alerts,
   Badge,
   Button,
+  Checkbox,
   Input,
   Pagination,
   Title
 } from "@/components/atomics"
+import { EmptyState } from "@/components/templates"
+import { Modal, PageAction } from "@/components/moleculs"
 
 import {
   CheckIcon,
@@ -20,8 +23,6 @@ import {
   SortAscendingIcon,
   TrashIcon
 } from "@/assets/icons"
-import { Modal, PageAction } from "@/components/moleculs"
-import { EmptyState } from "@/components/templates"
 import { NoFlashsaleIll } from "@/assets/illustration"
 
 const DBFlashSale = () => {
@@ -51,7 +52,7 @@ const DBFlashSale = () => {
         {/* Navigation */}
         <nav className='space-y-6'>
           <Title size='lg' variant='default'>
-            Products List
+            Flash Sale
           </Title>
 
           <section className='flex items-center justify-between'>
@@ -101,20 +102,7 @@ const DBFlashSale = () => {
                 <thead className='bg-netral-15 text-body-sm font-semibold uppercase'>
                   <tr>
                     <th className='w-px whitespace-nowrap px-3 py-4 first:pl-5 last:pr-5'>
-                      <div className='h-6 w-6'>
-                        <Switch
-                          checked={active}
-                          onChange={setActive}
-                          className={`Checkbox ${
-                            active
-                              ? "border-primary-border bg-primary-main text-white ring-primary-surface"
-                              : "border-netral-60 bg-netral-20 ring-netral-15"
-                          } relative inline-flex h-5 w-5 items-center rounded-md border ring-2`}
-                        >
-                          {active && <CheckIcon className='h-5 w-5' />}
-                        </Switch>
-                        <span className='sr-only'>Select All</span>
-                      </div>
+                      <Checkbox active={active} setActive={setActive} />
                     </th>
 
                     <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>

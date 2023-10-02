@@ -6,17 +6,44 @@ import Image from "next/image"
 import { Modal } from "@/components/moleculs"
 import { Alerts, Button, Input, Title } from "@/components/atomics"
 
-import { PencilSimpleIcon } from "@/assets/icons"
+import {
+  ArrowClockwiseIcon,
+  PencilSimpleIcon,
+  PlusIcon,
+  TrashIcon,
+  UploadSimpleIcon
+} from "@/assets/icons"
+import { DropzoneIll } from "@/assets/illustration"
 
 const DashboardSettings = () => {
   // -------------------------------------------------------------------------
   const [openModalPassword, setOpenModalPassword] = React.useState(false)
   // -------------------------------------------------------------------------
+  const [stateAvatar, setStateAvatar] = React.useState(0)
+  const [openModalAvatar, setOpenModalAvatar] = React.useState(false)
+  const [activeState, setActiveState] = React.useState(1)
+  const [filledVariant, setFilledVariant] = React.useState(false)
+  const [openAlertsSuccess, setOpenAlertsSuccess] = React.useState(false)
+
+  const nextState = () => {
+    if (activeState > 1) {
+      setOpenModalAvatar(false)
+
+      setTimeout(() => {
+        setOpenAlertsSuccess(true)
+      }, 500)
+
+      setFilledVariant(true)
+      setActiveState(1)
+    } else {
+      setActiveState(activeState + 1)
+    }
+  }
+  // -------------------------------------------------------------------------
   const [changePasswordAlerts, setChangePasswordAlerts] = React.useState(false)
 
   const openChangePasswordAlerts = () => {
     setOpenModalPassword(false)
-
     setChangePasswordAlerts(true)
 
     setTimeout(() => {
@@ -43,22 +70,124 @@ const DashboardSettings = () => {
               </p>
             </div>
 
-            <figure className='relative h-28 w-28 overflow-hidden rounded-lg 2xl:h-32 2xl:w-32'>
-              <Image
-                className='h-full w-full object-cover'
-                src='/avatar-settings-1.png'
-                alt='Avatar Settings 1'
-                sizes='responsive'
-                fill
-              />
+            <figure className='relative flex h-28 w-28 items-center justify-center overflow-hidden rounded-lg bg-netral-20 2xl:h-32 2xl:w-32'>
+              {stateAvatar === 1 ? (
+                <>
+                  <Image
+                    className='h-full w-full object-cover'
+                    src='/avatar-settings-1.png'
+                    alt='Avatar Settings 1'
+                    sizes='responsive'
+                    fill
+                  />
 
-              <button
-                type='button'
-                className='absolute right-2 top-2 z-10 flex h-6 w-6 items-center justify-center rounded-lg bg-netral-20 text-netral-80 hover:bg-netral-30'
-              >
-                <PencilSimpleIcon className='h-5 w-5' />
-              </button>
+                  <button
+                    type='button'
+                    className='absolute right-2 top-2 z-10 flex h-6 w-6 items-center justify-center rounded-lg bg-netral-20 text-netral-80 hover:bg-netral-30'
+                  >
+                    <PencilSimpleIcon className='h-5 w-5' />
+                  </button>
+                </>
+              ) : (
+                <>
+                  <div className='flex flex-col items-center gap-3'>
+                    <UploadSimpleIcon className='h-8 w-8 text-netral-50' />
+
+                    <Button
+                      size='sm'
+                      variant='primary-bg'
+                      onClick={() => setOpenModalAvatar(true)}
+                    >
+                      Add Image
+                    </Button>
+                  </div>
+                </>
+              )}
             </figure>
+
+            <Modal
+              variant='default'
+              title='Upload Variant Image'
+              open={openModalAvatar}
+              setOpen={setOpenModalAvatar}
+              className='max-w-4xl'
+            >
+              {activeState === 1 && (
+                <main className='my-10 flex min-h-[360px] w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-netral-30 bg-netral-15 py-20'>
+                  <DropzoneIll className='h-32 w-32' />
+
+                  <h5 className='mb-1 mt-6 text-body-lg font-semibold'>
+                    Click to upload, or drag and drop
+                  </h5>
+
+                  <p className='text-body-sm text-netral-50'>
+                    {"SVG, PNG, JPEG (MAX 800X400px)"}
+                  </p>
+                </main>
+              )}
+
+              {activeState === 2 && (
+                <main className='my-10 flex min-h-[360px] w-full flex-row flex-wrap items-start justify-start gap-4 rounded-xl border-2 border-dashed border-netral-30 bg-netral-15 p-6'>
+                  {[1, 2, 3].map((item) => (
+                    <div
+                      key={item}
+                      className='relative h-40 w-40 flex-shrink-0 overflow-hidden rounded-lg-10'
+                    >
+                      <div className='absolute bottom-2.5 right-2.5 z-10 flex flex-row gap-1.5'>
+                        <button className='rounded-lg bg-white/50 p-2 outline-none ring-2 ring-transparent transition-all duration-300 ease-out hover:bg-white/75 focus:ring-white/25'>
+                          <ArrowClockwiseIcon className='h-5 w-5 text-netral-80' />
+                        </button>
+
+                        <button className='rounded-lg bg-white/50 p-2 outline-none ring-2 ring-transparent transition-all duration-300 ease-out hover:bg-white/75 focus:ring-white/25'>
+                          <TrashIcon className='h-5 w-5 text-error-main' />
+                        </button>
+                      </div>
+                      <Image
+                        className='h-full w-full object-cover'
+                        alt='Image'
+                        src={"/outlet-1.jpg"}
+                        fill
+                      />
+                    </div>
+                  ))}
+
+                  <div className='relative'>
+                    <label
+                      htmlFor='dropzone'
+                      className='relative flex h-40 w-40 cursor-pointer flex-col items-center justify-center gap-4 rounded-lg-10 border-2 border-dashed border-netral-30 transition-all duration-300 ease-out hover:bg-netral-20'
+                    >
+                      <PlusIcon className='h-6 w-6 text-netral-50' />
+
+                      <h5 className='w-24 text-center text-body-sm font-medium text-netral-50'>
+                        Add more images
+                      </h5>
+
+                      <input
+                        type='file'
+                        id='dropzone'
+                        name='dropzone'
+                        className='peer hidden cursor-pointer'
+                        accept='image/*'
+                      />
+                    </label>
+                  </div>
+                </main>
+              )}
+
+              <footer className='flex flex-row justify-end gap-3'>
+                <Button
+                  size='md'
+                  variant='default-nude'
+                  onClick={() => setOpenModalAvatar(false)}
+                >
+                  Discard
+                </Button>
+
+                <Button size='md' variant='primary-bg' onClick={nextState}>
+                  Save
+                </Button>
+              </footer>
+            </Modal>
           </div>
 
           <div className='flex w-full items-start gap-32 border-b border-netral-20 py-7 first:border-y'>

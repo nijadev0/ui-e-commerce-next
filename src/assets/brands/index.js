@@ -1,3 +1,4 @@
+import GoogleLogo from "./GoogleLogo"
 import NijaLogo from "./NijaLogo"
 
-export { NijaLogo }
+export { GoogleLogo, NijaLogo }

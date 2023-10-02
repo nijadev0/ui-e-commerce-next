@@ -72,7 +72,7 @@ const Sidebar: React.FC = () => {
           active={showUsersMenu}
           onClick={() => setShowUsersMenu(!showUsersMenu)}
           icon={<UsersIcon />}
-          name='Customer'
+          name='Customers'
           variant='sub-menu'
         />
 
@@ -96,7 +96,7 @@ const Sidebar: React.FC = () => {
 
         <SidebarExpand show={showProductsMenu}>
           <SidebarMenu
-            name='List Products'
+            name='Products List'
             variant='expand'
             href='/products/list-products'
           />
@@ -117,12 +117,12 @@ const Sidebar: React.FC = () => {
 
         <SidebarExpand show={showTransactionsMenu}>
           <SidebarMenu
-            name='Manage Transaction'
+            name='Manage Transactions'
             variant='expand'
             href='/transactions/manage-transaction'
           />
           <SidebarMenu
-            name='Manage Return'
+            name='Manage Returns'
             variant='expand'
             href='/transactions/manage-return'
           />
@@ -130,28 +130,28 @@ const Sidebar: React.FC = () => {
 
         <SidebarMenu
           icon={<TagIcon />}
-          name='Flash Sale'
+          name='Flash Sales'
           variant='default'
           href='/flash-sale'
         />
 
         <SidebarMenu
           icon={<AppWindowIcon />}
-          name='Banner'
+          name='Banners'
           variant='default'
           href='/banner'
         />
 
         <SidebarMenu
           icon={<StoreFrontIcon />}
-          name='Outlet'
+          name='Outlets'
           variant='default'
           href='/outlet'
         />
 
         <SidebarMenu
           icon={<UserCircleIcon />}
-          name='User Role'
+          name='User Roles'
           variant='default'
           href='/user-role'
         />
@@ -160,7 +160,7 @@ const Sidebar: React.FC = () => {
           active={showAuthMenu}
           onClick={() => setShowAuthMenu(!showAuthMenu)}
           icon={<LockSimpleIcon />}
-          name='Authentication'
+          name='Authentications'
           variant='sub-menu'
         />
 

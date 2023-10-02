@@ -338,7 +338,12 @@ const DBHome = () => {
               <div className='w-32 2xl:w-40'>
                 <Selectbox
                   className='!border-transparent'
-                  datas={[{ name: "This Month" }, { name: "This Year" }]}
+                  datas={[
+                    { name: "Filter" },
+                    { name: "This Week" },
+                    { name: "This Month" },
+                    { name: "This Year" }
+                  ]}
                 />
               </div>
             </nav>
@@ -386,7 +391,12 @@ const DBHome = () => {
               <div className='w-32 2xl:w-40'>
                 <Selectbox
                   className='!border-transparent'
-                  datas={[{ name: "Year" }, { name: "Decade" }]}
+                  datas={[
+                    { name: "Filter" },
+                    { name: "This Week" },
+                    { name: "This Month" },
+                    { name: "This Year" }
+                  ]}
                 />
               </div>
             </nav>
