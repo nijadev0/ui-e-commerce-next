@@ -22,7 +22,7 @@ const AuthLogin = () => {
 
   return (
     <Layout
-      src='/auth-photo-1.png'
+      src='/account-baby-photo.png'
       alt='Baby Photo Cute'
       desc='Fashion is like eating, you shouldnt stick to the same menu'
     >

@@ -46,7 +46,7 @@ const SidebarMenu: React.FC<SidebarMenu> = ({
         <Link
           href={`${href}`}
           className={`relative flex w-full items-center justify-between gap-3 rounded-lg-10 ${
-            currentActive === href
+            currentActive.includes(`${href}`)
               ? "bg-netral-20 text-primary-main"
               : "bg-white text-netral-50"
           } p-3 transition-all duration-300 ease-out hover:bg-netral-20`}

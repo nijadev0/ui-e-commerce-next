@@ -38,7 +38,7 @@ const DBUserRoleAdd = () => {
           <Input
             id='email'
             placeholder='Enter email address'
-            label='Email Adress'
+            label='Email Address'
             variant='default'
           />
 

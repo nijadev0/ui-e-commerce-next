@@ -22,7 +22,7 @@ const DBOutlets = () => {
             Outlet List
           </Title>
 
-          <Button size='md' variant='primary-bg'>
+          <Button size='md' variant='primary-bg' href='/outlet/add'>
             <StoreFrontIcon className='h-5 w-5 text-white' />
             Add Outlet
           </Button>

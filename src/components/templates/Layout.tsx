@@ -20,11 +20,9 @@ const Layout: React.FC<Layout> = ({ src, alt, desc, children }) => {
   return (
     <div className='Layout-Auth relative grid min-h-screen w-full grid-cols-12 bg-netral-15'>
       <section className='Auth-Banner relative col-span-7'>
-        <div className='absolute inset-0 z-10 flex h-full w-full items-center justify-center bg-black/20'></div>
-
         <Image
           className='h-full w-full object-cover'
-          src={src ?? "/auth-photo-1.png"}
+          src={src ?? "/account-baby-photo.png"}
           alt={alt ?? "Auth Layout 1"}
           fill
         />

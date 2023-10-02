@@ -20,13 +20,15 @@ const AuthRegister = () => {
 
   return (
     <Layout
-      src='/auth-photo-1.png'
+      src='/account-baby-photo.png'
       alt='Baby Photo Cute'
       desc='Fashion is like eating, you shouldnt stick to the same menu'
     >
       <header className='mb-8 space-y-3 text-left'>
-        <h5 className='text-heading-md font-semibold'>Hi There!</h5>
-        <p className='text-body-lg'>Welcome back to e-commerce dashboard</p>
+        <h5 className='text-heading-md font-semibold'>Hello Buds!</h5>
+        <p className='text-body-lg'>
+          Want to see some georgous dashboard? register now!
+        </p>
       </header>
 
       <form className='space-y-6'>

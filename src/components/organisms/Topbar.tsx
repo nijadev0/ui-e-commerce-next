@@ -76,7 +76,7 @@ const Topbar: React.FC = () => {
 
                     <div className='flex flex-col items-start'>
                       <h5 className='mb-0.5 text-body-base font-semibold text-netral-100'>
-                        Settings
+                        New Order
                       </h5>
 
                       <p className='mb-1 w-56 truncate text-body-sm text-netral-50'>

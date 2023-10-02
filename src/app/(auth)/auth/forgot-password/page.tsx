@@ -8,7 +8,7 @@ import { Button, Input } from "@/components/atomics"
 const AuthForgotPassword = () => {
   return (
     <Layout
-      src='/auth-photo-2.png'
+      src='/account-woman-photo.png'
       alt='Women Photo Clothes'
       desc='Fashion is like eating, you shouldnt stick to the same menu'
     >

@@ -8,7 +8,7 @@ import { CheckIconBold } from "@/assets/icons"
 const AuthSuccessReset = () => {
   return (
     <Layout
-      src='/auth-photo-2.png'
+      src='/account-woman-photo.png'
       alt='Woman Clothes Photo'
       desc='Fashion is like eating, you shouldnt stick to the same menu'
     >
