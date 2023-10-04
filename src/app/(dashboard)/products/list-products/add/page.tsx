@@ -112,11 +112,9 @@ const DBProductsListProductsAdd = () => {
 
           <div className='flex w-full items-start gap-32 border-b border-netral-20 py-7 first:border-y'>
             <div className='w-full max-w-sm space-y-2'>
-              <h5 className='space-y-2 text-body-base font-semibold'>
-                Category
-              </h5>
+              <h5 className='space-y-2 text-body-base font-semibold'>Gender</h5>
               <p className='w-64 text-body-sm text-netral-50'>
-                Please select your product category from the list provided
+                Set the gender for this product
               </p>
             </div>
 
@@ -157,7 +155,7 @@ const DBProductsListProductsAdd = () => {
             </div>
             <section className='flex flex-row flex-wrap gap-6'>
               <div
-                className={`group relative flex h-40 w-40 flex-col items-center justify-center overflow-hidden rounded-xl ${
+                className={`group relative flex h-48 w-48 flex-col items-center justify-center overflow-hidden rounded-xl ${
                   dropzone
                     ? "border-2 border-dashed border-netral-30 bg-netral-15"
                     : ""
@@ -206,7 +204,7 @@ const DBProductsListProductsAdd = () => {
 
               {!dropzone && (
                 <div
-                  className={`group relative flex h-40 w-40 flex-col items-center justify-center overflow-hidden rounded-xl border-2 border-dashed border-netral-30 bg-netral-15`}
+                  className={`group relative flex h-48 w-48 flex-col items-center justify-center overflow-hidden rounded-xl border-2 border-dashed border-netral-30 bg-netral-15`}
                 >
                   <UploadSimpleIcon className='h-8 w-8 text-netral-50' />
 
@@ -226,39 +224,62 @@ const DBProductsListProductsAdd = () => {
               )}
             </section>
           </div>
-
-          <div className='flex w-full items-start gap-32 border-b border-netral-20 py-7 first:border-y'>
-            <div className='w-full max-w-sm space-y-2'>
-              <h5 className='space-y-2 text-body-base font-semibold'>
-                Discount Type
-              </h5>
-              <p className='w-64 text-body-sm text-netral-50'>
-                Set your discount type. You can choose the type of discount with
-                a percent or cash discount.
-              </p>
-            </div>
-
-            <Selectbox datas={discountType} selectedNow={false}></Selectbox>
-          </div>
-
-          <div className='flex w-full items-start gap-32 border-b border-netral-20 py-7 first:border-y'>
-            <div className='w-full max-w-sm space-y-2'>
-              <h5 className='space-y-2 text-body-base font-semibold'>
-                Set Discount
-              </h5>
-              <p className='w-64 text-body-sm text-netral-50'>
-                Please fill in how many discounts you will give for this
-                products.
-              </p>
-            </div>
-
-            <Input
-              variant='default'
-              id='set-discount'
-              placeholder='Enter nominal discount'
-            />
-          </div>
         </form>
+      </section>
+
+      <section className='relative w-full space-y-7 rounded-lg-10 bg-white p-6'>
+        <Title variant='default' size='lg'>
+          Price
+        </Title>
+
+        <div className='flex w-full items-start gap-32 border-b border-netral-20 py-7 first:border-y'>
+          <div className='w-full max-w-sm space-y-2'>
+            <h5 className='space-y-2 text-body-base font-semibold'>
+              Set Discount
+            </h5>
+            <p className='w-64 text-body-sm text-netral-50'>
+              Please fill in how many discounts you will give for this products.
+            </p>
+          </div>
+
+          <Input
+            type='text'
+            id='set-discount'
+            variant='currency'
+            placeholder='0000000'
+          />
+        </div>
+
+        <div className='flex w-full items-start gap-32 border-b border-netral-20 py-7 first:border-y'>
+          <div className='w-full max-w-sm space-y-2'>
+            <h5 className='space-y-2 text-body-base font-semibold'>
+              Discount Type
+            </h5>
+            <p className='w-64 text-body-sm text-netral-50'>
+              Set your discount type. You can choose the type of discount with a
+              percent or cash discount.
+            </p>
+          </div>
+
+          <Selectbox datas={discountType} selectedNow={false}></Selectbox>
+        </div>
+
+        <div className='flex w-full items-start gap-32 border-b border-netral-20 py-7 first:border-y'>
+          <div className='w-full max-w-sm space-y-2'>
+            <h5 className='space-y-2 text-body-base font-semibold'>
+              Set Discount
+            </h5>
+            <p className='w-64 text-body-sm text-netral-50'>
+              Please fill in how many discounts you will give for this products.
+            </p>
+          </div>
+
+          <Input
+            variant='default'
+            id='set-discount'
+            placeholder='Enter nominal discount'
+          />
+        </div>
       </section>
 
       <PageAction

@@ -151,7 +151,7 @@ const Sidebar: React.FC = () => {
 
         <SidebarMenu
           icon={<UserCircleIcon />}
-          name='User Roles'
+          name='Users Role'
           variant='default'
           href='/user-role'
         />

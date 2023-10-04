@@ -4,7 +4,14 @@ import React from "react"
 import Image from "next/image"
 
 import { Modal } from "@/components/moleculs"
-import { Alerts, Button, Pagination, Title } from "@/components/atomics"
+import {
+  Alerts,
+  Button,
+  Pagination,
+  Selectbox,
+  Title,
+  Toggle
+} from "@/components/atomics"
 
 import {
   FolderSimplePlusIcon,
@@ -21,6 +28,7 @@ import { EmptyState } from "@/components/templates"
 const DBBanner = () => {
   // -----------------------------------------------------------------------------//
   const [emptyState, setEmptyState] = React.useState(true)
+  const [enableToggle, setEnableToggle] = React.useState(false)
   const [openAlertsSuccess, setOpenAlertsSuccess] = React.useState(false)
   const [openModalConfirmation, setOpenModalConfirmation] =
     React.useState(false)
@@ -54,6 +62,7 @@ const DBBanner = () => {
           <Title size='lg' variant='default'>
             Banner
           </Title>
+
           <div className='flex items-center justify-between'>
             <div className='relative w-72 2xl:w-96'>
               <MagnifyingGlassIcon className='absolute left-3.5 top-1/2 h-5 w-5 -translate-y-1/2 text-netral-50' />
@@ -107,6 +116,10 @@ const DBBanner = () => {
                     </th>
 
                     <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                      <span className='text-body-sm font-semibold'>Show</span>
+                    </th>
+
+                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
                       <span className='text-body-sm font-semibold'>Action</span>
                     </th>
                   </tr>
@@ -144,8 +157,18 @@ const DBBanner = () => {
                       </td>
 
                       <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                        <Toggle
+                          enabled={enableToggle}
+                          setEnabled={setEnableToggle}
+                        />
+                      </td>
+                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                         <div className='flex flex-row gap-3'>
-                          <Button size='md' variant='default-bg'>
+                          <Button
+                            size='md'
+                            variant='default-bg'
+                            onClick={() => {}}
+                          >
                             <PencilSimpleIcon className='h-5 w-5' />
                           </Button>
 
@@ -174,45 +197,95 @@ const DBBanner = () => {
         className='max-w-4xl'
       >
         {activeState === 1 && (
-          <main className='my-10 flex w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-netral-30 bg-netral-15 py-20'>
-            <DropzoneIll className='h-32 w-32' />
+          <>
+            <main className='mt-10 flex w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-netral-30 bg-netral-15 py-20'>
+              <DropzoneIll className='h-32 w-32' />
 
-            <h5 className='mb-1 mt-6 text-body-lg font-semibold'>
-              Click to upload, or drag and drop
-            </h5>
+              <h5 className='mb-1 mt-6 text-body-lg font-semibold'>
+                Click to upload, or drag and drop
+              </h5>
 
-            <p className='text-body-sm text-netral-50'>
-              {"SVG, PNG, JPEG (MAX 800X400px)"}
-            </p>
-          </main>
+              <p className='text-body-sm text-netral-50'>
+                {"SVG, PNG, JPEG (MAX 800X400px)"}
+              </p>
+            </main>
+
+            <div className='relative z-[99999999999] mb-6 mt-4'>
+              <Selectbox
+                datas={[
+                  {
+                    id: 1,
+                    name: "Select Type"
+                  },
+                  {
+                    id: 2,
+                    name: "Banner Hero Section"
+                  },
+                  {
+                    id: 2,
+                    name: "Banner Best Seller Collection"
+                  },
+                  {
+                    id: 2,
+                    name: "Banner Popular Collection"
+                  }
+                ]}
+              />
+            </div>
+          </>
         )}
 
         {activeState === 2 && (
-          <main className='relative my-10 flex w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-netral-30 bg-netral-15'>
-            <div className='relative aspect-video h-96 before:absolute before:z-10 before:h-full before:w-full before:bg-black/20'>
-              <Button
-                size='md'
-                variant='default-bg'
-                className='absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2'
-              >
-                <RepeatIcon className='h-5 w-5' />
-                Replace
-              </Button>
-              <Image
-                className='h-full w-full object-cover'
-                src={"/banner-dropzone-1.png"}
-                alt='Banner Dropzone 1'
-                fill
+          <>
+            <main className='relative my-10 flex w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-netral-30 bg-netral-15'>
+              <div className='relative aspect-video h-96 before:absolute before:z-10 before:h-full before:w-full before:bg-black/20'>
+                <Button
+                  size='md'
+                  variant='default-bg'
+                  className='absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2'
+                >
+                  <RepeatIcon className='h-5 w-5' />
+                  Replace
+                </Button>
+                <Image
+                  className='h-full w-full object-cover'
+                  src={"/banner-dropzone-1.png"}
+                  alt='Banner Dropzone 1'
+                  fill
+                />
+              </div>
+
+              <div className='absolute bottom-4 right-4 z-30'>
+                <Button size='md' variant='default-bg'>
+                  <SelectionPlusIcon className='h-5 w-5' />
+                  Crop
+                </Button>
+              </div>
+            </main>
+
+            <div className='relative z-[99999999999] mb-6 mt-4'>
+              <Selectbox
+                datas={[
+                  {
+                    id: 1,
+                    name: "Select Type"
+                  },
+                  {
+                    id: 2,
+                    name: "Banner Hero Section"
+                  },
+                  {
+                    id: 2,
+                    name: "Banner Best Seller Collection"
+                  },
+                  {
+                    id: 2,
+                    name: "Banner Popular Collection"
+                  }
+                ]}
               />
             </div>
-
-            <div className='absolute bottom-4 right-4 z-30'>
-              <Button size='md' variant='default-bg'>
-                <SelectionPlusIcon className='h-5 w-5' />
-                Crop
-              </Button>
-            </div>
-          </main>
+          </>
         )}
 
         <footer className='flex flex-row justify-end gap-3'>

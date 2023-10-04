@@ -1,10 +1,10 @@
-'use client'
+"use client"
 
-import React from 'react'
-import * as Dialog from '@radix-ui/react-dialog'
+import React from "react"
+import * as Dialog from "@radix-ui/react-dialog"
 
-import { XIcon } from '@/assets/icons'
-import { Title } from '../atomics'
+import { XIcon } from "@/assets/icons"
+import { Title } from "../atomics"
 
 interface Modal {
   children: React.ReactNode
@@ -12,7 +12,7 @@ interface Modal {
   open: any
   setOpen: any
   title: string
-  variant: 'default' | 'success' | 'info' | 'warning' | 'error' | 'primary'
+  variant: "default" | "success" | "info" | "warning" | "error" | "primary"
 }
 
 const Modal: React.FC<Modal> = ({
@@ -26,8 +26,10 @@ const Modal: React.FC<Modal> = ({
   return (
     <Dialog.Root open={open} onOpenChange={setOpen}>
       <Dialog.DialogTrigger></Dialog.DialogTrigger>
+
       <Dialog.Portal>
         <Dialog.Overlay className='fixed inset-0 z-[998] overflow-hidden bg-black/25 data-[state=open]:animate-overlayShow' />
+
         <Dialog.Content
           className={`fixed left-1/2 top-1/4 z-[999] max-h-[85vh] w-full overflow-y-auto ${className} -translate-x-1/2 -translate-y-1/4 rounded-lg-10 bg-white p-6 shadow-lg focus:outline-none data-[state=open]:animate-contentShow`}
         >

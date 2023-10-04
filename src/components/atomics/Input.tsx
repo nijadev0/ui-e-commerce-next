@@ -57,7 +57,8 @@ const Input: React.FC<Input> = ({
 
               <ArrowDown2Icon className='h-5 w-5 stroke-2' />
             </button>
-            <span className='text-body-base font-normal text-netral-30'>|</span>
+
+            <span className='text-body-base font-normal text-netral-40'>|</span>
           </div>
         )}
 
@@ -107,7 +108,7 @@ const Input: React.FC<Input> = ({
             (variant === "discount" &&
               "border-netral-30 pl-16 focus:border-primary-border focus:ring-primary-surface disabled:bg-netral-20") ||
             (variant === "logo" &&
-              "border-netral-30 pl-28 focus:border-primary-border focus:ring-primary-surface disabled:bg-netral-20") ||
+              "border-netral-30 pl-28 focus:border-primary-border focus:ring-primary-surface disabled:bg-netral-20 2xl:pl-28") ||
             (variant === "logo-error" &&
               "border-error-border/50 pl-28 focus:border-error-border focus:ring-error-surface")
           }`}

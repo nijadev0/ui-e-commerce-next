@@ -1,23 +1,23 @@
-'use client'
-import React from 'react'
-import Image from 'next/image'
-import { useRouter } from 'next/navigation'
+"use client"
+import React from "react"
+import Image from "next/image"
+import { useRouter } from "next/navigation"
 
-import { Modal, PageAction } from '@/components/moleculs'
-import { Alerts, Button, Input, Title } from '@/components/atomics'
+import { Modal, PageAction } from "@/components/moleculs"
+import { Alerts, Button, Input, Title } from "@/components/atomics"
 
-import { DropzoneIll } from '@/assets/illustration'
-import { PencilSimpleIcon, UploadSimpleIcon } from '@/assets/icons'
+import { DropzoneIll } from "@/assets/illustration"
+import { PencilSimpleIcon, TrashIcon, UploadSimpleIcon } from "@/assets/icons"
 
 const DBOutletEdit = () => {
   const router = useRouter()
 
   const listMenu = [
-    { name: 'Select Role', disabled: true },
-    { name: 'Super Admin' },
-    { name: 'Admin' },
-    { name: 'User' },
-    { name: 'Customer' }
+    { name: "Select Role", disabled: true },
+    { name: "Super Admin" },
+    { name: "Admin" },
+    { name: "User" },
+    { name: "Customer" }
   ]
 
   const [openSuccess, setOpenSuccess] = React.useState(false)
@@ -74,48 +74,59 @@ const DBOutletEdit = () => {
               variant='default'
             />
 
-            <div
-              className={`Dropzone relative flex w-full flex-col items-center justify-center rounded-lg-10 border-2 border-netral-30 bg-netral-15 ${
-                dropzone ? 'border-dashed py-14' : 'border-solid py-0'
-              }`}
-            >
-              {dropzone ? (
-                <div className='flex flex-col items-center'>
-                  <UploadSimpleIcon className='h-8 w-8 stroke-2 text-netral-50' />
+            <section className='space-y-1.5'>
+              <h5 className='text-body-base font-semibold text-netral-80'>
+                Upload Image
+              </h5>
 
-                  <Button
-                    size='sm'
-                    variant='primary-bg'
-                    className='mb-2 mt-5'
-                    onClick={() => setOpenModalDropzone(true)}
-                  >
-                    Add Image
-                  </Button>
+              <div
+                className={`Dropzone relative flex h-72 w-full flex-col items-center justify-center rounded-lg-10 border-2 border-netral-30 bg-netral-15 ${
+                  dropzone ? "border-dashed py-14" : "border-dashed py-0"
+                }`}
+              >
+                {dropzone ? (
+                  <div className='flex flex-col items-center'>
+                    <UploadSimpleIcon className='h-8 w-8 stroke-2 text-netral-50' />
 
-                  <p className='text-center text-body-sm text-netral-50'>
-                    or drop image to upload
-                  </p>
-                </div>
-              ) : (
-                <>
-                  <div className='relative z-0 aspect-video h-auto w-96'>
-                    <Image
-                      className='h-full w-full object-cover'
-                      alt='Image'
-                      src={'/outlet-1.jpg'}
-                      fill
-                    />
-                  </div>
-
-                  <div className='absolute right-3 top-3 z-10 h-fit w-fit'>
-                    <Button size='sm' variant='primary-bg'>
-                      Edit
-                      <PencilSimpleIcon className='h-4 w-4 stroke-[4px] text-white ' />
+                    <Button
+                      size='sm'
+                      variant='primary-bg'
+                      className='mb-2 mt-5'
+                      onClick={() => setOpenModalDropzone(true)}
+                    >
+                      Add Image
                     </Button>
+
+                    <p className='text-center text-body-sm text-netral-50'>
+                      or drop image to upload
+                    </p>
                   </div>
-                </>
-              )}
-            </div>
+                ) : (
+                  <>
+                    <div className='relative z-0 aspect-video h-full w-auto'>
+                      <Image
+                        className='h-full w-full object-cover'
+                        alt='Image'
+                        src={"/outlet-1.jpg"}
+                        fill
+                      />
+                    </div>
+
+                    <div className='absolute right-3 top-3 z-10 flex h-fit w-fit items-center gap-1.5'>
+                      <Button size='sm' variant='primary-bg'>
+                        Edit
+                        <PencilSimpleIcon className='h-4 w-4 stroke-[4px] text-white ' />
+                      </Button>
+
+                      <Button size='sm' variant='error-bg'>
+                        Delete
+                        <TrashIcon className='h-4 w-4 stroke-[4px] text-white ' />
+                      </Button>
+                    </div>
+                  </>
+                )}
+              </div>
+            </section>
           </form>
         </section>
       </div>
@@ -156,7 +167,7 @@ const DBOutletEdit = () => {
             </h5>
 
             <p className='text-body-sm text-netral-50'>
-              {'SVG, PNG, JPEG (MAX 800X400px)'}
+              {"SVG, PNG, JPEG (MAX 800X400px)"}
             </p>
           </main>
         )}
@@ -167,7 +178,7 @@ const DBOutletEdit = () => {
               <Image
                 className='h-full w-full object-cover'
                 alt='Image'
-                src={'/outlet-1.jpg'}
+                src={"/outlet-1.jpg"}
                 fill
               />
             </div>

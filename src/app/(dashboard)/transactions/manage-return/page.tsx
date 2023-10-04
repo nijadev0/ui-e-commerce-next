@@ -139,7 +139,7 @@ const DBTransactionManageRefund = () => {
                         <Button
                           size='md'
                           variant='primary-nude'
-                          href='/transactions/manage-refund/detail'
+                          href='/transactions/manage-return/detail'
                         >
                           Detail
                         </Button>
