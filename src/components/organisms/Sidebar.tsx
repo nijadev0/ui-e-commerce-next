@@ -7,6 +7,7 @@ import { Transition } from "@headlessui/react"
 import {
   AppWindowIcon,
   HouseSimpleIcon,
+  ImagesIcon,
   LockSimpleIcon,
   PackageIcon,
   ReceiptIcon,
@@ -50,6 +51,8 @@ const Sidebar: React.FC = () => {
   const [showTransactionsMenu, setShowTransactionsMenu] = React.useState(false)
   const [showAuthMenu, setShowAuthMenu] = React.useState(false)
 
+  const localStorageData = window.localStorage.getItem("Customers")
+
   return (
     <aside
       id='sidebar'
@@ -66,6 +69,7 @@ const Sidebar: React.FC = () => {
           name='Dashboard'
           variant='default'
           href='/'
+          exact
         />
 
         <SidebarMenu
@@ -154,6 +158,13 @@ const Sidebar: React.FC = () => {
           name='Users Role'
           variant='default'
           href='/user-role'
+        />
+
+        <SidebarMenu
+          icon={<ImagesIcon />}
+          name='Illustrations'
+          variant='default'
+          href='/illustrations'
         />
 
         <SidebarMenu

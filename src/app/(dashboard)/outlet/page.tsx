@@ -10,8 +10,8 @@ import { NoOutletsIll } from "@/assets/illustration"
 
 const DBOutlets = () => {
   // ------------------------------------------------------------------------------//
+  const [active, setActive] = React.useState(false)
   const [emptyState, setEmptyState] = React.useState(true)
-  const [active, setActive] = React.useState(true)
   // ------------------------------------------------------------------------------//
   return (
     <div className='relative space-y-6 p-6'>

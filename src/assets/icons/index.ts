@@ -30,6 +30,7 @@ import FunnelIcon from "./FunnelIcon"
 import GearSixIcon from "./GearSixIcon"
 import HomeIcon from "./HomeIcon"
 import HouseSimpleIcon from "./HouseSimpleIcon"
+import ImagesIcon from "./ImagesIcon"
 import LightningIcon from "./LightningIcon"
 import ListIcon from "./ListIcon"
 import LockSimpleIcon from "./LockSimpleIcon"
@@ -87,6 +88,7 @@ export {
   GearSixIcon,
   HomeIcon,
   HouseSimpleIcon,
+  ImagesIcon,
   LightningIcon,
   ListIcon,
   LockSimpleIcon,

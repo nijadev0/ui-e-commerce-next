@@ -11,7 +11,7 @@ const DBOutletAdd = () => {
   const router = useRouter()
 
   return (
-    <div className='relative h-[calc(100vh_-_80px)] space-y-6 p-6'>
+    <div className='relative min-h-[calc(100vh_-_80px)] space-y-6 p-6'>
       <h1 className='text-heading-sm font-semibold'>Outlet</h1>
 
       <section className='relative space-y-8 rounded-lg-10 bg-white p-6'>
@@ -67,7 +67,7 @@ const DBOutletAdd = () => {
       </section>
 
       <PageAction
-        variant='absolute'
+        variant='sticky'
         actionLabel='Last saved'
         actionDesc='Nov 9, 2022-17.09'
         btnPrimaryLabel='Save'
