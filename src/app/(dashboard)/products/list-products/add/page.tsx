@@ -232,14 +232,9 @@ const DBProductsListProductsAdd = () => {
           Price
         </Title>
 
-        <div className='flex w-full items-start gap-32 border-b border-netral-20 py-7 first:border-y'>
+        <div className='flex w-full items-start gap-32 border-y border-netral-20 py-7 first:border-y'>
           <div className='w-full max-w-sm space-y-2'>
-            <h5 className='space-y-2 text-body-base font-semibold'>
-              Set Discount
-            </h5>
-            <p className='w-64 text-body-sm text-netral-50'>
-              Please fill in how many discounts you will give for this products.
-            </p>
+            <h5 className='space-y-2 text-body-base font-semibold'>Price</h5>
           </div>
 
           <Input
@@ -264,7 +259,7 @@ const DBProductsListProductsAdd = () => {
           <Selectbox datas={discountType} selectedNow={false}></Selectbox>
         </div>
 
-        <div className='flex w-full items-start gap-32 border-b border-netral-20 py-7 first:border-y'>
+        <div className='flex w-full items-start gap-32 py-7 first:border-y'>
           <div className='w-full max-w-sm space-y-2'>
             <h5 className='space-y-2 text-body-base font-semibold'>
               Set Discount

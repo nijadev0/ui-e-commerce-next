@@ -305,7 +305,12 @@ const DBHome = () => {
                 <div className='w-32 2xl:w-40'>
                   <Selectbox
                     className='!border-transparent'
-                    datas={[{ name: "This Week" }, { name: "This Month" }]}
+                    datas={[
+                      { name: "Filter" },
+                      { name: "This Week" },
+                      { name: "This Month" },
+                      { name: "This Year" }
+                    ]}
                   />
                 </div>
 

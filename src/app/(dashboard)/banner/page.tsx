@@ -172,7 +172,11 @@ const DBBanner = () => {
                             <PencilSimpleIcon className='h-5 w-5' />
                           </Button>
 
-                          <Button size='md' variant='default-bg'>
+                          <Button
+                            size='md'
+                            variant='default-bg'
+                            onClick={() => {}}
+                          >
                             <TrashIcon className='h-5 w-5 text-error-main' />
                           </Button>
                         </div>
@@ -194,7 +198,7 @@ const DBBanner = () => {
         title='Add Banner'
         open={openModalDropzoneBanner}
         setOpen={setOpenModalDropzoneBanner}
-        className='max-w-4xl'
+        className='max-w-4xl !overflow-y-visible'
       >
         {activeState === 1 && (
           <>
@@ -303,7 +307,7 @@ const DBBanner = () => {
         variant='primary'
         open={openModalConfirmation}
         title='Add Banner'
-        className='max-w-lg'
+        className='max-w-lg !overflow-y-visible'
         setOpen={setOpenModalConfirmation}
       >
         <main className='mb-10 mt-4'>

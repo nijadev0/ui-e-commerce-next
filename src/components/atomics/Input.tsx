@@ -104,13 +104,13 @@ const Input: React.FC<Input> = ({
             (variant === "phone-error" &&
               "border-error-border/50 pl-24 focus:border-error-border focus:ring-error-surface 2xl:pl-[102px]") ||
             (variant === "currency" &&
-              "border-netral-30 pl-16 focus:border-primary-border focus:ring-primary-surface disabled:bg-netral-20") ||
+              "border-netral-30 pl-16 focus:border-primary-border focus:ring-primary-surface disabled:bg-netral-20 2xl:pl-16") ||
             (variant === "discount" &&
-              "border-netral-30 pl-16 focus:border-primary-border focus:ring-primary-surface disabled:bg-netral-20") ||
+              "border-netral-30 pl-16 focus:border-primary-border focus:ring-primary-surface disabled:bg-netral-20 2xl:pl-16") ||
             (variant === "logo" &&
               "border-netral-30 pl-28 focus:border-primary-border focus:ring-primary-surface disabled:bg-netral-20 2xl:pl-28") ||
             (variant === "logo-error" &&
-              "border-error-border/50 pl-28 focus:border-error-border focus:ring-error-surface")
+              "border-error-border/50 pl-28 focus:border-error-border focus:ring-error-surface 2xl:pl-28")
           }`}
           placeholder={placeholder ?? "Please add your placeholder"}
           value={value}

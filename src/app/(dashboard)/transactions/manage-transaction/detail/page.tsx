@@ -196,7 +196,7 @@ const DBTransactionManageTransactionDetail = () => {
         </Title>
 
         {/* Table */}
-        <div className='mb-6 overflow-x-auto'>
+        <div className='overflow-x-auto'>
           <table className='w-full table-auto'>
             <thead className='bg-netral-15 text-body-sm font-semibold uppercase'>
               <tr>
@@ -292,6 +292,44 @@ const DBTransactionManageTransactionDetail = () => {
             </tbody>
           </table>
         </div>
+
+        <section className='space-y-4 border-t pt-6'>
+          <div className='flex items-center justify-end'>
+            <h5 className='w-32 text-body-base font-semibold text-netral-80'>
+              Discount
+            </h5>
+            <p className='w-32 text-body-base font-semibold text-netral-80'>
+              20%
+            </p>
+          </div>
+
+          <div className='flex items-center justify-end'>
+            <h5 className='w-32 text-body-base font-semibold text-netral-80'>
+              Shipping
+            </h5>
+            <p className='w-32 text-body-base font-semibold text-netral-80'>
+              $10
+            </p>
+          </div>
+
+          <div className='flex items-center justify-end'>
+            <h5 className='w-32 text-body-base font-semibold text-netral-80'>
+              Tax
+            </h5>
+            <p className='w-32 text-body-base font-semibold text-netral-80'>
+              $10
+            </p>
+          </div>
+
+          <div className='flex items-center justify-end'>
+            <h5 className='w-32 text-body-base font-semibold text-netral-80'>
+              Subtotal
+            </h5>
+            <p className='w-32 text-body-base font-semibold text-netral-80'>
+              $389
+            </p>
+          </div>
+        </section>
       </section>
 
       <PageAction
