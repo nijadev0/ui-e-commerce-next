@@ -10,7 +10,6 @@ import {
   Title
 } from "@/components/atomics"
 import { Modal } from "@/components/moleculs"
-import { EmptyState } from "@/components/templates"
 
 import {
   ExportIcon,
@@ -20,11 +19,8 @@ import {
   FunnelIcon,
   SortAscendingIcon
 } from "@/assets/icons"
-import { NoTransactionIll } from "@/assets/illustration"
 
 const DBTransactionManageTransaction = () => {
-  // --------------------------------------------------------------------
-  const [isEmpty, setIsEmpty] = React.useState(true)
   // --------------------------------------------------------------------
   const [openModalFilter, setOpenModalFilter] = React.useState(false)
   // --------------------------------------------------------------------
@@ -33,236 +29,223 @@ const DBTransactionManageTransaction = () => {
       <h1 className='text-heading-sm font-semibold'>Transaction</h1>
 
       <section className='relative rounded-lg-10 bg-white p-6'>
-        {isEmpty ? (
-          <EmptyState
-            ill={<NoTransactionIll />}
-            toggler={setIsEmpty}
-            title='No transaction list'
-            description='The transaction you are looking for is not available.'
-          />
-        ) : (
-          <div className='space-y-6'>
-            {/* Navigation */}
-            <nav className='flex items-center justify-between'>
-              <Title size='lg' variant='default'>
-                Transaction List
-              </Title>
+        <div className='space-y-6'>
+          {/* Navigation */}
+          <nav className='flex items-center justify-between'>
+            <Title size='lg' variant='default'>
+              Transaction List
+            </Title>
 
-              <div className='relative flex flex-row gap-3'>
-                <Popover as='div' className={"relative"}>
-                  <Button
-                    size='md'
-                    variant='primary-outline'
-                    onClick={() => {
-                      return
-                    }}
-                  >
-                    <Popover.Button
-                      as='div'
-                      className={
-                        "group absolute inset-0 h-full w-full outline-0"
-                      }
-                    />
-                    Export
-                    <ExportIcon className='h-4 w-4 stroke-[4px]' />
-                  </Button>
+            <div className='relative flex flex-row gap-3'>
+              <Popover as='div' className={"relative"}>
+                <Button
+                  size='md'
+                  variant='primary-outline'
+                  onClick={() => {
+                    return
+                  }}
+                >
+                  <Popover.Button
+                    as='div'
+                    className={"group absolute inset-0 h-full w-full outline-0"}
+                  />
+                  Export
+                  <ExportIcon className='h-4 w-4 stroke-[4px]' />
+                </Button>
 
-                  <Transition
-                    as={React.Fragment}
-                    enter='transition ease-out duration-200'
-                    enterFrom='opacity-0 translate-y-1'
-                    enterTo='opacity-100 translate-y-0'
-                    leave='transition ease-in duration-150'
-                    leaveFrom='opacity-100 translate-y-0'
-                    leaveTo='opacity-0 translate-y-1'
-                  >
-                    <Popover.Panel className='absolute right-0 z-10 mt-3 w-64 transform bg-white p-3'>
-                      <div className='flex flex-col items-start overflow-hidden rounded-lg p-3 shadow-lg ring-1 ring-black ring-opacity-5'>
-                        <button className='flex w-full items-center gap-4 rounded-lg-10 p-3 text-body-base font-medium text-netral-80 transition-all duration-300 ease-out hover:bg-netral-20'>
-                          <FilePDFIcon className='h-6 w-6' />
-                          Export as PDF
-                        </button>
+                <Transition
+                  as={React.Fragment}
+                  enter='transition ease-out duration-200'
+                  enterFrom='opacity-0 translate-y-1'
+                  enterTo='opacity-100 translate-y-0'
+                  leave='transition ease-in duration-150'
+                  leaveFrom='opacity-100 translate-y-0'
+                  leaveTo='opacity-0 translate-y-1'
+                >
+                  <Popover.Panel className='absolute right-0 z-10 mt-3 w-64 transform bg-white p-3'>
+                    <div className='flex flex-col items-start overflow-hidden rounded-lg p-3 shadow-lg ring-1 ring-black ring-opacity-5'>
+                      <button className='flex w-full items-center gap-4 rounded-lg-10 p-3 text-body-base font-medium text-netral-80 transition-all duration-300 ease-out hover:bg-netral-20'>
+                        <FilePDFIcon className='h-6 w-6' />
+                        Export as PDF
+                      </button>
 
-                        <button className='flex w-full items-center gap-4 rounded-lg-10 p-3 text-body-base font-medium text-netral-80 transition-all duration-300 ease-out hover:bg-netral-20'>
-                          <FileXIcon className='h-6 w-6' />
-                          Export as Excel
-                        </button>
+                      <button className='flex w-full items-center gap-4 rounded-lg-10 p-3 text-body-base font-medium text-netral-80 transition-all duration-300 ease-out hover:bg-netral-20'>
+                        <FileXIcon className='h-6 w-6' />
+                        Export as Excel
+                      </button>
 
-                        <button className='flex w-full items-center gap-4 rounded-lg-10 p-3 text-body-base font-medium text-netral-80 transition-all duration-300 ease-out hover:bg-netral-20'>
-                          <FileTextIcon className='h-6 w-6' />
-                          Export as CSV
-                        </button>
-                      </div>
-                    </Popover.Panel>
-                  </Transition>
-                </Popover>
+                      <button className='flex w-full items-center gap-4 rounded-lg-10 p-3 text-body-base font-medium text-netral-80 transition-all duration-300 ease-out hover:bg-netral-20'>
+                        <FileTextIcon className='h-6 w-6' />
+                        Export as CSV
+                      </button>
+                    </div>
+                  </Popover.Panel>
+                </Transition>
+              </Popover>
 
-                <Popover as='div' className={"relative"}>
-                  <Button
-                    size='md'
-                    variant='default-bg'
-                    onClick={() => {
-                      return
-                    }}
-                  >
-                    <Popover.Button
-                      as='div'
-                      className={
-                        "group absolute inset-0 h-full w-full outline-0"
-                      }
-                    />
-                    Sort
-                    <SortAscendingIcon className='h-4 w-4 stroke-netral-100 stroke-[4px]' />
-                  </Button>
-
-                  <Transition
-                    as={React.Fragment}
-                    enter='transition ease-out duration-200'
-                    enterFrom='opacity-0 translate-y-1'
-                    enterTo='opacity-100 translate-y-0'
-                    leave='transition ease-in duration-150'
-                    leaveFrom='opacity-100 translate-y-0'
-                    leaveTo='opacity-0 translate-y-1'
-                  >
-                    <Popover.Panel className='absolute right-0 z-10 mt-3 w-64 transform bg-white p-3'>
-                      <div className='flex flex-col items-start overflow-hidden rounded-lg p-3 shadow-lg ring-1 ring-black ring-opacity-5'>
-                        <button className='flex w-full items-center gap-4 rounded-lg-10 p-3 text-body-base font-medium text-netral-80 transition-all duration-300 ease-out hover:bg-netral-20'>
-                          Most Recent
-                        </button>
-
-                        <button className='flex w-full items-center gap-4 rounded-lg-10 p-3 text-body-base font-medium text-netral-80 transition-all duration-300 ease-out hover:bg-netral-20'>
-                          Status
-                        </button>
-
-                        <button className='flex w-full items-center gap-4 rounded-lg-10 p-3 text-body-base font-medium text-netral-80 transition-all duration-300 ease-out hover:bg-netral-20'>
-                          Customer name A to Z
-                        </button>
-
-                        <button className='flex w-full items-center gap-4 rounded-lg-10 p-3 text-body-base font-medium text-netral-80 transition-all duration-300 ease-out hover:bg-netral-20'>
-                          Customer name Z to A
-                        </button>
-
-                        <button className='flex w-full items-center gap-4 rounded-lg-10 p-3 text-body-base font-medium text-netral-80 transition-all duration-300 ease-out hover:bg-netral-20'>
-                          Highest payment
-                        </button>
-
-                        <button className='flex w-full items-center gap-4 rounded-lg-10 p-3 text-body-base font-medium text-netral-80 transition-all duration-300 ease-out hover:bg-netral-20'>
-                          Lowest payment
-                        </button>
-                      </div>
-                    </Popover.Panel>
-                  </Transition>
-                </Popover>
-
+              <Popover as='div' className={"relative"}>
                 <Button
                   size='md'
                   variant='default-bg'
-                  onClick={() => setOpenModalFilter(true)}
+                  onClick={() => {
+                    return
+                  }}
                 >
-                  Filter
-                  <FunnelIcon className='h-4 w-4 stroke-netral-100 stroke-[4px]' />
+                  <Popover.Button
+                    as='div'
+                    className={"group absolute inset-0 h-full w-full outline-0"}
+                  />
+                  Sort
+                  <SortAscendingIcon className='h-4 w-4 stroke-netral-100 stroke-[4px]' />
                 </Button>
-              </div>
-            </nav>
 
-            {/* Table */}
-            <div className='mb-6 overflow-x-auto'>
-              <table className='w-full table-auto'>
-                <thead className='bg-netral-15 text-body-sm font-semibold uppercase'>
-                  <tr>
-                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
-                      <span className='text-body-sm font-semibold'>
-                        Transaction Number
-                      </span>
-                    </th>
+                <Transition
+                  as={React.Fragment}
+                  enter='transition ease-out duration-200'
+                  enterFrom='opacity-0 translate-y-1'
+                  enterTo='opacity-100 translate-y-0'
+                  leave='transition ease-in duration-150'
+                  leaveFrom='opacity-100 translate-y-0'
+                  leaveTo='opacity-0 translate-y-1'
+                >
+                  <Popover.Panel className='absolute right-0 z-10 mt-3 w-64 transform bg-white p-3'>
+                    <div className='flex flex-col items-start overflow-hidden rounded-lg p-3 shadow-lg ring-1 ring-black ring-opacity-5'>
+                      <button className='flex w-full items-center gap-4 rounded-lg-10 p-3 text-body-base font-medium text-netral-80 transition-all duration-300 ease-out hover:bg-netral-20'>
+                        Most Recent
+                      </button>
 
-                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
-                      <span className='text-body-sm font-semibold'>
-                        Customer Name
-                      </span>
-                    </th>
+                      <button className='flex w-full items-center gap-4 rounded-lg-10 p-3 text-body-base font-medium text-netral-80 transition-all duration-300 ease-out hover:bg-netral-20'>
+                        Status
+                      </button>
 
-                    <th className='w-56 whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
-                      <span className='text-body-sm font-semibold'>
-                        Purchased Product
-                      </span>
-                    </th>
+                      <button className='flex w-full items-center gap-4 rounded-lg-10 p-3 text-body-base font-medium text-netral-80 transition-all duration-300 ease-out hover:bg-netral-20'>
+                        Customer name A to Z
+                      </button>
 
-                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
-                      <span className='text-body-sm font-semibold'>
-                        Total Product
-                      </span>
-                    </th>
+                      <button className='flex w-full items-center gap-4 rounded-lg-10 p-3 text-body-base font-medium text-netral-80 transition-all duration-300 ease-out hover:bg-netral-20'>
+                        Customer name Z to A
+                      </button>
 
-                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
-                      <span className='text-body-sm font-semibold'>Amount</span>
-                    </th>
+                      <button className='flex w-full items-center gap-4 rounded-lg-10 p-3 text-body-base font-medium text-netral-80 transition-all duration-300 ease-out hover:bg-netral-20'>
+                        Highest payment
+                      </button>
 
-                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
-                      <span className='text-body-sm font-semibold'>Status</span>
-                    </th>
+                      <button className='flex w-full items-center gap-4 rounded-lg-10 p-3 text-body-base font-medium text-netral-80 transition-all duration-300 ease-out hover:bg-netral-20'>
+                        Lowest payment
+                      </button>
+                    </div>
+                  </Popover.Panel>
+                </Transition>
+              </Popover>
 
-                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
-                      <span className='text-body-sm font-semibold'>Action</span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-                    <tr key={item}>
-                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <span className='text-body-base font-medium text-netral-80'>
-                          20129380132
-                        </span>
-                      </td>
-
-                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <span className='text-body-base font-medium text-netral-80'>
-                          Jane Cooper
-                        </span>
-                      </td>
-
-                      <td className='w-56 whitespace-pre-wrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <span className='w-56 whitespace-pre-wrap break-words text-body-base font-medium text-netral-80'>
-                          {`T-Men's UA Storm Armour Down 2.0 Jacket`}
-                        </span>
-                      </td>
-
-                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <span className='text-body-base font-medium text-netral-80'>
-                          2
-                        </span>
-                      </td>
-
-                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <span className='text-body-base font-medium text-netral-80'>
-                          $300
-                        </span>
-                      </td>
-
-                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <Badge variant='success'>Success</Badge>
-                      </td>
-
-                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <Button
-                          size='md'
-                          variant='primary-nude'
-                          href='/transactions/manage-transaction/detail'
-                        >
-                          Detail
-                        </Button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
+              <Button
+                size='md'
+                variant='default-bg'
+                onClick={() => setOpenModalFilter(true)}
+              >
+                Filter
+                <FunnelIcon className='h-4 w-4 stroke-netral-100 stroke-[4px]' />
+              </Button>
             </div>
+          </nav>
 
-            {/* Pagination */}
-            <Pagination />
+          {/* Table */}
+          <div className='mb-6 overflow-x-auto'>
+            <table className='w-full table-auto'>
+              <thead className='bg-netral-15 text-body-sm font-semibold uppercase'>
+                <tr>
+                  <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
+                    <span className='text-body-sm font-semibold'>
+                      Transaction Number
+                    </span>
+                  </th>
+
+                  <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
+                    <span className='text-body-sm font-semibold'>
+                      Customer Name
+                    </span>
+                  </th>
+
+                  <th className='w-56 whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
+                    <span className='text-body-sm font-semibold'>
+                      Purchased Product
+                    </span>
+                  </th>
+
+                  <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
+                    <span className='text-body-sm font-semibold'>
+                      Total Product
+                    </span>
+                  </th>
+
+                  <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
+                    <span className='text-body-sm font-semibold'>Amount</span>
+                  </th>
+
+                  <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
+                    <span className='text-body-sm font-semibold'>Status</span>
+                  </th>
+
+                  <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
+                    <span className='text-body-sm font-semibold'>Action</span>
+                  </th>
+                </tr>
+              </thead>
+              <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
+                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
+                  <tr key={item}>
+                    <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                      <span className='text-body-base font-medium text-netral-80'>
+                        20129380132
+                      </span>
+                    </td>
+
+                    <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                      <span className='text-body-base font-medium text-netral-80'>
+                        Jane Cooper
+                      </span>
+                    </td>
+
+                    <td className='w-56 whitespace-pre-wrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                      <span className='w-56 whitespace-pre-wrap break-words text-body-base font-medium text-netral-80'>
+                        {`T-Men's UA Storm Armour Down 2.0 Jacket`}
+                      </span>
+                    </td>
+
+                    <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                      <span className='text-body-base font-medium text-netral-80'>
+                        2
+                      </span>
+                    </td>
+
+                    <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                      <span className='text-body-base font-medium text-netral-80'>
+                        $300
+                      </span>
+                    </td>
+
+                    <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                      <Badge variant='success'>Success</Badge>
+                    </td>
+
+                    <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                      <Button
+                        size='md'
+                        variant='primary-nude'
+                        href='/transactions/manage-transaction/detail'
+                      >
+                        Detail
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-        )}
+
+          {/* Pagination */}
+          <Pagination />
+        </div>
       </section>
 
       <Modal

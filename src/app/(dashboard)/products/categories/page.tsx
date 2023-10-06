@@ -87,157 +87,135 @@ const DBCategories = () => {
           <Tab.Panels>
             {/* Card Version */}
             <Tab.Panel>
-              {isEmpty ? (
-                <EmptyState
-                  ill={<NoCategoryIll />}
-                  toggler={setIsEmpty}
-                  title='No category found'
-                  description='The product category you are looking for is not available.'
-                  btnLabel='Add Category'
-                />
-              ) : (
-                <div className='grid grid-cols-4 gap-5'>
-                  {[1, 2, 3, 4, 5].map((item) => (
-                    <figure key={item} className='relative w-full space-y-3'>
-                      <div className='absolute left-3 top-6 z-20'>
-                        <Checkbox active={active} setActive={setActive} />
+              <div className='grid grid-cols-4 gap-5'>
+                {[1, 2, 3, 4, 5].map((item) => (
+                  <figure key={item} className='relative w-full space-y-3'>
+                    <div className='absolute left-3 top-6 z-20'>
+                      <Checkbox active={active} setActive={setActive} />
+                    </div>
+
+                    <div className='relative flex h-40 w-full items-center justify-center overflow-hidden rounded-lg-10 bg-netral-15'>
+                      <Link
+                        href={"/products/categories/detail"}
+                        className='absolute z-10 flex h-full w-full items-center justify-center bg-black/25 opacity-0 transition-all duration-500 ease-out hover:opacity-100'
+                      >
+                        <button className='flex items-center gap-2 rounded-lg border-2 border-white p-2 px-4 font-semibold text-white transition-all duration-300 ease-out hover:bg-white/25'>
+                          Detail
+                          <ArrowRightIcon className='h-5 w-5 stroke-2 text-white' />
+                        </button>
+                      </Link>
+
+                      <div className='relative aspect-square h-32 2xl:h-40'>
+                        <Image
+                          src={"/categories-1.png"}
+                          alt='Categories 1'
+                          sizes='responsive'
+                          fill
+                        />
                       </div>
+                    </div>
 
-                      <div className='relative flex h-40 w-full items-center justify-center overflow-hidden rounded-lg-10 bg-netral-15'>
-                        <Link
-                          href={"/products/categories/detail"}
-                          className='absolute z-10 flex h-full w-full items-center justify-center bg-black/25 opacity-0 transition-all duration-500 ease-out hover:opacity-100'
-                        >
-                          <button className='flex items-center gap-2 rounded-lg border-2 border-white p-2 px-4 font-semibold text-white transition-all duration-300 ease-out hover:bg-white/25'>
-                            Detail
-                            <ArrowRightIcon className='h-5 w-5 stroke-2 text-white' />
-                          </button>
-                        </Link>
-
-                        <div className='relative aspect-square h-32 2xl:h-40'>
-                          <Image
-                            src={"/categories-1.png"}
-                            alt='Categories 1'
-                            sizes='responsive'
-                            fill
-                          />
-                        </div>
-                      </div>
-
-                      <figcaption className='space-y-1.5'>
-                        <h5 className='text-body-xl font-semibold'>Outer</h5>
-                        <p className='line-clamp-2 text-body-sm text-netral-50'>
-                          Discovery a variety of outers to keep yourself warm
-                          with stylish and comfortable ways.
-                        </p>
-                      </figcaption>
-                    </figure>
-                  ))}
-                </div>
-              )}
+                    <figcaption className='space-y-1.5'>
+                      <h5 className='text-body-xl font-semibold'>Outer</h5>
+                      <p className='line-clamp-2 text-body-sm text-netral-50'>
+                        Discovery a variety of outers to keep yourself warm with
+                        stylish and comfortable ways.
+                      </p>
+                    </figcaption>
+                  </figure>
+                ))}
+              </div>
             </Tab.Panel>
 
             {/* Table Version */}
             <Tab.Panel>
-              {isEmpty ? (
-                <EmptyState
-                  ill={<NoCategoryIll />}
-                  toggler={setIsEmpty}
-                  title='No category found'
-                  description='The product category you are looking for is not available.'
-                  btnLabel='Add Category'
-                />
-              ) : (
-                <>
-                  {/* Table */}
-                  <div className='mb-6 overflow-x-auto'>
-                    <table className='w-full table-auto'>
-                      <thead className='bg-netral-15 text-body-sm font-semibold uppercase'>
-                        <tr>
-                          <th className='w-px whitespace-nowrap px-3 py-4 first:pl-5 last:pr-5'>
-                            <Checkbox active={active} setActive={setActive} />
-                          </th>
+              {/* Table */}
+              <div className='mb-6 overflow-x-auto'>
+                <table className='w-full table-auto'>
+                  <thead className='bg-netral-15 text-body-sm font-semibold uppercase'>
+                    <tr>
+                      <th className='w-px whitespace-nowrap px-3 py-4 first:pl-5 last:pr-5'>
+                        <Checkbox active={active} setActive={setActive} />
+                      </th>
 
-                          <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                            <span className='text-body-sm font-semibold'>
-                              Category
+                      <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                        <span className='text-body-sm font-semibold'>
+                          Category
+                        </span>
+                      </th>
+
+                      <th className='whitespace-nowrap px-3 py-4 pr-20 text-left text-netral-50 first:pl-5 last:pr-5'>
+                        <span className='text-body-sm font-semibold'>
+                          Description
+                        </span>
+                      </th>
+
+                      <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                        <span className='text-body-sm font-semibold'>
+                          Status
+                        </span>
+                      </th>
+
+                      <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                        <span className='text-body-sm font-semibold'>
+                          Action
+                        </span>
+                      </th>
+                    </tr>
+                  </thead>
+                  <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
+                    {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
+                      <tr key={item}>
+                        <td className='w-px whitespace-nowrap px-3 py-5 first:pl-5 last:pr-5'>
+                          <Checkbox active={active} setActive={setActive} />
+                        </td>
+
+                        <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                          <div className='flex items-center gap-3'>
+                            <div className='relative h-20 w-20 overflow-hidden rounded-lg-10'>
+                              <Image
+                                src={"/products-1.png"}
+                                className='h-full w-full object-cover'
+                                alt='Products'
+                                fill
+                              />
+                            </div>
+
+                            <span className='w-48 whitespace-pre-wrap break-words text-body-base font-medium text-netral-80'>
+                              {"T-Men's UA Storm Armour Down 2.0 Jacket"}
                             </span>
-                          </th>
+                          </div>
+                        </td>
 
-                          <th className='whitespace-nowrap px-3 py-4 pr-20 text-left text-netral-50 first:pl-5 last:pr-5'>
-                            <span className='text-body-sm font-semibold'>
-                              Description
+                        <td className='whitespace-nowrap px-3 py-5 pr-20 text-left first:pl-5 last:pr-5'>
+                          <div className='w-72'>
+                            <span className='w-72 whitespace-pre-wrap break-words text-body-base font-medium text-netral-80'>
+                              Discover easy and casual t-shirt for women and men
+                              with variety of colors, pattern and comfy
+                              materials.
                             </span>
-                          </th>
+                          </div>
+                        </td>
 
-                          <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                            <span className='text-body-sm font-semibold'>
-                              Status
-                            </span>
-                          </th>
+                        <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                          <span className='text-body-base font-medium text-netral-80'>
+                            <Badge variant='success'>Active</Badge>
+                          </span>
+                        </td>
 
-                          <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                            <span className='text-body-sm font-semibold'>
-                              Action
-                            </span>
-                          </th>
-                        </tr>
-                      </thead>
-                      <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
-                        {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-                          <tr key={item}>
-                            <td className='w-px whitespace-nowrap px-3 py-5 first:pl-5 last:pr-5'>
-                              <Checkbox active={active} setActive={setActive} />
-                            </td>
-
-                            <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                              <div className='flex items-center gap-3'>
-                                <div className='relative h-20 w-20 overflow-hidden rounded-lg-10'>
-                                  <Image
-                                    src={"/products-1.png"}
-                                    className='h-full w-full object-cover'
-                                    alt='Products'
-                                    fill
-                                  />
-                                </div>
-
-                                <span className='w-48 whitespace-pre-wrap break-words text-body-base font-medium text-netral-80'>
-                                  {"T-Men's UA Storm Armour Down 2.0 Jacket"}
-                                </span>
-                              </div>
-                            </td>
-
-                            <td className='whitespace-nowrap px-3 py-5 pr-20 text-left first:pl-5 last:pr-5'>
-                              <div className='w-72'>
-                                <span className='w-72 whitespace-pre-wrap break-words text-body-base font-medium text-netral-80'>
-                                  Discover easy and casual t-shirt for women and
-                                  men with variety of colors, pattern and comfy
-                                  materials.
-                                </span>
-                              </div>
-                            </td>
-
-                            <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                              <span className='text-body-base font-medium text-netral-80'>
-                                <Badge variant='success'>Active</Badge>
-                              </span>
-                            </td>
-
-                            <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                              <Link
-                                href={"/products/list-products/detail"}
-                                className='text-body-base font-medium text-primary-main'
-                              >
-                                Detail
-                              </Link>
-                            </td>
-                          </tr>
-                        ))}
-                      </tbody>
-                    </table>
-                  </div>
-                </>
-              )}
+                        <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                          <Link
+                            href={"/products/list-products/detail"}
+                            className='text-body-base font-medium text-primary-main'
+                          >
+                            Detail
+                          </Link>
+                        </td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
             </Tab.Panel>
           </Tab.Panels>
         </Tab.Group>

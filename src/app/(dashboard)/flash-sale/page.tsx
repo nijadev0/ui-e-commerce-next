@@ -1,7 +1,6 @@
 "use client"
 import React from "react"
 import Image from "next/image"
-import { Switch } from "@headlessui/react"
 
 import {
   Alerts,
@@ -12,7 +11,6 @@ import {
   Pagination,
   Title
 } from "@/components/atomics"
-import { EmptyState } from "@/components/templates"
 import { Modal, PageAction } from "@/components/moleculs"
 
 import {
@@ -23,15 +21,12 @@ import {
   SortAscendingIcon,
   TrashIcon
 } from "@/assets/icons"
-import { NoFlashsaleIll } from "@/assets/illustration"
 
 const DBFlashSale = () => {
   // -------------------------------------------------------------------------------------//
   const [active, setActive] = React.useState(false)
   const [activeState, setActiveState] = React.useState(1)
-  const [emptyState, setEmptyState] = React.useState(true)
   const [openModalFlashSale, setOpenModalFlashSale] = React.useState(false)
-
   // -------------------------------------------------------------------------------------//
   const [openSuccess, setOpenSuccess] = React.useState(false)
 
@@ -87,118 +82,99 @@ const DBFlashSale = () => {
           </section>
         </nav>
 
-        {emptyState ? (
-          <EmptyState
-            ill={<NoFlashsaleIll />}
-            toggler={setEmptyState}
-            title='No flash sale list'
-            description='The flash sale you are looking for is not available.'
-          />
-        ) : (
-          <>
-            {/* Table */}
-            <div className='mb-6 overflow-x-auto'>
-              <table className='w-full table-auto'>
-                <thead className='bg-netral-15 text-body-sm font-semibold uppercase'>
-                  <tr>
-                    <th className='w-px whitespace-nowrap px-3 py-4 first:pl-5 last:pr-5'>
-                      <Checkbox active={active} setActive={setActive} />
-                    </th>
+        {/* Table */}
+        <div className='mb-6 overflow-x-auto'>
+          <table className='w-full table-auto'>
+            <thead className='bg-netral-15 text-body-sm font-semibold uppercase'>
+              <tr>
+                <th className='w-px whitespace-nowrap px-3 py-4 first:pl-5 last:pr-5'>
+                  <Checkbox active={active} setActive={setActive} />
+                </th>
 
-                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                      <span className='text-body-sm font-semibold'>
-                        Product
+                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                  <span className='text-body-sm font-semibold'>Product</span>
+                </th>
+
+                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                  <span className='text-body-sm font-semibold'>Category</span>
+                </th>
+
+                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                  <span className='text-body-sm font-semibold'>Status</span>
+                </th>
+
+                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                  <span className='text-body-sm font-semibold'>Stock</span>
+                </th>
+
+                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                  <span className='text-body-sm font-semibold'>Price</span>
+                </th>
+
+                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                  <span className='text-body-sm font-semibold'>Action</span>
+                </th>
+              </tr>
+            </thead>
+
+            <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
+              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
+                <tr key={item}>
+                  <td className='w-px whitespace-nowrap px-3 py-5 first:pl-5 last:pr-5'>
+                    <Checkbox active={active} setActive={setActive} />
+                  </td>
+                  <td className='whitespace-pre-wrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                    <section className='flex items-center gap-3'>
+                      <div className='relative h-20 w-20 overflow-hidden rounded-lg-10'>
+                        <Image
+                          className='h-full w-full object-cover'
+                          src={"/products-1.png"}
+                          alt='Products 1'
+                          fill
+                        />
+                      </div>
+
+                      <span className='w-48 whitespace-pre-wrap text-body-base font-medium text-netral-80'>
+                        {"T-Men's UA Storm Armour Down 2.0 Jacket"}
                       </span>
-                    </th>
+                    </section>
+                  </td>
 
-                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                      <span className='text-body-sm font-semibold'>
-                        Category
-                      </span>
-                    </th>
+                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                    <span className='text-body-base font-medium text-netral-80'>
+                      Outer
+                    </span>
+                  </td>
 
-                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                      <span className='text-body-sm font-semibold'>Status</span>
-                    </th>
+                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                    <Badge variant='success'>Success</Badge>
+                  </td>
 
-                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                      <span className='text-body-sm font-semibold'>Stock</span>
-                    </th>
+                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                    <span className='text-body-base font-medium text-netral-80'>
+                      401
+                    </span>
+                  </td>
 
-                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                      <span className='text-body-sm font-semibold'>Price</span>
-                    </th>
+                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                    <span className='text-body-base font-medium text-netral-80'>
+                      $178
+                    </span>
+                  </td>
 
-                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                      <span className='text-body-sm font-semibold'>Action</span>
-                    </th>
-                  </tr>
-                </thead>
+                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                    <Button size='md' variant='primary-nude' onClick={() => {}}>
+                      Detail
+                    </Button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-                <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
-                  {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-                    <tr key={item}>
-                      <td className='w-px whitespace-nowrap px-3 py-5 first:pl-5 last:pr-5'>
-                        <Checkbox active={active} setActive={setActive} />
-                      </td>
-                      <td className='whitespace-pre-wrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <section className='flex items-center gap-3'>
-                          <div className='relative h-20 w-20 overflow-hidden rounded-lg-10'>
-                            <Image
-                              className='h-full w-full object-cover'
-                              src={"/products-1.png"}
-                              alt='Products 1'
-                              fill
-                            />
-                          </div>
-
-                          <span className='w-48 whitespace-pre-wrap text-body-base font-medium text-netral-80'>
-                            {"T-Men's UA Storm Armour Down 2.0 Jacket"}
-                          </span>
-                        </section>
-                      </td>
-
-                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <span className='text-body-base font-medium text-netral-80'>
-                          Outer
-                        </span>
-                      </td>
-
-                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <Badge variant='success'>Success</Badge>
-                      </td>
-
-                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <span className='text-body-base font-medium text-netral-80'>
-                          401
-                        </span>
-                      </td>
-
-                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <span className='text-body-base font-medium text-netral-80'>
-                          $178
-                        </span>
-                      </td>
-
-                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <Button
-                          size='md'
-                          variant='primary-nude'
-                          onClick={() => {}}
-                        >
-                          Detail
-                        </Button>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
-
-            {/* Pagination */}
-            <Pagination />
-          </>
-        )}
+        {/* Pagination */}
+        <Pagination />
       </section>
 
       {/* Page Action */}
@@ -537,7 +513,6 @@ const DBFlashSale = () => {
                 setActiveState(1)
                 setOpenModalFlashSale(false)
                 openSuccessAlerts()
-                setEmptyState(false)
               }
             }}
           >

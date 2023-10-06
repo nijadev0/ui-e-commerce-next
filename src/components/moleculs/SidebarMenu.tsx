@@ -43,15 +43,15 @@ const toggleSideMenu = () => {
 }
    */
   //------------------------------------------------------------------------------------------------------------//
-  const localStorageData = window.localStorage.getItem(name)
-  const previousMenu = JSON.parse(localStorageData || "false")
-  const [sideMenuRef, setSideMenuRef] = React.useState(previousMenu)
+  // const localStorageData = window.localStorage.getItem(name)
+  // const previousMenu = JSON.parse(localStorageData || "false")
+  // const [sideMenuRef, setSideMenuRef] = React.useState(previousMenu)
 
-  const toggleSideMenu = () => {
-    setSideMenuRef(!sideMenuRef)
+  // const toggleSideMenu = () => {
+  //   setSideMenuRef(!sideMenuRef)
 
-    window.localStorage.setItem(name, `${sideMenuRef}`)
-  }
+  //   window.localStorage.setItem(name, `${sideMenuRef}`)
+  // }
 
   return (
     <>
@@ -86,12 +86,10 @@ const toggleSideMenu = () => {
           type='button'
           onClick={() => {
             onClick()
-            toggleSideMenu()
+            // toggleSideMenu()
           }}
           className={`relative flex w-full items-center justify-between gap-3 rounded-lg-10 ${
-            sideMenuRef
-              ? "bg-netral-20 text-primary-main"
-              : "bg-white text-netral-50"
+            active ? "bg-white text-primary-main" : "bg-white text-netral-50"
           } p-3 transition-all duration-300 ease-out hover:bg-netral-20`}
         >
           <div className='flex items-center gap-3'>

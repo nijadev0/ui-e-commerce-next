@@ -83,114 +83,93 @@ const DBBanner = () => {
           </div>
         </nav>
 
-        {emptyState ? (
-          <EmptyState
-            ill={<NoBannersIll />}
-            toggler={setEmptyState}
-            title='No banner list'
-            description='The banner you are looking for is not available.'
-          />
-        ) : (
-          <>
-            {/* Table */}
-            <div className='mb-6 overflow-x-auto'>
-              <table className='w-full table-auto'>
-                <thead className='bg-netral-15 text-body-sm font-semibold uppercase'>
-                  <tr>
-                    <th className='w-px whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                      <span className='text-body-sm font-semibold'>No</span>
-                    </th>
+        {/* Table */}
+        <div className='mb-6 overflow-x-auto'>
+          <table className='w-full table-auto'>
+            <thead className='bg-netral-15 text-body-sm font-semibold uppercase'>
+              <tr>
+                <th className='w-px whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                  <span className='text-body-sm font-semibold'>No</span>
+                </th>
 
-                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                      <span className='text-body-sm font-semibold'>Image</span>
-                    </th>
+                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                  <span className='text-body-sm font-semibold'>Image</span>
+                </th>
 
-                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                      <span className='text-body-sm font-semibold'>Type</span>
-                    </th>
+                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                  <span className='text-body-sm font-semibold'>Type</span>
+                </th>
 
-                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                      <span className='text-body-sm font-semibold'>
-                        Created At
-                      </span>
-                    </th>
+                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                  <span className='text-body-sm font-semibold'>Created At</span>
+                </th>
 
-                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                      <span className='text-body-sm font-semibold'>Show</span>
-                    </th>
+                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                  <span className='text-body-sm font-semibold'>Show</span>
+                </th>
 
-                    <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                      <span className='text-body-sm font-semibold'>Action</span>
-                    </th>
-                  </tr>
-                </thead>
-                <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
-                  {[1, 2, 3].map((item) => (
-                    <tr key={item}>
-                      <td className='w-px whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <span className='text-body-base font-medium text-netral-80'>
-                          {item}
-                        </span>
-                      </td>
+                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                  <span className='text-body-sm font-semibold'>Action</span>
+                </th>
+              </tr>
+            </thead>
+            <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
+              {[1, 2, 3].map((item) => (
+                <tr key={item}>
+                  <td className='w-px whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                    <span className='text-body-base font-medium text-netral-80'>
+                      {item}
+                    </span>
+                  </td>
 
-                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <div className='relative aspect-video w-40 overflow-hidden rounded-lg-10'>
-                          <Image
-                            src={`/banner-${item}.png`}
-                            className='h-full w-full object-cover'
-                            alt={`Banner Image ${item}`}
-                            fill
-                          />
-                        </div>
-                      </td>
+                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                    <div className='relative aspect-video w-40 overflow-hidden rounded-lg-10'>
+                      <Image
+                        src={`/banner-${item}.png`}
+                        className='h-full w-full object-cover'
+                        alt={`Banner Image ${item}`}
+                        fill
+                      />
+                    </div>
+                  </td>
 
-                      <td className='whitespace-pre-wrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <span className='w-[200px] whitespace-pre-wrap break-words text-body-base font-medium text-netral-80'>
-                          Banner Best Seller Collection
-                        </span>
-                      </td>
+                  <td className='whitespace-pre-wrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                    <span className='w-[200px] whitespace-pre-wrap break-words text-body-base font-medium text-netral-80'>
+                      Banner Best Seller Collection
+                    </span>
+                  </td>
 
-                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <span className='text-body-base font-medium text-netral-80'>
-                          24-11-2022
-                        </span>
-                      </td>
+                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                    <span className='text-body-base font-medium text-netral-80'>
+                      24-11-2022
+                    </span>
+                  </td>
 
-                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <Toggle
-                          enabled={enableToggle}
-                          setEnabled={setEnableToggle}
-                        />
-                      </td>
-                      <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                        <div className='flex flex-row gap-3'>
-                          <Button
-                            size='md'
-                            variant='default-bg'
-                            onClick={() => {}}
-                          >
-                            <PencilSimpleIcon className='h-5 w-5' />
-                          </Button>
+                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                    <Toggle
+                      enabled={enableToggle}
+                      setEnabled={setEnableToggle}
+                    />
+                  </td>
+                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                    <div className='flex flex-row gap-3'>
+                      <Button size='md' variant='default-bg' onClick={() => {}}>
+                        <PencilSimpleIcon className='h-5 w-5' />
+                      </Button>
 
-                          <Button
-                            size='md'
-                            variant='default-bg'
-                            onClick={() => {}}
-                          >
-                            <TrashIcon className='h-5 w-5 text-error-main' />
-                          </Button>
-                        </div>
-                      </td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+                      <Button size='md' variant='default-bg' onClick={() => {}}>
+                        <TrashIcon className='h-5 w-5 text-error-main' />
+                      </Button>
+                    </div>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
 
-            {/* Pagination */}
-            <Pagination />
-          </>
-        )}
+        {/* Pagination */}
+        <Pagination />
       </section>
 
       <Modal

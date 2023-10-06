@@ -51,7 +51,7 @@ const Sidebar: React.FC = () => {
   const [showTransactionsMenu, setShowTransactionsMenu] = React.useState(false)
   const [showAuthMenu, setShowAuthMenu] = React.useState(false)
 
-  const localStorageData = window.localStorage.getItem("Customers")
+  // const localStorageData = window.localStorage.getItem("Customers")
 
   return (
     <aside
