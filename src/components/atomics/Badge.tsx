@@ -7,8 +7,8 @@ interface Badge {
 
 const Badge: React.FC<Badge> = ({ children, variant }) => {
   return (
-    <button
-      className={`BADGE ${
+    <div
+      className={`BADGE inline-block ${
         (variant === "default" &&
           "BADGE-DEFAULT bg-netral-30 text-netral-80") ||
         (variant === "success" &&
@@ -20,7 +20,7 @@ const Badge: React.FC<Badge> = ({ children, variant }) => {
       } cursor-auto rounded-full px-3 py-2 text-body-sm font-medium leading-none tracking-[1%]`}
     >
       {children}
-    </button>
+    </div>
   )
 }
 

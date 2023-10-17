@@ -14,6 +14,54 @@ import {
   SortAscendingIcon
 } from "@/assets/icons"
 
+/**
+ * ============================
+ * Dummy Data - List Products
+ * ============================
+ */
+const listProductsData = [
+  {
+    productName: "T-Men's UA Storm Armour Down 2.0 Jacket",
+    productImage: "/list-products/ListProducts-1.png",
+    category: "outer",
+    status: "active",
+    stock: 401,
+    price: "$178"
+  },
+  {
+    productName: "Windproof Handbell Oversized Long Coat",
+    productImage: "/list-products/ListProducts-2.png",
+    category: "outer",
+    status: "scheduled",
+    stock: 738,
+    price: "$178"
+  },
+  {
+    productName: "Women's Stripe Sweater",
+    productImage: "/list-products/ListProducts-3.png",
+    category: "sweater",
+    status: "active",
+    stock: 432,
+    price: "$178"
+  },
+  {
+    productName: "Women's Turtleneck Sweater",
+    productImage: "/list-products/ListProducts-4.png",
+    category: "sweater",
+    status: "draft",
+    stock: 0,
+    price: "$178"
+  },
+  {
+    productName: "One Set - Casual Hoodie with Buttons",
+    productImage: "/list-products/ListProducts-5.png",
+    category: "kids",
+    status: "active",
+    stock: 334,
+    price: "$178"
+  }
+]
+
 const DBProductsListProducts = () => {
   //----------------------------------------------------------------------------------------//
   const [active, setActive] = React.useState(false)
@@ -24,11 +72,11 @@ const DBProductsListProducts = () => {
   //----------------------------------------------------------------------------------------//
 
   return (
-    <div className='relative space-y-6 p-6'>
-      <h1 className='text-heading-sm font-semibold'>Products</h1>
+    <div className='relative p-6 space-y-6'>
+      <h1 className='font-semibold text-heading-sm'>Products</h1>
 
-      <section className='relative rounded-lg-10 bg-white p-6'>
-        <nav className='mb-8 flex items-center justify-between'>
+      <section className='relative p-6 bg-white rounded-lg-10'>
+        <nav className='flex items-center justify-between mb-8'>
           <Title size='lg' variant='default'>
             Products List
           </Title>
@@ -58,86 +106,90 @@ const DBProductsListProducts = () => {
         {/* Table */}
         <div className='mb-6 overflow-x-auto'>
           <table className='w-full table-auto'>
-            <thead className='bg-netral-15 text-body-sm font-semibold uppercase'>
+            <thead className='font-semibold uppercase bg-netral-15 text-body-sm'>
               <tr>
-                <th className='w-px whitespace-nowrap px-3 py-4 first:pl-5 last:pr-5'>
+                <th className='w-px px-3 py-4 whitespace-nowrap first:pl-5 last:pr-5'>
                   <Checkbox active={active} setActive={setActive} />
                 </th>
 
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Product</span>
+                <th className='px-3 py-4 text-left whitespace-nowrap text-netral-50 first:pl-5 last:pr-5'>
+                  <span className='font-semibold text-body-sm'>Product</span>
                 </th>
 
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Category</span>
+                <th className='px-3 py-4 text-left whitespace-nowrap text-netral-50 first:pl-5 last:pr-5'>
+                  <span className='font-semibold text-body-sm'>Category</span>
                 </th>
 
-                <th className='w-56 whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Status</span>
+                <th className='w-56 px-3 py-4 text-left whitespace-nowrap text-netral-50 first:pl-5 last:pr-5'>
+                  <span className='font-semibold text-body-sm'>Status</span>
                 </th>
 
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Stock</span>
+                <th className='px-3 py-4 text-left whitespace-nowrap text-netral-50 first:pl-5 last:pr-5'>
+                  <span className='font-semibold text-body-sm'>Stock</span>
                 </th>
 
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Price</span>
+                <th className='px-3 py-4 text-left whitespace-nowrap text-netral-50 first:pl-5 last:pr-5'>
+                  <span className='font-semibold text-body-sm'>Price</span>
                 </th>
 
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Action</span>
+                <th className='px-3 py-4 text-left whitespace-nowrap text-netral-50 first:pl-5 last:pr-5'>
+                  <span className='font-semibold text-body-sm'>Action</span>
                 </th>
               </tr>
             </thead>
-            <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-                <tr key={item}>
-                  <td className='w-px whitespace-nowrap px-3 py-5 first:pl-5 last:pr-5'>
+            <tbody className='pt-4 text-sm divide-y divide-netral-20'>
+              {listProductsData.map((item) => (
+                <tr key={item.productName}>
+                  <td className='w-px px-3 py-5 whitespace-nowrap first:pl-5 last:pr-5'>
                     <Checkbox active={active} setActive={setActive} />
                   </td>
 
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                  <td className='px-3 py-5 text-left whitespace-nowrap first:pl-5 last:pr-5'>
                     <div className='flex items-center gap-3'>
-                      <div className='relative h-20 w-20 overflow-hidden rounded-lg-10'>
+                      <div className='relative w-20 h-20 overflow-hidden rounded-lg-10'>
                         <Image
-                          src={"/products-1.png"}
-                          className='h-full w-full object-cover'
+                          src={item.productImage}
+                          className='object-cover w-full h-full'
                           alt='Products'
                           fill
                         />
                       </div>
 
-                      <span className='w-48 whitespace-pre-wrap break-words text-body-base font-medium text-netral-80'>
-                        {"T-Men's UA Storm Armour Down 2.0 Jacket"}
+                      <span className='w-48 font-medium break-words whitespace-pre-wrap text-body-base text-netral-80'>
+                        {item.productName}
                       </span>
                     </div>
                   </td>
 
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <span className='text-body-base font-medium text-netral-80'>
-                      Outer
+                  <td className='px-3 py-5 text-left whitespace-nowrap first:pl-5 last:pr-5'>
+                    <span className='font-medium capitalize text-body-base text-netral-80'>
+                      {item.category}
                     </span>
                   </td>
 
-                  <td className='w-56 whitespace-pre-wrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <span className=' whitespace-pre-wrap break-words text-body-base font-medium text-netral-80'>
-                      <Badge variant='success'>Active</Badge>
+                  <td className='w-56 px-3 py-5 text-left capitalize whitespace-pre-wrap first:pl-5 last:pr-5'>
+                    {item.status === "active" ? (
+                      <Badge variant='success'>{item.status}</Badge>
+                    ) : item.status === "scheduled" ? (
+                      <Badge variant='info'>{item.status}</Badge>
+                    ) : item.status === "draft" ? (
+                      <Badge variant='warning'>{item.status}</Badge>
+                    ) : null}
+                  </td>
+
+                  <td className='px-3 py-5 text-left whitespace-nowrap first:pl-5 last:pr-5'>
+                    <span className='font-medium text-body-base text-netral-80'>
+                      {item.stock}
                     </span>
                   </td>
 
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <span className='text-body-base font-medium text-netral-80'>
-                      401
+                  <td className='px-3 py-5 text-left whitespace-nowrap first:pl-5 last:pr-5'>
+                    <span className='font-medium capitalize text-body-base text-netral-80'>
+                      {item.price}
                     </span>
                   </td>
 
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <span className='text-body-base font-medium text-netral-80'>
-                      $178
-                    </span>
-                  </td>
-
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                  <td className='px-3 py-5 text-left whitespace-nowrap first:pl-5 last:pr-5'>
                     <Button
                       size='md'
                       variant='primary-nude'
@@ -174,14 +226,14 @@ const DBProductsListProducts = () => {
         className='max-w-lg'
         setOpen={setOpenModalDelete}
       >
-        <main className='mb-10 mt-4'>
+        <main className='mt-4 mb-10'>
           <p className='text-body-base text-netral-80'>
             Are you sure want to delete this user? User which already deleted
             can not be recovered.
           </p>
         </main>
 
-        <footer className='flex w-full justify-end gap-3'>
+        <footer className='flex justify-end w-full gap-3'>
           <Button
             size='md'
             variant='default-nude'
@@ -217,13 +269,13 @@ const DBProductsListProducts = () => {
         className='max-w-lg'
         setOpen={setOpenModalDraft}
       >
-        <main className='mb-10 mt-4'>
+        <main className='mt-4 mb-10'>
           <p className='text-body-base text-netral-80'>
             Are you sure want to draft this product?
           </p>
         </main>
 
-        <footer className='flex w-full justify-end gap-3'>
+        <footer className='flex justify-end w-full gap-3'>
           <Button
             size='md'
             variant='default-nude'
