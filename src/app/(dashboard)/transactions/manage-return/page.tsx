@@ -5,12 +5,81 @@ import { Badge, Button, Pagination, Title } from "@/components/atomics"
 
 import { ExportIcon, FunnelIcon, SortAscendingIcon } from "@/assets/icons"
 
+/**
+ * Dummy data - Manage Returns
+ */
+const manageReturnsData = [
+  {
+    transactionNumber: "430906237494",
+    customerName: "Jane Cooper",
+    purchasedProduct: "Women's Clothing Azure",
+    date: "20 Oct 2022",
+    phoneNumber: "+62878981239",
+    paymentAmount: "$123",
+    status: "warning"
+  },
+  {
+    transactionNumber: "387492287349",
+    customerName: "Wade Warren",
+    purchasedProduct: "Women's Clothing Azure",
+    date: "20 Oct 2022",
+    phoneNumber: "+62878981239",
+    paymentAmount: "$236",
+    status: "success"
+  },
+  {
+    transactionNumber: "093420239402",
+    customerName: "Williamson",
+    purchasedProduct: "Women's Clothing Azure",
+    date: "20 Oct 2022",
+    phoneNumber: "+62878981239",
+    paymentAmount: "$726",
+    status: "success"
+  },
+  {
+    transactionNumber: "934850829349",
+    customerName: "Jenny Wilson",
+    purchasedProduct: "Women's Clothing Azure",
+    date: "20 Oct 2022",
+    phoneNumber: "+62878981239",
+    paymentAmount: "$124",
+    status: "reject"
+  },
+  {
+    transactionNumber: "293840029340",
+    customerName: "Williamson",
+    purchasedProduct: "Women's Clothing Azure",
+    date: "20 Oct 2022",
+    phoneNumber: "+62878981239",
+    paymentAmount: "$149",
+    status: "success"
+  },
+  {
+    transactionNumber: "394024029340",
+    customerName: "Robert Fox",
+    purchasedProduct: "Women's Clothing Azure",
+    date: "20 Oct 2022",
+    phoneNumber: "+62878981239",
+    paymentAmount: "$152",
+    status: "success"
+  },
+  {
+    transactionNumber: "340394023940",
+    customerName: "Robert Fox",
+    purchasedProduct: "Women's Clothing Azure",
+    date: "20 Oct 2022",
+    phoneNumber: "+62878981239",
+    paymentAmount: "$214",
+    status: "reject"
+  }
+]
+
 const DBTransactionManageRefund = () => {
   return (
-    <div className='relative space-y-6 p-6'>
-      <h1 className='text-heading-sm font-semibold'>Returns</h1>
+    <div className='relative p-6 space-y-6'>
+      <h1 className='font-semibold text-heading-sm'>Returns</h1>
 
-      <section className='relative space-y-6 rounded-lg-10 bg-white p-6'>
+      <section className='relative p-6 space-y-6 bg-white rounded-lg-10'>
         <nav className='flex items-center justify-between'>
           <Title size='lg' variant='default'>
             Return List
@@ -37,93 +106,99 @@ const DBTransactionManageRefund = () => {
         {/* Table */}
         <div className='mb-6 overflow-x-auto'>
           <table className='w-full table-auto'>
-            <thead className='bg-netral-15 text-body-sm font-semibold uppercase'>
+            <thead className='font-semibold uppercase bg-netral-15 text-body-sm'>
               <tr>
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
-                  <span className='text-body-sm font-semibold'>
+                <th className='px-3 py-4 text-left whitespace-nowrap text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
+                  <span className='font-semibold text-body-sm'>
                     Transaction Number
                   </span>
                 </th>
 
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
-                  <span className='text-body-sm font-semibold'>
+                <th className='px-3 py-4 text-left whitespace-nowrap text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
+                  <span className='font-semibold text-body-sm'>
                     Customer Name
                   </span>
                 </th>
 
-                <th className='w-56 whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
-                  <span className='text-body-sm font-semibold'>
+                <th className='w-56 px-3 py-4 text-left whitespace-nowrap text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
+                  <span className='font-semibold text-body-sm'>
                     Purchased Product
                   </span>
                 </th>
 
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Date</span>
+                <th className='px-3 py-4 text-left whitespace-nowrap text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
+                  <span className='font-semibold text-body-sm'>Date</span>
                 </th>
 
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
-                  <span className='text-body-sm font-semibold'>
+                <th className='px-3 py-4 text-left whitespace-nowrap text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
+                  <span className='font-semibold text-body-sm'>
                     Phone Number
                   </span>
                 </th>
 
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Amount</span>
+                <th className='px-3 py-4 text-left whitespace-nowrap text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
+                  <span className='font-semibold text-body-sm'>Amount</span>
                 </th>
 
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Status</span>
+                <th className='px-3 py-4 text-left whitespace-nowrap text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
+                  <span className='font-semibold text-body-sm'>Status</span>
                 </th>
 
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Action</span>
+                <th className='px-3 py-4 text-left whitespace-nowrap text-netral-50 first:rounded-l-lg first:pl-5 last:rounded-r-lg last:pr-5'>
+                  <span className='font-semibold text-body-sm'>Action</span>
                 </th>
               </tr>
             </thead>
-            <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-                <tr key={item}>
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <span className='text-body-base font-medium text-netral-80'>
-                      430906237494
+            <tbody className='pt-4 text-sm divide-y divide-netral-20'>
+              {manageReturnsData.map((item) => (
+                <tr key={item.customerName}>
+                  <td className='px-3 py-5 text-left whitespace-nowrap first:pl-5 last:pr-5'>
+                    <span className='font-medium text-body-base text-netral-80'>
+                      {item.transactionNumber}
                     </span>
                   </td>
 
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <span className='text-body-base font-medium text-netral-80'>
-                      Jane Cooper
+                  <td className='px-3 py-5 text-left whitespace-nowrap first:pl-5 last:pr-5'>
+                    <span className='font-medium text-body-base text-netral-80'>
+                      {item.customerName}
                     </span>
                   </td>
 
-                  <td className='w-56 whitespace-pre-wrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <span className='w-56 whitespace-pre-wrap break-words text-body-base font-medium text-netral-80'>
-                      {`T-Men's UA Storm Armour Down 2.0 Jacket`}
+                  <td className='w-56 px-3 py-5 text-left whitespace-pre-wrap first:pl-5 last:pr-5'>
+                    <span className='w-56 font-medium break-words whitespace-pre-wrap text-body-base text-netral-80'>
+                      {item.purchasedProduct}
                     </span>
                   </td>
 
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <span className='text-body-base font-medium text-netral-80'>
-                      20 Oct 2022
+                  <td className='px-3 py-5 text-left whitespace-nowrap first:pl-5 last:pr-5'>
+                    <span className='font-medium text-body-base text-netral-80'>
+                      {item.date}
                     </span>
                   </td>
 
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <span className='text-body-base font-medium text-netral-80'>
-                      +62878981239
+                  <td className='px-3 py-5 text-left whitespace-nowrap first:pl-5 last:pr-5'>
+                    <span className='font-medium text-body-base text-netral-80'>
+                      {item.phoneNumber}
                     </span>
                   </td>
 
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <span className='text-body-base font-medium text-netral-80'>
-                      $236
+                  <td className='px-3 py-5 text-left whitespace-nowrap first:pl-5 last:pr-5'>
+                    <span className='font-medium text-body-base text-netral-80'>
+                      {item.paymentAmount}
                     </span>
                   </td>
 
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <Badge variant='success'>Success</Badge>
+                  <td className='px-3 py-5 text-left capitalize whitespace-nowrap first:pl-5 last:pr-5'>
+                    {item.status === "success" ? (
+                      <Badge variant='success'>{item.status}</Badge>
+                    ) : item.status === "reject" ? (
+                      <Badge variant='error'>{item.status}</Badge>
+                    ) : item.status === "warning" ? (
+                      <Badge variant='warning'>{item.status}</Badge>
+                    ) : null}
                   </td>
 
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                  <td className='px-3 py-5 text-left whitespace-nowrap first:pl-5 last:pr-5'>
                     <Button
                       size='md'
                       variant='primary-nude'
