@@ -6,6 +6,56 @@ import { Button, Checkbox, Pagination, Title } from "@/components/atomics"
 
 import { MagnifyingGlassIcon, StoreFrontIcon } from "@/assets/icons"
 
+/**
+ * =======================
+ * Dummy Data - Outlets
+ * =======================
+ */
+const outletsData = [
+  {
+    name: "Brand Here Delaware",
+    address: "2972 Westheimer Rd. Santa Ana, Illinois 85486",
+    phone: "(603) 555-0123",
+    managerBranch: "Arlene McCoy",
+    totalTransaction: "$5392"
+  },
+  {
+    name: "Brand Here Kentucky",
+    address: "3517 W. Gray St. Utica, Pennsylvania 57867",
+    phone: "(684) 555-0102",
+    managerBranch: "Courtney Henry",
+    totalTransaction: "$7890"
+  },
+  {
+    name: "Brand Here Maine",
+    address: "8502 Preston Rd. Inglewood, Maine 98380",
+    phone: "(480) 555-0103",
+    managerBranch: "Jerome Bell",
+    totalTransaction: "$6499"
+  },
+  {
+    name: "Brand Here Pennsylvania",
+    address: "2464 Royal Ln. Mesa, New Jersey 45463",
+    phone: "(704) 555-0127",
+    managerBranch: "Kathryn Murphy",
+    totalTransaction: "$7239"
+  },
+  {
+    name: "Brand Here Hawaii",
+    address: "3891 Ranchview Dr. Richardson, California 62639",
+    phone: "(316) 555-0116",
+    managerBranch: "Theresa Webb",
+    totalTransaction: "$3473"
+  },
+  {
+    name: "Brand Here Connecticut",
+    address: "8502 Preston Rd. Inglewood, Maine 98380",
+    phone: "(808) 555-0111",
+    managerBranch: "Floyd Miles",
+    totalTransaction: "$7438"
+  }
+]
+
 const DBOutlets = () => {
   // ------------------------------------------------------------------------------//
   const [active, setActive] = React.useState(false)
@@ -80,38 +130,38 @@ const DBOutlets = () => {
               </tr>
             </thead>
             <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-                <tr key={item}>
+              {outletsData.map((item) => (
+                <tr key={item.name}>
                   <td className='w-px whitespace-nowrap px-3 py-5 first:pl-5 last:pr-5'>
                     <Checkbox active={active} setActive={setActive} />
                   </td>
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='text-body-base font-medium text-netral-80'>
-                      Brand Here Delaware
+                      {item.name}
                     </span>
                   </td>
 
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='text-body-base font-medium text-netral-80'>
-                      6391 Elgin St. Celina, Delaware 10299
+                      {item.address}
                     </span>
                   </td>
 
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='text-body-base font-medium text-netral-80'>
-                      (480) 555-0103
+                      {item.phone}
                     </span>
                   </td>
 
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='text-body-base font-medium text-netral-80'>
-                      Arlene McCoy
+                      {item.managerBranch}
                     </span>
                   </td>
 
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='text-body-base font-medium text-netral-80'>
-                      $5392
+                      {item.totalTransaction}
                     </span>
                   </td>
 
