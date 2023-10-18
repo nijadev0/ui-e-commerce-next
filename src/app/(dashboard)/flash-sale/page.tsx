@@ -22,6 +22,54 @@ import {
   TrashIcon
 } from "@/assets/icons"
 
+/**
+ * ============================
+ * Dummy Data - List Products
+ * ============================
+ */
+const listProductsData = [
+  {
+    productName: "T-Men's UA Storm Armour Down 2.0 Jacket",
+    productImage: "/list-products/ListProducts-1.png",
+    category: "outer",
+    status: "active",
+    stock: 401,
+    price: "$178"
+  },
+  {
+    productName: "Windproof Handbell Oversized Long Coat",
+    productImage: "/list-products/ListProducts-2.png",
+    category: "outer",
+    status: "scheduled",
+    stock: 738,
+    price: "$178"
+  },
+  {
+    productName: "Women's Stripe Sweater",
+    productImage: "/list-products/ListProducts-3.png",
+    category: "sweater",
+    status: "active",
+    stock: 432,
+    price: "$178"
+  },
+  {
+    productName: "Women's Turtleneck Sweater",
+    productImage: "/list-products/ListProducts-4.png",
+    category: "sweater",
+    status: "draft",
+    stock: 0,
+    price: "$178"
+  },
+  {
+    productName: "One Set - Casual Hoodie with Buttons",
+    productImage: "/list-products/ListProducts-5.png",
+    category: "kids",
+    status: "active",
+    stock: 334,
+    price: "$178"
+  }
+]
+
 const DBFlashSale = () => {
   // -------------------------------------------------------------------------------------//
   const [active, setActive] = React.useState(false)
@@ -118,8 +166,8 @@ const DBFlashSale = () => {
             </thead>
 
             <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-                <tr key={item}>
+              {listProductsData.map((item) => (
+                <tr key={item.productName}>
                   <td className='w-px whitespace-nowrap px-3 py-5 first:pl-5 last:pr-5'>
                     <Checkbox active={active} setActive={setActive} />
                   </td>
@@ -128,37 +176,43 @@ const DBFlashSale = () => {
                       <div className='relative h-20 w-20 overflow-hidden rounded-lg-10'>
                         <Image
                           className='h-full w-full object-cover'
-                          src={"/products-1.png"}
-                          alt='Products 1'
+                          src={item.productImage}
+                          alt={item.productName}
                           fill
                         />
                       </div>
 
                       <span className='w-48 whitespace-pre-wrap text-body-base font-medium text-netral-80'>
-                        {"T-Men's UA Storm Armour Down 2.0 Jacket"}
+                        {item.productName}
                       </span>
                     </section>
                   </td>
 
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='text-body-base font-medium text-netral-80'>
-                      Outer
+                      {item.category}
                     </span>
                   </td>
 
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <Badge variant='success'>Success</Badge>
+                  <td className='whitespace-nowrap px-3 py-5 text-left capitalize first:pl-5 last:pr-5'>
+                    {item.status === "active" ? (
+                      <Badge variant='success'>{item.status}</Badge>
+                    ) : item.status === "scheduled" ? (
+                      <Badge variant='info'>{item.status}</Badge>
+                    ) : item.status === "draft" ? (
+                      <Badge variant='warning'>{item.status}</Badge>
+                    ) : null}
                   </td>
 
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='text-body-base font-medium text-netral-80'>
-                      401
+                      {item.stock}
                     </span>
                   </td>
 
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='text-body-base font-medium text-netral-80'>
-                      $178
+                      {item.price}
                     </span>
                   </td>
 
