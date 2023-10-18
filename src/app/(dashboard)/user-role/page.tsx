@@ -14,6 +14,56 @@ import {
 
 import { CheckIcon, MagnifyingGlassIcon, UserPlusIcon } from "@/assets/icons"
 
+/**
+ * =======================
+ * Dummy Data - Users
+ * =======================
+ */
+const usersData = [
+  {
+    name: "Samanta Legend",
+    email: "samanta@mail.com",
+    role: "Super Admin",
+    phone: "(603) 555-0123",
+    date: "May 6, 2012"
+  },
+  {
+    name: "Annette Black",
+    email: "annette1@mail.com",
+    role: "Admin",
+    phone: "(239) 555-0108",
+    date: "April 28, 2016"
+  },
+  {
+    name: "Dianne Russell",
+    email: "rdianne@mail.com",
+    role: "Cashier",
+    phone: "(208) 555-0112",
+    date: "November 16, 2014"
+  },
+  {
+    name: "Devon Lane",
+    email: "delane@mail.com",
+    role: "Admin",
+    phone: "(219) 555-0114",
+    date: "March 23, 2013"
+  },
+  {
+    name: "Marvin McKinney",
+    email: "marvin5@mail.com",
+    role: "Cashier",
+    phone: "(208) 555-0112",
+    date: "November 16, 2014"
+  },
+  {
+    name: "Jerome Bell",
+    email: "belljer@mail.com",
+    role: "Cashier",
+    phone: "(704) 555-0127",
+    date: "March 23, 2013"
+  }
+]
+
 const DBUserRole = () => {
   const [active, setActive] = React.useState(false)
   const [openModalDelete, setOpenModalDelete] = React.useState(false)
@@ -81,38 +131,38 @@ const DBUserRole = () => {
               </tr>
             </thead>
             <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
-              {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-                <tr key={item}>
+              {usersData.map((item) => (
+                <tr key={item.name}>
                   <td className='w-px whitespace-nowrap px-3 py-5 first:pl-5 last:pr-5'>
                     <Checkbox active={active} setActive={setActive} />
                   </td>
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='text-body-base font-medium text-netral-80'>
-                      Samanta Legend
+                      {item.name}
                     </span>
                   </td>
 
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='text-body-base font-medium text-netral-80'>
-                      samanta@mail.com
+                      {item.email}
                     </span>
                   </td>
 
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='text-body-base font-medium text-netral-80'>
-                      Super Admin
+                      {item.role}
                     </span>
                   </td>
 
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='text-body-base font-medium text-netral-80'>
-                      (603) 555-0123
+                      {item.phone}
                     </span>
                   </td>
 
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='text-body-base font-medium text-netral-80'>
-                      May 6, 2012
+                      {item.date}
                     </span>
                   </td>
                 </tr>
