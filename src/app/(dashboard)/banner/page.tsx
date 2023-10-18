@@ -25,6 +25,29 @@ import {
 import { DropzoneIll, NoBannersIll } from "@/assets/illustration"
 import { EmptyState } from "@/components/templates"
 
+/**
+ * =======================
+ * Dummy Data - Outlets
+ * =======================
+ */
+const bannersData = [
+  {
+    image: "/banners/banner-photo-1.png",
+    type: "Banner Best Seller Collection",
+    createdAt: "05-12-2022"
+  },
+  {
+    image: "/banners/banner-photo-1.png",
+    type: "Banner Hero Section",
+    createdAt: "24-11-2022"
+  },
+  {
+    image: "/banners/banner-photo-2.png",
+    type: "Banner Popular Collection",
+    createdAt: "29-11-2022"
+  }
+]
+
 const DBBanner = () => {
   // -----------------------------------------------------------------------------//
   const [emptyState, setEmptyState] = React.useState(true)
@@ -114,18 +137,18 @@ const DBBanner = () => {
               </tr>
             </thead>
             <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
-              {[1, 2, 3].map((item) => (
-                <tr key={item}>
+              {bannersData.map((item, index) => (
+                <tr key={item.image}>
                   <td className='w-px whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='text-body-base font-medium text-netral-80'>
-                      {item}
+                      {index + 1}
                     </span>
                   </td>
 
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <div className='relative aspect-video w-40 overflow-hidden rounded-lg-10'>
                       <Image
-                        src={`/banner-${item}.png`}
+                        src={item.image}
                         className='h-full w-full object-cover'
                         alt={`Banner Image ${item}`}
                         fill
@@ -135,13 +158,13 @@ const DBBanner = () => {
 
                   <td className='whitespace-pre-wrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='w-[200px] whitespace-pre-wrap break-words text-body-base font-medium text-netral-80'>
-                      Banner Best Seller Collection
+                      {item.type}
                     </span>
                   </td>
 
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='text-body-base font-medium text-netral-80'>
-                      24-11-2022
+                      {item.createdAt}
                     </span>
                   </td>
 
