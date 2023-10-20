@@ -138,7 +138,7 @@ const DBBanner = () => {
             </thead>
             <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
               {bannersData.map((item, index) => (
-                <tr key={item.image}>
+                <tr key={item.type}>
                   <td className='w-px whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='text-body-base font-medium text-netral-80'>
                       {index + 1}
