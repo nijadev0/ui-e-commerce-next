@@ -1,5 +1,5 @@
-'use client'
-import React from 'react'
+"use client"
+import React from "react"
 
 import {
   Alerts,
@@ -9,36 +9,70 @@ import {
   Selectbox,
   Title,
   Toggle
-} from '@/components/atomics'
+} from "@/components/atomics"
 
-import { ArrowClockwiseIcon, PlusIcon, TrashIcon } from '@/assets/icons'
+import { ArrowClockwiseIcon, PlusIcon, TrashIcon } from "@/assets/icons"
 
-import VariantEmptyState from './empty-state'
-import { Modal } from '@/components/moleculs'
-import Image from 'next/image'
-import { DropzoneIll } from '@/assets/illustration'
+import VariantEmptyState from "./empty-state"
+import { Modal } from "@/components/moleculs"
+import Image from "next/image"
+import { DropzoneIll } from "@/assets/illustration"
 
 const DBProductsVariants = () => {
   //--------------------------------------------------------------------------------------
-  const [active, setActive] = React.useState(false)
+  const [listData, setListData] = React.useState([
+    {
+      image: "/variants/variant-1.png",
+      checked: false
+    },
+    {
+      image: "/variants/variant-2.png",
+      checked: false
+    },
+    {
+      image: "/variants/variant-3.png",
+      checked: false
+    },
+    {
+      image: "/variants/variant-4.png",
+      checked: false
+    }
+  ])
+  //--------------------------------------------------------------------------------------
+  const checkItem = (index: number, checked: boolean) => {
+    const newListData = [...listData]
+    newListData[index].checked = checked
+    setListData(newListData)
+  }
+  const isSelectAll = React.useMemo(
+    () => listData.filter((item) => !item.checked).length === 0,
+    [listData]
+  )
+  const setIsSelectAll = (newIsSelectAll: boolean) => {
+    setListData(listData.map((item) => ({ ...item, checked: newIsSelectAll })))
+  }
+  const isSelecting = React.useMemo(
+    () => listData.filter((item) => item.checked).length > 0,
+    [listData]
+  )
   const [activeToggle, setActiveToggle] = React.useState(false)
   const [emptyState, setEmptyState] = React.useState(true)
   const [openModalDropzone, setOpenModalDropzone] = React.useState(false)
   //--------------------------------------------------------------------------------------
   const colors = [
-    { name: 'Select Color' },
-    { name: 'Grey' },
-    { name: 'Pink' },
-    { name: 'Blue' },
-    { name: 'Green' }
+    { name: "Select Color" },
+    { name: "Grey" },
+    { name: "Pink" },
+    { name: "Blue" },
+    { name: "Green" }
   ]
 
   const sizes = [
-    { name: 'Select Size' },
-    { name: 'S' },
-    { name: 'M' },
-    { name: 'L' },
-    { name: 'XL' }
+    { name: "Select Size" },
+    { name: "S" },
+    { name: "M" },
+    { name: "L" },
+    { name: "XL" }
   ]
   //--------------------------------------------------------------------------------------
   const [activeState, setActiveState] = React.useState(1)
@@ -73,7 +107,7 @@ const DBProductsVariants = () => {
           </Title>
 
           <div className='flex flex-row gap-3'>
-            {active && filledVariant && (
+            {isSelecting && (
               <Button size='md' variant='error-outline'>
                 <TrashIcon className='h-4 w-4 stroke-2' />
                 Delete Variant
@@ -102,7 +136,7 @@ const DBProductsVariants = () => {
               <thead className='bg-netral-15 text-body-sm font-semibold uppercase'>
                 <tr>
                   <th className='w-px whitespace-nowrap px-3 py-4 first:pl-5 last:pr-5'>
-                    <Checkbox active={active} setActive={setActive} />
+                    <Checkbox active={isSelectAll} setActive={setIsSelectAll} />
                   </th>
 
                   <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
@@ -135,11 +169,16 @@ const DBProductsVariants = () => {
                 </tr>
               </thead>
               <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
-                {[1, 2, 3, 4, 5, 6, 7, 8, 9].map((item) => (
-                  <tr key={item}>
+                {listData.map((item, index) => (
+                  <tr key={index}>
                     <td className='w-px whitespace-nowrap px-3 py-5 first:pl-5 last:pr-5'>
                       <div className='h-6 w-6'>
-                        <Checkbox active={active} setActive={setActive} />
+                        <Checkbox
+                          active={item.checked}
+                          setActive={(value: boolean) =>
+                            checkItem(index, value)
+                          }
+                        />
                       </div>
                     </td>
                     <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
@@ -148,7 +187,7 @@ const DBProductsVariants = () => {
                           <div className='h-full w-full bg-netral-20 object-cover'></div>
                         ) : (
                           <Image
-                            src={'/banner-1.png'}
+                            src={item.image}
                             className='h-full w-full object-cover'
                             alt='Banner 1'
                             fill
@@ -223,7 +262,7 @@ const DBProductsVariants = () => {
             </h5>
 
             <p className='text-body-sm text-netral-50'>
-              {'SVG, PNG, JPEG (MAX 800X400px)'}
+              {"SVG, PNG, JPEG (MAX 800X400px)"}
             </p>
           </main>
         )}
@@ -247,7 +286,7 @@ const DBProductsVariants = () => {
                 <Image
                   className='h-full w-full object-cover'
                   alt='Image'
-                  src={'/outlet-1.jpg'}
+                  src={"/outlet-1.jpg"}
                   fill
                 />
               </div>
