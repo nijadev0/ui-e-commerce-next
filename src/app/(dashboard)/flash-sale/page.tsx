@@ -22,57 +22,71 @@ import {
   TrashIcon
 } from "@/assets/icons"
 
-/**
- * ============================
- * Dummy Data - List Products
- * ============================
- */
-const listProductsData = [
-  {
-    productName: "T-Men's UA Storm Armour Down 2.0 Jacket",
-    productImage: "/list-products/ListProducts-1.png",
-    category: "outer",
-    status: "active",
-    stock: 401,
-    price: "$178"
-  },
-  {
-    productName: "Windproof Handbell Oversized Long Coat",
-    productImage: "/list-products/ListProducts-2.png",
-    category: "outer",
-    status: "scheduled",
-    stock: 738,
-    price: "$178"
-  },
-  {
-    productName: "Women's Stripe Sweater",
-    productImage: "/list-products/ListProducts-3.png",
-    category: "sweater",
-    status: "active",
-    stock: 432,
-    price: "$178"
-  },
-  {
-    productName: "Women's Turtleneck Sweater",
-    productImage: "/list-products/ListProducts-4.png",
-    category: "sweater",
-    status: "draft",
-    stock: 0,
-    price: "$178"
-  },
-  {
-    productName: "One Set - Casual Hoodie with Buttons",
-    productImage: "/list-products/ListProducts-5.png",
-    category: "kids",
-    status: "active",
-    stock: 334,
-    price: "$178"
-  }
-]
-
 const DBFlashSale = () => {
   // -------------------------------------------------------------------------------------//
-  const [active, setActive] = React.useState(false)
+  const [listData, setListData] = React.useState([
+    {
+      productName: "T-Men's UA Storm Armour Down 2.0 Jacket",
+      productImage: "/list-products/ListProducts-1.png",
+      category: "outer",
+      status: "active",
+      stock: 401,
+      price: "$178",
+      checked: false
+    },
+    {
+      productName: "Windproof Handbell Oversized Long Coat",
+      productImage: "/list-products/ListProducts-2.png",
+      category: "outer",
+      status: "scheduled",
+      stock: 738,
+      price: "$178",
+      checked: false
+    },
+    {
+      productName: "Women's Stripe Sweater",
+      productImage: "/list-products/ListProducts-3.png",
+      category: "sweater",
+      status: "active",
+      stock: 432,
+      price: "$178",
+      checked: false
+    },
+    {
+      productName: "Women's Turtleneck Sweater",
+      productImage: "/list-products/ListProducts-4.png",
+      category: "sweater",
+      status: "draft",
+      stock: 0,
+      price: "$178",
+      checked: false
+    },
+    {
+      productName: "One Set - Casual Hoodie with Buttons",
+      productImage: "/list-products/ListProducts-5.png",
+      category: "kids",
+      status: "active",
+      stock: 334,
+      price: "$178",
+      checked: false
+    }
+  ])
+  const checkItem = (index: number, checked: boolean) => {
+    const newListData = [...listData]
+    newListData[index].checked = checked
+    setListData(newListData)
+  }
+  const isSelectAll = React.useMemo(
+    () => listData.filter((item) => !item.checked).length === 0,
+    [listData]
+  )
+  const setIsSelectAll = (newIsSelectAll: boolean) => {
+    setListData(listData.map((item) => ({ ...item, checked: newIsSelectAll })))
+  }
+  const isSelecting = React.useMemo(
+    () => listData.filter((item) => item.checked).length > 0,
+    [listData]
+  )
   const [activeState, setActiveState] = React.useState(1)
   const [openModalFlashSale, setOpenModalFlashSale] = React.useState(false)
   // -------------------------------------------------------------------------------------//
@@ -136,7 +150,7 @@ const DBFlashSale = () => {
             <thead className='bg-netral-15 text-body-sm font-semibold uppercase'>
               <tr>
                 <th className='w-px whitespace-nowrap px-3 py-4 first:pl-5 last:pr-5'>
-                  <Checkbox active={active} setActive={setActive} />
+                  <Checkbox active={isSelectAll} setActive={setIsSelectAll} />
                 </th>
 
                 <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
@@ -166,10 +180,13 @@ const DBFlashSale = () => {
             </thead>
 
             <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
-              {listProductsData.map((item) => (
+              {listData.map((item, index) => (
                 <tr key={item.productName}>
                   <td className='w-px whitespace-nowrap px-3 py-5 first:pl-5 last:pr-5'>
-                    <Checkbox active={active} setActive={setActive} />
+                    <Checkbox
+                      active={item.checked}
+                      setActive={(value: boolean) => checkItem(index, value)}
+                    />
                   </td>
                   <td className='whitespace-pre-wrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <section className='flex items-center gap-3'>
@@ -232,7 +249,7 @@ const DBFlashSale = () => {
       </section>
 
       {/* Page Action */}
-      {active && (
+      {isSelecting && (
         <PageAction
           variant='sticky'
           actionLabel='2 Product Selected'
