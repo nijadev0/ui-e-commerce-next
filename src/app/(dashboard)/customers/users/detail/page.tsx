@@ -2,15 +2,15 @@
 import React from "react"
 import { useRouter } from "next/navigation"
 
-import { PageAction } from "@/components/moleculs"
-import { Alerts, Input, Title } from "@/components/atomics"
+import { Modal, PageAction } from "@/components/moleculs"
+import { Alerts, Button, Input, Title } from "@/components/atomics"
 
 const DBCustomersUsersDetail = () => {
   // -------------------------------------------------------------------------- //
   const router = useRouter()
   // -------------------------------------------------------------------------- //
+  const [openModalSave, setOpenModalSave] = React.useState(false)
   const [openSuccess, setOpenSuccess] = React.useState(false)
-
   // -------------------------------------------------------------------------- //
 
   return (
@@ -55,24 +55,58 @@ const DBCustomersUsersDetail = () => {
         </section>
       </div>
 
-      <Alerts
-        variant='success'
-        open={openSuccess}
-        setOpen={setOpenSuccess}
-        title='Users has been updated'
-        desc='User updated successfully.'
-      />
-
       <PageAction
         variant='absolute'
         actionLabel='Last saved'
         actionDesc='Nov 9, 2022-17.09'
         btnPrimaryLabel='Save'
         btnPrimaryVariant='primary-bg'
-        btnPrimaryFun={() => setOpenSuccess(true)}
+        btnPrimaryFun={() => setOpenModalSave(true)}
         btnSecondaryLabel='Discard'
         btnsecondaryVariant='primary-nude'
         btnSecondaryFun={() => router.back()}
+      />
+
+      <Modal
+        variant='primary'
+        open={openModalSave}
+        title='Save updates?'
+        className='max-w-lg'
+        setOpen={setOpenModalSave}
+      >
+        <main className='mb-10 mt-4'>
+          <p className='text-body-base text-netral-80'>
+            Are you sure to save this update?
+          </p>
+        </main>
+
+        <footer className='flex w-full justify-end gap-3'>
+          <Button
+            size='md'
+            variant='default-nude'
+            onClick={() => setOpenModalSave(false)}
+          >
+            Cancel
+          </Button>
+          <Button
+            size='md'
+            variant='primary-bg'
+            onClick={() => {
+              setOpenModalSave(false)
+              setOpenSuccess(true)
+            }}
+          >
+            Submit
+          </Button>
+        </footer>
+      </Modal>
+
+      <Alerts
+        variant='success'
+        open={openSuccess}
+        setOpen={setOpenSuccess}
+        title='Users has been updated'
+        desc='User updated successfully.'
       />
     </div>
   )
