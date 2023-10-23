@@ -23,25 +23,34 @@ const DBProductsVariants = () => {
   const [listData, setListData] = React.useState([
     {
       image: "/variants/variant-1.png",
-      checked: false
+      checked: false,
+      show: false
     },
     {
       image: "/variants/variant-2.png",
-      checked: false
+      checked: false,
+      show: false
     },
     {
       image: "/variants/variant-3.png",
-      checked: false
+      checked: false,
+      show: false
     },
     {
       image: "/variants/variant-4.png",
-      checked: false
+      checked: false,
+      show: false
     }
   ])
   //--------------------------------------------------------------------------------------
   const checkItem = (index: number, checked: boolean) => {
     const newListData = [...listData]
     newListData[index].checked = checked
+    setListData(newListData)
+  }
+  const changeShowItem = (index: number, show: boolean) => {
+    const newListData = [...listData]
+    newListData[index].show = show
     setListData(newListData)
   }
   const isSelectAll = React.useMemo(
@@ -224,8 +233,10 @@ const DBProductsVariants = () => {
 
                     <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                       <Toggle
-                        enabled={activeToggle}
-                        setEnabled={setActiveToggle}
+                        enabled={item.show}
+                        setEnabled={(value: boolean) =>
+                          changeShowItem(index, value)
+                        }
                       />
                     </td>
 
