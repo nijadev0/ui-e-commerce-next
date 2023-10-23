@@ -1,17 +1,15 @@
 "use client"
 import React from "react"
-import Image from "next/image"
 
 import {
   Alerts,
   Badge,
   Button,
-  Checkbox,
   Input,
   Pagination,
   Title
 } from "@/components/atomics"
-import { Modal, PageAction } from "@/components/moleculs"
+import { Modal } from "@/components/moleculs"
 
 import {
   CheckIcon,
@@ -26,71 +24,42 @@ const DBFlashSale = () => {
   // -------------------------------------------------------------------------------------//
   const [listData, setListData] = React.useState([
     {
-      productName: "T-Men's UA Storm Armour Down 2.0 Jacket",
-      productImage: "/list-products/ListProducts-1.png",
-      category: "outer",
-      status: "active",
-      stock: 401,
-      price: "$178",
-      checked: false
+      startDate: "20-11-2022, 16.30",
+      endDate: "21-11-2022, 16.30",
+      totalProducts: 65,
+      status: "upcoming"
     },
     {
-      productName: "Windproof Handbell Oversized Long Coat",
-      productImage: "/list-products/ListProducts-2.png",
-      category: "outer",
-      status: "scheduled",
-      stock: 738,
-      price: "$178",
-      checked: false
+      startDate: "12-12-2022, 00.00",
+      endDate: "12-12-2022, 12.00",
+      totalProducts: 44,
+      status: "ongoing"
     },
     {
-      productName: "Women's Stripe Sweater",
-      productImage: "/list-products/ListProducts-3.png",
-      category: "sweater",
-      status: "active",
-      stock: 432,
-      price: "$178",
-      checked: false
+      startDate: "11-11-2022, 00.00",
+      endDate: "11-11-2022, 12.00",
+      totalProducts: 32,
+      status: "expired"
     },
     {
-      productName: "Women's Turtleneck Sweater",
-      productImage: "/list-products/ListProducts-4.png",
-      category: "sweater",
-      status: "draft",
-      stock: 0,
-      price: "$178",
-      checked: false
+      startDate: "11-11-2022, 00.00",
+      endDate: "11-11-2022, 12.00",
+      totalProducts: 54,
+      status: "expired"
     },
     {
-      productName: "One Set - Casual Hoodie with Buttons",
-      productImage: "/list-products/ListProducts-5.png",
-      category: "kids",
-      status: "active",
-      stock: 334,
-      price: "$178",
-      checked: false
+      startDate: "11-11-2022, 00.00",
+      endDate: "11-11-2022, 12.00",
+      totalProducts: 76,
+      status: "expired"
     }
   ])
-  const checkItem = (index: number, checked: boolean) => {
-    const newListData = [...listData]
-    newListData[index].checked = checked
-    setListData(newListData)
-  }
-  const isSelectAll = React.useMemo(
-    () => listData.filter((item) => !item.checked).length === 0,
-    [listData]
-  )
-  const setIsSelectAll = (newIsSelectAll: boolean) => {
-    setListData(listData.map((item) => ({ ...item, checked: newIsSelectAll })))
-  }
-  const isSelecting = React.useMemo(
-    () => listData.filter((item) => item.checked).length > 0,
-    [listData]
-  )
   const [activeState, setActiveState] = React.useState(1)
   const [openModalFlashSale, setOpenModalFlashSale] = React.useState(false)
+  const [openModalDelete, setOpenModalDelete] = React.useState(false)
   // -------------------------------------------------------------------------------------//
   const [openSuccess, setOpenSuccess] = React.useState(false)
+  const [openAlertsDelete, setOpenAlertsDelete] = React.useState(false)
 
   const openSuccessAlerts = () => {
     setOpenSuccess(true)
@@ -149,28 +118,22 @@ const DBFlashSale = () => {
           <table className='w-full table-auto'>
             <thead className='bg-netral-15 text-body-sm font-semibold uppercase'>
               <tr>
-                <th className='w-px whitespace-nowrap px-3 py-4 first:pl-5 last:pr-5'>
-                  <Checkbox active={isSelectAll} setActive={setIsSelectAll} />
+                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
+                  <span className='text-body-sm font-semibold'>Start Date</span>
                 </th>
 
                 <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Product</span>
+                  <span className='text-body-sm font-semibold'>End Date</span>
                 </th>
 
                 <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Category</span>
+                  <span className='text-body-sm font-semibold'>
+                    Total Products
+                  </span>
                 </th>
 
                 <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
                   <span className='text-body-sm font-semibold'>Status</span>
-                </th>
-
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Stock</span>
-                </th>
-
-                <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
-                  <span className='text-body-sm font-semibold'>Price</span>
                 </th>
 
                 <th className='whitespace-nowrap px-3 py-4 text-left text-netral-50 first:pl-5 last:pr-5'>
@@ -181,62 +144,115 @@ const DBFlashSale = () => {
 
             <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
               {listData.map((item, index) => (
-                <tr key={item.productName}>
-                  <td className='w-px whitespace-nowrap px-3 py-5 first:pl-5 last:pr-5'>
-                    <Checkbox
-                      active={item.checked}
-                      setActive={(value: boolean) => checkItem(index, value)}
-                    />
-                  </td>
-                  <td className='whitespace-pre-wrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <section className='flex items-center gap-3'>
-                      <div className='relative h-20 w-20 overflow-hidden rounded-lg-10'>
-                        <Image
-                          className='h-full w-full object-cover'
-                          src={item.productImage}
-                          alt={item.productName}
-                          fill
-                        />
-                      </div>
-
-                      <span className='w-48 whitespace-pre-wrap text-body-base font-medium text-netral-80'>
-                        {item.productName}
-                      </span>
-                    </section>
+                <tr key={item.totalProducts}>
+                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                    <span className='text-body-base font-medium text-netral-80'>
+                      {item.startDate}
+                    </span>
                   </td>
 
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='text-body-base font-medium text-netral-80'>
-                      {item.category}
+                      {item.endDate}
+                    </span>
+                  </td>
+
+                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
+                    <span className='text-body-base font-medium text-netral-80'>
+                      {item.totalProducts}
                     </span>
                   </td>
 
                   <td className='whitespace-nowrap px-3 py-5 text-left capitalize first:pl-5 last:pr-5'>
-                    {item.status === "active" ? (
+                    {item.status === "ongoing" ? (
                       <Badge variant='success'>{item.status}</Badge>
-                    ) : item.status === "scheduled" ? (
-                      <Badge variant='info'>{item.status}</Badge>
-                    ) : item.status === "draft" ? (
-                      <Badge variant='warning'>{item.status}</Badge>
+                    ) : item.status === "upcoming" ? (
+                      <Badge variant='default'>{item.status}</Badge>
+                    ) : item.status === "expired" ? (
+                      <Badge variant='error'>{item.status}</Badge>
                     ) : null}
                   </td>
 
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <span className='text-body-base font-medium text-netral-80'>
-                      {item.stock}
-                    </span>
-                  </td>
-
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <span className='text-body-base font-medium text-netral-80'>
-                      {item.price}
-                    </span>
-                  </td>
-
-                  <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
-                    <Button size='md' variant='primary-nude' onClick={() => {}}>
-                      Detail
-                    </Button>
+                    <div className='flex'>
+                      <Button
+                        size='md'
+                        variant='default-bg'
+                        className='mr-4'
+                        href={"/flash-sale/detail"}
+                      >
+                        <svg
+                          width='16'
+                          height='16'
+                          viewBox='0 0 16 16'
+                          fill='none'
+                          xmlns='http://www.w3.org/2000/svg'
+                        >
+                          <path
+                            d='M5.79289 13.4999H3C2.86739 13.4999 2.74021 13.4472 2.64645 13.3535C2.55268 13.2597 2.5 13.1325 2.5 12.9999V10.207C2.5 10.1414 2.51293 10.0764 2.53806 10.0157C2.56319 9.95503 2.60002 9.89991 2.64645 9.85348L10.1464 2.35348C10.2402 2.25971 10.3674 2.20703 10.5 2.20703C10.6326 2.20703 10.7598 2.25971 10.8536 2.35348L13.6464 5.14637C13.7402 5.24014 13.7929 5.36732 13.7929 5.49992C13.7929 5.63253 13.7402 5.75971 13.6464 5.85348L6.14645 13.3535C6.10002 13.3999 6.0449 13.4367 5.98424 13.4619C5.92357 13.487 5.85855 13.4999 5.79289 13.4999Z'
+                            stroke='#3B4453'
+                            stroke-linecap='round'
+                            stroke-linejoin='round'
+                          />
+                          <path
+                            d='M8.5 4L12 7.5'
+                            stroke='#3B4453'
+                            stroke-linecap='round'
+                            stroke-linejoin='round'
+                          />
+                          <path
+                            d='M5.96848 13.4675L2.53223 10.0312'
+                            stroke='#3B4453'
+                            stroke-linecap='round'
+                            stroke-linejoin='round'
+                          />
+                        </svg>
+                      </Button>
+                      <Button
+                        size='md'
+                        variant='default-bg'
+                        onClick={() => setOpenModalDelete(true)}
+                      >
+                        <svg
+                          width='16'
+                          height='16'
+                          viewBox='0 0 16 16'
+                          fill='none'
+                          xmlns='http://www.w3.org/2000/svg'
+                        >
+                          <path
+                            d='M13.5 3.5L2.5 3.50001'
+                            stroke='#FF5630'
+                            stroke-linecap='round'
+                            stroke-linejoin='round'
+                          />
+                          <path
+                            d='M6.5 6.5V10.5'
+                            stroke='#FF5630'
+                            stroke-linecap='round'
+                            stroke-linejoin='round'
+                          />
+                          <path
+                            d='M9.5 6.5V10.5'
+                            stroke='#FF5630'
+                            stroke-linecap='round'
+                            stroke-linejoin='round'
+                          />
+                          <path
+                            d='M12.5 3.5V13C12.5 13.1326 12.4473 13.2598 12.3536 13.3536C12.2598 13.4473 12.1326 13.5 12 13.5H4C3.86739 13.5 3.74021 13.4473 3.64645 13.3536C3.55268 13.2598 3.5 13.1326 3.5 13V3.5'
+                            stroke='#FF5630'
+                            stroke-linecap='round'
+                            stroke-linejoin='round'
+                          />
+                          <path
+                            d='M10.5 3.5V2.5C10.5 2.23478 10.3946 1.98043 10.2071 1.79289C10.0196 1.60536 9.76522 1.5 9.5 1.5H6.5C6.23478 1.5 5.98043 1.60536 5.79289 1.79289C5.60536 1.98043 5.5 2.23478 5.5 2.5V3.5'
+                            stroke='#FF5630'
+                            stroke-linecap='round'
+                            stroke-linejoin='round'
+                          />
+                        </svg>
+                      </Button>
+                    </div>
                   </td>
                 </tr>
               ))}
@@ -247,22 +263,6 @@ const DBFlashSale = () => {
         {/* Pagination */}
         <Pagination />
       </section>
-
-      {/* Page Action */}
-      {isSelecting && (
-        <PageAction
-          variant='sticky'
-          actionLabel='2 Product Selected'
-          btnPrimaryLabel={
-            <>
-              <LightningIcon className='h-4 w-4 stroke-[4px] text-white' />
-              Add flash sale
-            </>
-          }
-          btnPrimaryVariant='primary-bg'
-          btnPrimaryFun={() => setOpenModalFlashSale(true)}
-        />
-      )}
 
       <Modal
         variant='default'
@@ -592,12 +592,55 @@ const DBFlashSale = () => {
         </footer>
       </Modal>
 
+      <Modal
+        variant='primary'
+        open={openModalDelete}
+        title='Delete Flash Sale'
+        className='max-w-lg'
+        setOpen={setOpenModalDelete}
+      >
+        <main className='mb-10 mt-4'>
+          <p className='text-body-base text-netral-80'>
+            Are you sure want to delete this flash sale? Flash sale which
+            already deleted can not be recovered.
+          </p>
+        </main>
+
+        <footer className='flex w-full justify-end gap-3'>
+          <Button
+            size='md'
+            variant='default-nude'
+            onClick={() => setOpenModalDelete(false)}
+          >
+            Cancel
+          </Button>
+          <Button
+            size='md'
+            variant='error-bg'
+            onClick={() => {
+              setOpenModalDelete(false)
+              setOpenAlertsDelete(true)
+            }}
+          >
+            Submit
+          </Button>
+        </footer>
+      </Modal>
+
       <Alerts
         variant='success'
         open={openSuccess}
         setOpen={setOpenSuccess}
         title='Flash sale has been added'
         desc='Flash sale has been added, you can check the status of the flash sale to make sure.'
+      />
+
+      <Alerts
+        variant='success'
+        open={openAlertsDelete}
+        setOpen={setOpenAlertsDelete}
+        title='Flash sale has been deleted'
+        desc='Flash sale has been deleted, you can check the status of the flash sale to make sure.'
       />
     </div>
   )
