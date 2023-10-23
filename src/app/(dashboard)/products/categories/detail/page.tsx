@@ -4,7 +4,7 @@ import Image from "next/image"
 import { useRouter } from "next/navigation"
 
 import { Modal, PageAction } from "@/components/moleculs"
-import { Button, Input, Title, Toggle } from "@/components/atomics"
+import { Alerts, Button, Input, Title, Toggle } from "@/components/atomics"
 import {
   PencilSimpleIcon,
   RepeatIcon,
@@ -16,29 +16,12 @@ import { DropzoneIll } from "@/assets/illustration"
 const DBProductCategoriesAdd = () => {
   const router = useRouter()
   // -------------------------------------------------------------------------
-  const categories = [
-    { name: "Select Category", disabled: true },
-    { name: "Jacket" },
-    { name: "Outer" },
-    { name: "T-shirt" }
-  ]
-  // -------------------------------------------------------------------------
-  const genders = [
-    { name: "Select Gender", disabled: true },
-    { name: "Male" },
-    { name: "Female" }
-  ]
-  // -------------------------------------------------------------------------
-  const discountType = [
-    { name: "Select Discount Type", disabled: true },
-    { name: "Fixed" },
-    { name: "Price" }
-  ]
-  // -------------------------------------------------------------------------
   const [toggle, setToggle] = React.useState(true)
   const [dropzone, setDropzone] = React.useState(false)
   const [activeState, setActiveState] = React.useState(1)
   const [openModalDropzone, setOpenModalDropzone] = React.useState(false)
+  const [openModalSave, setOpenModalSave] = React.useState(false)
+  const [openSuccess, setOpenSuccess] = React.useState(false)
   // -------------------------------------------------------------------------
   const nextState = () => {
     if (activeState > 1) {
@@ -171,7 +154,7 @@ const DBProductCategoriesAdd = () => {
         actionDesc='Nov 9, 2022-17.09'
         btnPrimaryLabel='Save'
         btnPrimaryVariant='primary-bg'
-        btnPrimaryFun={() => router.push("/products/variants")}
+        btnPrimaryFun={() => setOpenModalSave(true)}
         btnSecondaryLabel='Cancel'
         btnsecondaryVariant='primary-nude'
         btnSecondaryFun={() => router.back()}
@@ -235,6 +218,48 @@ const DBProductCategoriesAdd = () => {
           </Button>
         </footer>
       </Modal>
+
+      <Modal
+        variant='primary'
+        open={openModalSave}
+        title='Save updates?'
+        className='max-w-lg'
+        setOpen={setOpenModalSave}
+      >
+        <main className='mb-10 mt-4'>
+          <p className='text-body-base text-netral-80'>
+            Are you sure to save this update?
+          </p>
+        </main>
+
+        <footer className='flex w-full justify-end gap-3'>
+          <Button
+            size='md'
+            variant='default-nude'
+            onClick={() => setOpenModalSave(false)}
+          >
+            Cancel
+          </Button>
+          <Button
+            size='md'
+            variant='primary-bg'
+            onClick={() => {
+              setOpenModalSave(false)
+              setOpenSuccess(true)
+            }}
+          >
+            Submit
+          </Button>
+        </footer>
+      </Modal>
+
+      <Alerts
+        variant='success'
+        open={openSuccess}
+        setOpen={setOpenSuccess}
+        title='Category has been updated'
+        desc='Category updated successfully.'
+      />
     </div>
   )
 }

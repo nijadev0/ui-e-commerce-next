@@ -103,8 +103,8 @@ const DBCustomersBuyersUpdate = () => {
         variant='success'
         open={openSuccess}
         setOpen={setOpenSuccess}
-        title='Users has been updated'
-        desc='User updated successfully.'
+        title='Buyer has been updated'
+        desc='Buyer updated successfully.'
       />
     </div>
   )
