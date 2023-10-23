@@ -1,6 +1,6 @@
 "use client"
 
-import React from "react"
+import React, { useState } from "react"
 import Image from "next/image"
 
 import { Modal } from "@/components/moleculs"
@@ -25,33 +25,38 @@ import {
 import { DropzoneIll, NoBannersIll } from "@/assets/illustration"
 import { EmptyState } from "@/components/templates"
 
-/**
- * =======================
- * Dummy Data - Outlets
- * =======================
- */
-const bannersData = [
-  {
-    image: "/banners/banner-photo-1.png",
-    type: "Banner Best Seller Collection",
-    createdAt: "05-12-2022"
-  },
-  {
-    image: "/banners/banner-photo-1.png",
-    type: "Banner Hero Section",
-    createdAt: "24-11-2022"
-  },
-  {
-    image: "/banners/banner-photo-2.png",
-    type: "Banner Popular Collection",
-    createdAt: "29-11-2022"
-  }
-]
-
 const DBBanner = () => {
+  /**
+   * =======================
+   * Dummy Data - Outlets
+   * =======================
+   */
+  const [listData, setListData] = useState([
+    {
+      image: "/banners/banner-photo-1.png",
+      type: "Banner Best Seller Collection",
+      createdAt: "05-12-2022",
+      show: false
+    },
+    {
+      image: "/banners/banner-photo-2.png",
+      type: "Banner Hero Section",
+      createdAt: "24-11-2022",
+      show: false
+    },
+    {
+      image: "/banners/banner-photo-3.png",
+      type: "Banner Popular Collection",
+      createdAt: "29-11-2022",
+      show: false
+    }
+  ])
   // -----------------------------------------------------------------------------//
-  const [emptyState, setEmptyState] = React.useState(true)
-  const [enableToggle, setEnableToggle] = React.useState(false)
+  const changeShow = (index: number, show: boolean) => {
+    const newListData = [...listData]
+    newListData[index].show = show
+    setListData(newListData)
+  }
   const [openAlertsSuccess, setOpenAlertsSuccess] = React.useState(false)
   const [openModalConfirmation, setOpenModalConfirmation] =
     React.useState(false)
@@ -137,7 +142,7 @@ const DBBanner = () => {
               </tr>
             </thead>
             <tbody className='divide-y divide-netral-20 pt-4 text-sm'>
-              {bannersData.map((item, index) => (
+              {listData.map((item, index) => (
                 <tr key={item.type}>
                   <td className='w-px whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <span className='text-body-base font-medium text-netral-80'>
@@ -170,8 +175,8 @@ const DBBanner = () => {
 
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <Toggle
-                      enabled={enableToggle}
-                      setEnabled={setEnableToggle}
+                      enabled={item.show}
+                      setEnabled={(value: boolean) => changeShow(index, value)}
                     />
                   </td>
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
