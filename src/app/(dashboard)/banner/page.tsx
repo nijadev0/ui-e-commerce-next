@@ -23,7 +23,6 @@ import {
 } from "@/assets/icons"
 
 import { DropzoneIll, NoBannersIll } from "@/assets/illustration"
-import { EmptyState } from "@/components/templates"
 
 const DBBanner = () => {
   /**
@@ -58,10 +57,19 @@ const DBBanner = () => {
     setListData(newListData)
   }
   const [openAlertsSuccess, setOpenAlertsSuccess] = React.useState(false)
+  const [openAlertsEditSuccess, setOpenAlertsEditSuccess] =
+    React.useState(false)
+  const [openAlertsDeleteSuccess, setOpenAlertsDeleteSuccess] =
+    React.useState(false)
   const [openModalConfirmation, setOpenModalConfirmation] =
+    React.useState(false)
+  const [openModalEditConfirmation, setOpenModalEditConfirmation] =
+    React.useState(false)
+  const [openModalDeleteConfirmation, setOpenModalDeleteConfirmation] =
     React.useState(false)
   const [openModalDropzoneBanner, setOpenModalDropzoneBanner] =
     React.useState(false)
+  const [openModalEditBanner, setOpenModalEditBanner] = React.useState(false)
   // -----------------------------------------------------------------------------//
   const [activeState, setActiveState] = React.useState(1)
 
@@ -77,6 +85,12 @@ const DBBanner = () => {
     } else {
       setActiveState(activeState + 1)
     }
+  }
+
+  const saveChanges = () => {
+    setOpenModalEditBanner(false)
+
+    setOpenModalEditConfirmation(true)
   }
   // -----------------------------------------------------------------------------//
 
@@ -181,11 +195,19 @@ const DBBanner = () => {
                   </td>
                   <td className='whitespace-nowrap px-3 py-5 text-left first:pl-5 last:pr-5'>
                     <div className='flex flex-row gap-3'>
-                      <Button size='md' variant='default-bg' onClick={() => {}}>
+                      <Button
+                        size='md'
+                        variant='default-bg'
+                        onClick={() => setOpenModalEditBanner(true)}
+                      >
                         <PencilSimpleIcon className='h-5 w-5' />
                       </Button>
 
-                      <Button size='md' variant='default-bg' onClick={() => {}}>
+                      <Button
+                        size='md'
+                        variant='default-bg'
+                        onClick={() => setOpenModalDeleteConfirmation(true)}
+                      >
                         <TrashIcon className='h-5 w-5 text-error-main' />
                       </Button>
                     </div>
@@ -351,6 +373,159 @@ const DBBanner = () => {
         setOpen={setOpenAlertsSuccess}
         title='Banner added successfully'
         desc='Banner successfully added, you can edit or replace the banner in the action column.'
+      />
+
+      <Modal
+        variant='default'
+        title='Edit Banner'
+        open={openModalEditBanner}
+        setOpen={setOpenModalEditBanner}
+        className='max-w-4xl !overflow-y-visible'
+      >
+        <main className='relative my-10 flex w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-netral-30 bg-netral-15'>
+          <div className='relative aspect-video h-96 before:absolute before:z-10 before:h-full before:w-full before:bg-black/20'>
+            <Button
+              size='md'
+              variant='default-bg'
+              className='absolute left-1/2 top-1/2 z-20 -translate-x-1/2 -translate-y-1/2'
+            >
+              <RepeatIcon className='h-5 w-5' />
+              Replace
+            </Button>
+            <Image
+              className='h-full w-full object-cover'
+              src={"/banner-dropzone-1.png"}
+              alt='Banner Dropzone 1'
+              fill
+            />
+          </div>
+
+          <div className='absolute bottom-4 right-4 z-30'>
+            <Button size='md' variant='default-bg'>
+              <SelectionPlusIcon className='h-5 w-5' />
+              Crop
+            </Button>
+          </div>
+        </main>
+
+        <div className='relative z-[99999999999] mb-6 mt-4'>
+          <Selectbox
+            datas={[
+              {
+                id: 1,
+                name: "Select Type"
+              },
+              {
+                id: 2,
+                name: "Banner Hero Section"
+              },
+              {
+                id: 2,
+                name: "Banner Best Seller Collection"
+              },
+              {
+                id: 2,
+                name: "Banner Popular Collection"
+              }
+            ]}
+          />
+        </div>
+
+        <footer className='flex flex-row justify-end gap-3'>
+          <Button size='md' variant='default-nude'>
+            Discard
+          </Button>
+
+          <Button size='md' variant='primary-bg' onClick={saveChanges}>
+            Save
+          </Button>
+        </footer>
+      </Modal>
+
+      <Modal
+        variant='primary'
+        open={openModalEditConfirmation}
+        title='Update Banner'
+        className='max-w-lg !overflow-y-visible'
+        setOpen={setOpenModalEditConfirmation}
+      >
+        <main className='mb-10 mt-4'>
+          <p className='text-body-base text-netral-80'>
+            Are you sure to want to update this banner?
+          </p>
+        </main>
+
+        <footer className='flex w-full justify-end gap-3'>
+          <Button
+            size='md'
+            variant='default-nude'
+            onClick={() => setOpenModalEditConfirmation(false)}
+          >
+            Cancel
+          </Button>
+
+          <Button
+            size='md'
+            variant='primary-bg'
+            onClick={() => {
+              setOpenModalEditConfirmation(false)
+              setOpenAlertsEditSuccess(true)
+            }}
+          >
+            Yes
+          </Button>
+        </footer>
+      </Modal>
+
+      <Alerts
+        variant='success'
+        open={openAlertsEditSuccess}
+        setOpen={setOpenAlertsEditSuccess}
+        title='Banner updated successfully'
+        desc='Banner successfully updated, you can view the updated banner.'
+      />
+
+      <Modal
+        variant='primary'
+        open={openModalDeleteConfirmation}
+        title='Delete Banner'
+        className='max-w-lg !overflow-y-visible'
+        setOpen={setOpenModalDeleteConfirmation}
+      >
+        <main className='mb-10 mt-4'>
+          <p className='text-body-base text-netral-80'>
+            Are you sure want to delete this banner?
+          </p>
+        </main>
+
+        <footer className='flex w-full justify-end gap-3'>
+          <Button
+            size='md'
+            variant='default-nude'
+            onClick={() => setOpenModalDeleteConfirmation(false)}
+          >
+            Cancel
+          </Button>
+
+          <Button
+            size='md'
+            variant='primary-bg'
+            onClick={() => {
+              setOpenModalDeleteConfirmation(false)
+              setOpenAlertsDeleteSuccess(true)
+            }}
+          >
+            Yes
+          </Button>
+        </footer>
+      </Modal>
+
+      <Alerts
+        variant='error'
+        open={openAlertsDeleteSuccess}
+        setOpen={setOpenAlertsDeleteSuccess}
+        title='Banner deleted successfully'
+        desc='Banner successfully deleted.'
       />
     </div>
   )
