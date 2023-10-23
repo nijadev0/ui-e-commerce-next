@@ -1,202 +1,143 @@
 "use client"
+
 import React from "react"
-import Image from "next/image"
 import { useRouter } from "next/navigation"
 
-import { Modal, PageAction } from "@/components/moleculs"
 import { Alerts, Button, Input, Title } from "@/components/atomics"
+import { UploadSimpleIcon } from "@/assets/icons"
+import { Modal, PageAction } from "@/components/moleculs"
 
-import { DropzoneIll } from "@/assets/illustration"
-import { PencilSimpleIcon, TrashIcon, UploadSimpleIcon } from "@/assets/icons"
-
-const DBOutletEdit = () => {
+const DBOutletAdd = () => {
   const router = useRouter()
 
-  const listMenu = [
-    { name: "Select Role", disabled: true },
-    { name: "Super Admin" },
-    { name: "Admin" },
-    { name: "User" },
-    { name: "Customer" }
-  ]
+  const [data, setData] = React.useState({
+    name: "Brand Here Delaware",
+    address: "2972 Westheimer Rd. Santa Ana, Illinois 85486",
+    phone: "(603) 555-0123",
+    managerBranch: "Arlene McCoy"
+  })
 
-  const [openSuccess, setOpenSuccess] = React.useState(false)
-  const [openModalDropzone, setOpenModalDropzone] = React.useState(false)
-  const [activeState, setActiveState] = React.useState(1)
-  const [dropzone, setDropzone] = React.useState(true)
-
-  const nextState = () => {
-    if (activeState > 1) {
-      setOpenModalDropzone(false)
-      setActiveState(1)
-      setDropzone(false)
-    } else {
-      setActiveState(activeState + 1)
-    }
-  }
+  const [openModalEditConfirmation, setOpenModalEditConfirmation] =
+    React.useState(false)
+  const [openAlertsEditSuccess, setOpenAlertsEditSuccess] =
+    React.useState(false)
 
   return (
-    <div className='relative h-[calc(100vh_-_80px)] space-y-6 overflow-y-auto p-6'>
-      <div className='space-y-6'>
-        <h1 className='text-heading-sm font-semibold'>User Role</h1>
+    <div className='relative min-h-[calc(100vh_-_80px)] space-y-6 p-6'>
+      <h1 className='text-heading-sm font-semibold'>Edit Outlet</h1>
 
-        <section className='relative h-full space-y-8 rounded-lg-10 bg-white p-6'>
-          <Title size='lg' variant='default'>
-            Add User
-          </Title>
+      <section className='relative space-y-8 rounded-lg-10 bg-white p-6'>
+        <Title size='lg' variant='default'>
+          Outlet Detail
+        </Title>
 
-          <form className='grid grid-cols-2 gap-x-5 gap-y-8'>
-            <Input
-              id='name'
-              placeholder='Enter name'
-              label='Name'
-              variant='default'
-            />
+        <div className='grid grid-cols-2 gap-x-5 gap-y-8'>
+          <Input
+            id='name'
+            type='text'
+            variant='default'
+            label='Outlet Name'
+            placeholder='Enter outlet name'
+            value={data.name}
+          />
 
-            <Input
-              id='email'
-              placeholder='Enter email address'
-              label='Email Adress'
-              variant='default'
-            />
+          <Input
+            id='address'
+            type='text'
+            variant='default'
+            label='Complete Address'
+            placeholder='Enter address'
+            value={data.address}
+          />
 
-            <Input
-              id='phone'
-              placeholder='0000-0000-0000'
-              label='Phone Number'
-              variant='phone'
-            />
+          <Input
+            id='phone-number'
+            type='text'
+            variant='phone'
+            label='Phone Number'
+            placeholder='0000-0000-0000'
+            value={data.phone}
+          />
 
-            <Input
-              id='complete-address'
-              placeholder='Enter complete adress'
-              label='Complete Address'
-              variant='default'
-            />
+          <Input
+            id='manager-branch'
+            type='text'
+            variant='default'
+            label='Manager Branch'
+            placeholder='Enter manager name'
+            value={data.managerBranch}
+          />
 
-            <section className='space-y-1.5'>
-              <h5 className='text-body-base font-semibold text-netral-80'>
-                Upload Image
-              </h5>
+          <div className='relative flex flex-col items-center justify-center rounded-xl border-2 border-dashed border-netral-30 bg-netral-15 py-14'>
+            <UploadSimpleIcon className='mb-5 h-8 w-8 text-netral-50' />
 
-              <div
-                className={`Dropzone relative flex h-72 w-full flex-col items-center justify-center rounded-lg-10 border-2 border-netral-30 bg-netral-15 ${
-                  dropzone ? "border-dashed py-14" : "border-dashed py-0"
-                }`}
-              >
-                {dropzone ? (
-                  <div className='flex flex-col items-center'>
-                    <UploadSimpleIcon className='h-8 w-8 stroke-2 text-netral-50' />
+            <Button size='sm' variant='primary-bg' className='mb-2'>
+              Add Image
+            </Button>
 
-                    <Button
-                      size='sm'
-                      variant='primary-bg'
-                      className='mb-2 mt-5'
-                      onClick={() => setOpenModalDropzone(true)}
-                    >
-                      Add Image
-                    </Button>
-
-                    <p className='text-center text-body-sm text-netral-50'>
-                      or drop image to upload
-                    </p>
-                  </div>
-                ) : (
-                  <>
-                    <div className='relative z-0 aspect-video h-full w-auto'>
-                      <Image
-                        className='h-full w-full object-cover'
-                        alt='Image'
-                        src={"/outlet-1.jpg"}
-                        fill
-                      />
-                    </div>
-
-                    <div className='absolute right-3 top-3 z-10 flex h-fit w-fit items-center gap-1.5'>
-                      <Button size='sm' variant='primary-bg'>
-                        Edit
-                        <PencilSimpleIcon className='h-4 w-4 stroke-[4px] text-white ' />
-                      </Button>
-
-                      <Button size='sm' variant='error-bg'>
-                        Delete
-                        <TrashIcon className='h-4 w-4 stroke-[4px] text-white ' />
-                      </Button>
-                    </div>
-                  </>
-                )}
-              </div>
-            </section>
-          </form>
-        </section>
-      </div>
+            <h5 className='text-body-sm text-netral-50'>
+              or drop image to upload
+            </h5>
+          </div>
+        </div>
+      </section>
 
       <PageAction
-        variant='absolute'
+        variant='sticky'
         actionLabel='Last saved'
         actionDesc='Nov 9, 2022-17.09'
         btnPrimaryLabel='Save'
         btnPrimaryVariant='primary-bg'
-        btnPrimaryFun={() => setOpenSuccess(true)}
+        btnPrimaryFun={() => setOpenModalEditConfirmation(true)}
         btnSecondaryLabel='Discard'
         btnsecondaryVariant='primary-nude'
         btnSecondaryFun={() => router.back()}
       />
 
-      <Alerts
-        variant='success'
-        open={openSuccess}
-        setOpen={setOpenSuccess}
-        title='Users has been updated'
-        desc='User updated successfully.'
-      />
-
       <Modal
-        variant='default'
-        title='Add Image'
-        open={openModalDropzone}
-        setOpen={setOpenModalDropzone}
-        className='max-w-4xl'
+        variant='primary'
+        open={openModalEditConfirmation}
+        title='Update Outlet'
+        className='max-w-lg !overflow-y-visible'
+        setOpen={setOpenModalEditConfirmation}
       >
-        {activeState === 1 && (
-          <main className='my-10 flex w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-netral-30 bg-netral-15 py-20'>
-            <DropzoneIll className='h-32 w-32' />
+        <main className='mb-10 mt-4'>
+          <p className='text-body-base text-netral-80'>
+            Are you sure to want to update this outlet?
+          </p>
+        </main>
 
-            <h5 className='mb-1 mt-6 text-body-lg font-semibold'>
-              Click to upload, or drag and drop
-            </h5>
-
-            <p className='text-body-sm text-netral-50'>
-              {"SVG, PNG, JPEG (MAX 800X400px)"}
-            </p>
-          </main>
-        )}
-
-        {activeState === 2 && (
-          <main className='my-10 flex w-full flex-col items-center justify-center rounded-xl border-2 border-dashed border-netral-30 bg-netral-15'>
-            <div className='relative aspect-video h-96'>
-              <Image
-                className='h-full w-full object-cover'
-                alt='Image'
-                src={"/outlet-1.jpg"}
-                fill
-              />
-            </div>
-          </main>
-        )}
-
-        <footer className='flex flex-row justify-end gap-3'>
-          <Button size='md' variant='default-nude'>
-            Discard
+        <footer className='flex w-full justify-end gap-3'>
+          <Button
+            size='md'
+            variant='default-nude'
+            onClick={() => setOpenModalEditConfirmation(false)}
+          >
+            Cancel
           </Button>
 
-          <Button size='md' variant='primary-bg' onClick={nextState}>
-            Save
+          <Button
+            size='md'
+            variant='primary-bg'
+            onClick={() => {
+              setOpenModalEditConfirmation(false)
+              setOpenAlertsEditSuccess(true)
+            }}
+          >
+            Yes
           </Button>
         </footer>
       </Modal>
+
+      <Alerts
+        variant='success'
+        open={openAlertsEditSuccess}
+        setOpen={setOpenAlertsEditSuccess}
+        title='Outlet updated successfully'
+        desc='Outlet successfully updated, you can view the updated banner.'
+      />
     </div>
   )
 }
 
-export default DBOutletEdit
+export default DBOutletAdd
